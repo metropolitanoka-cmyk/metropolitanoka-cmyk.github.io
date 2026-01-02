@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Москва: Машина Времени - Угадай год и место старых фотографий Москвы</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="🎮 Бесплатная онлайн-игра по истории Москвы! Угадай год съемки и отметь место на карте. 3 режима игры: Все годы, ЛИХИЕ 90-е, СССР. 100+ исторических фотографий Москвы. Играй прямо в браузере без регистрации!">
+    <meta name="keywords" content="Москва игра, история Москвы, старые фотографии Москвы, онлайн викторина, машина времени, угадай год фото, карта Москвы, образовательная игра, СССР, 90-е">
+    <meta name="author" content="Moscow Time Machine">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Москва: Машина Времени - Угадай год и место старых фотографий Москвы">
+    <meta property="og:description" content="Бесплатная онлайн-игра по истории Москвы. 3 режима: Все годы, ЛИХИЕ 90-е, СССР. Угадай год съемки и отметь место на карте.">
+    <meta property="og:image" content="https://moscowtimemachine.ru/og-image.jpg">
+    <meta property="og:url" content="https://moscowtimemachine.ru">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Москва: Машина Времени">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Москва: Машина Времени">
+    <meta name="twitter:description" content="Угадай год и место старых фотографий Москвы - 3 режима игры">
+    <meta name="twitter:image" content="https://moscowtimemachine.ru/og-image.jpg">
+    
+    <!-- Дополнительные мета-теги -->
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Москва: Машина Времени">
+    <meta name="application-name" content="Москва: Машина Времени">
+    
+    <!-- Каноническая ссылка -->
+    <link rel="canonical" href="https://moscowtimemachine.ru">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Подключаем Leaflet для карты -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Подключаем Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+            --telegram-color: #0088cc;
+            --music-color: #9b59b6;
+            --ussr-color: #e74c3c;
+            --nineties-color: #27ae60;
+            --card-bg: #ffffff;
+            --shadow-color: rgba(0,0,0,0.1);
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .game-header {
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            position: relative;
+        }
+        
+        .photo-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            position: relative;
+            margin-bottom: 1rem;
+            background: #000;
+            height: 450px;
+        }
+        
+        #old-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .photo-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+        
+        .photo-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .photo-placeholder p {
+            font-size: 1.2rem;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .language-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .mode-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .mode-all { background: rgba(52, 152, 219, 0.9); }
+        .mode-90s { background: rgba(39, 174, 96, 0.9); }
+        .mode-ussr { background: rgba(231, 76, 60, 0.9); }
+        
+        #map {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px var(--shadow-color);
+            background: #e8f4f8;
+            height: 400px;
+        }
+        
+        .score-card, .year-slider-container, .rules-card, .mode-card, .settings-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .score-card:hover, .year-slider-container:hover, .rules-card:hover, .mode-card:hover, .settings-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .score-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            line-height: 1;
+        }
+        
+        .slider-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        
+        .btn-game {
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-game:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: white;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, var(--success-color) 0%, #27ae60 100%);
+            color: white;
+        }
+        
+        .btn-music {
+            background: linear-gradient(135deg, var(--music-color) 0%, #8e44ad 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.2);
+        }
+        
+        .btn-music:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(155, 89, 182, 0.3);
+        }
+        
+        .btn-music.active {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+        
+        .mode-btn {
+            text-align: left;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            background: white;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        
+        .mode-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .mode-btn.active {
+            border-width: 3px;
+            font-weight: 600;
+        }
+        
+        .mode-btn-all.active { border-color: #3498db; background: rgba(52, 152, 219, 0.1); }
+        .mode-btn-90s.active { border-color: #27ae60; background: rgba(39, 174, 96, 0.1); }
+        .mode-btn-ussr.active { border-color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
+        
+        .mode-btn i {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .mode-btn-all i { color: #3498db; }
+        .mode-btn-90s i { color: #27ae60; }
+        .mode-btn-ussr i { color: #e74c3c; }
+        
+        .btn-telegram {
+            background: linear-gradient(135deg, var(--telegram-color) 0%, #0077b5 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2);
+        }
+        
+        .btn-telegram:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 136, 204, 0.3);
+        }
+        
+        .btn-translate {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-translate:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: white;
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .rules-card {
+            margin-top: 1.5rem;
+        }
+        
+        .rule-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rule-points {
+            font-weight: 700;
+            margin-right: 12px;
+            min-width: 70px;
+            text-align: right;
+        }
+        
+        .positive { color: var(--success-color); }
+        .negative { color: var(--accent-color); }
+        .warning { color: var(--warning-color); }
+        
+        .timer-card {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        
+        #timer {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 0.3rem 0;
+        }
+        
+        .result-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 100%;
+            animation: modalAppear 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .game-footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .mobile-only { display: none; }
+        .desktop-only { display: block; }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 0 4px;
+        }
+        
+        .volume-slider {
+            flex-grow: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .audio-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(155, 89, 182, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .audio-indicator:hover {
+            transform: scale(1.1);
+            background: rgba(155, 89, 182, 1);
+        }
+        
+        .audio-indicator.pulsing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .mode-info {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        
+        .mode-info-90s {
+            background: rgba(39, 174, 96, 0.1);
+            border-left: 4px solid #27ae60;
+        }
+        
+        .mode-info-ussr {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .settings-card {
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .setting-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .setting-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .time-options {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .time-btn {
+            flex: 1;
+            min-width: 70px;
+            padding: 8px 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .time-btn:hover {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+        
+        .time-btn.active {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+            font-weight: 600;
+        }
+        
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .toggle-checkbox {
+            display: none;
+        }
+        
+        .toggle-slider {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background-color: #dee2e6;
+            border-radius: 34px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        
+        .toggle-checkbox:checked + .toggle-slider {
+            background-color: #3498db;
+        }
+        
+        .toggle-checkbox:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+        
+        .toggle-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .toggle-hint {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 4px;
+            margin-left: 60px;
+        }
+        
+        .preview-indicator {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .game-header {
+                padding: 1rem 0;
+            }
+            
+            .display-4 {
+                font-size: 1.8rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .lead {
+                font-size: 1rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .photo-container {
+                height: 280px !important;
+            }
+            
+            #map {
+                height: 300px !important;
+            }
+            
+            .score-card, .year-slider-container, .rules-card, .mode-card, .settings-card {
+                padding: 1rem !important;
+            }
+            
+            .score-value {
+                font-size: 2.5rem !important;
+            }
+            
+            .btn-game {
+                padding: 0.9rem 1rem;
+                font-size: 0.95rem;
+            }
+            
+            .header-controls {
+                justify-content: center !important;
+                margin-top: 0.5rem;
+            }
+            
+            .header-controls .btn {
+                padding: 0.5rem 0.8rem !important;
+                font-size: 0.85rem !important;
+            }
+            
+            .rule-item {
+                padding: 0.6rem 0;
+                font-size: 0.9rem;
+            }
+            
+            .rule-points {
+                min-width: 60px;
+                font-size: 0.9rem;
+            }
+            
+            .slider-value {
+                font-size: 1.6rem;
+            }
+            
+            #timer {
+                font-size: 1.8rem;
+            }
+            
+            .modal-content {
+                padding: 1.2rem;
+                margin: 0.5rem;
+                width: calc(100% - 1rem);
+            }
+            
+            .mobile-only { display: block; }
+            .desktop-only { display: none; }
+            
+            .time-btn {
+                min-width: 65px;
+                padding: 6px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .toggle-slider {
+                width: 45px;
+                height: 24px;
+            }
+            
+            .toggle-slider:before {
+                height: 16px;
+                width: 16px;
+            }
+            
+            .toggle-checkbox:checked + .toggle-slider:before {
+                transform: translateX(21px);
+            }
+            
+            .audio-indicator {
+                bottom: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .photo-container {
+                height: 420px;
+            }
+            
+            #map {
+                height: 400px;
+            }
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #1a2530;
+                --secondary-color: #3498db;
+                --accent-color: #e74c3c;
+                --music-color: #8e44ad;
+                --card-bg: #2c3e50;
+                --shadow-color: rgba(0,0,0,0.3);
+                --warning-color: #f39c12;
+            }
+            
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                color: #ecf0f1;
+            }
+            
+            .score-card, .year-slider-container, .rules-card, .mode-card, .settings-card {
+                background: var(--card-bg);
+                color: #ecf0f1;
+            }
+            
+            .card {
+                background: var(--card-bg);
+                border-color: #34495e;
+            }
+            
+            .modal-content {
+                background: #2c3e50;
+                color: #ecf0f1;
+            }
+            
+            .mode-btn {
+                background: #34495e;
+                border-color: #4a6278;
+                color: #ecf0f1;
+            }
+            
+            .time-btn {
+                background: #34495e;
+                border-color: #4a6278;
+                color: #ecf0f1;
+            }
+            
+            .time-btn.active {
+                background: rgba(52, 152, 219, 0.2);
+                border-color: #3498db;
+            }
+            
+            .setting-item {
+                border-bottom-color: #4a6278;
+            }
+            
+            .toggle-slider {
+                background-color: #4a6278;
+            }
+        }
+        
+        .btn-game:focus, .btn-telegram:focus, .btn-translate:focus, .btn-music:focus, .time-btn:focus {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mode-card, .settings-card {
+            animation: fadeIn 0.5s ease;
+        }
+    </style>
+    
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Москва: Машина Времени",
+        "url": "https://moscowtimemachine.ru",
+        "description": "Онлайн-игра по истории Москвы, в которой нужно угадывать год и место старых фотографий. 3 режима: Все годы, ЛИХИЕ 90-е, СССР",
+        "applicationCategory": "EducationalGame",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "RUB"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Moscow Time Machine"
+        },
+        "genre": ["Educational", "History", "Puzzle"],
+        "keywords": "Москва, история, фотографии, игра, викторина, образование, СССР, 90-е"
+    }
+    </script>
+</head>
+<body>
+    <!-- Шапка игры -->
+    <div class="game-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-6 col-12">
+                    <h1 class="display-4 mb-2" id="game-title">🚀 Москва: Машина Времени</h1>
+                    <p class="lead mb-3" id="game-subtitle">Угадай год и место старых фотографий Москвы!</p>
+                    <div class="d-flex align-items-center">
+                        <div class="round-info me-3">
+                            <i class="fas fa-gamepad me-1"></i> 
+                            <span id="round-text">Раунд:</span> 
+                            <span id="current-round">1</span>/10
+                        </div>
+                        <div class="mobile-only">
+                            <span class="badge bg-info">Нажмите на карту</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 col-md-6 col-12 mt-md-0 mt-3">
+                    <div class="header-controls">
+                        <button id="music-btn" class="btn btn-music">
+                            <i class="fas fa-music"></i> 
+                            <span id="music-text">Музыка</span>
+                        </button>
+                        
+                        <button id="translate-btn" class="btn btn-translate">
+                            <i class="fas fa-language"></i> 
+                            <span id="translate-text">EN</span>
+                        </button>
+                        
+                        <a href="https://t.me/MoscowTheTimeMachine" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn btn-telegram"
+                           id="telegram-link">
+                            <i class="fab fa-telegram"></i> 
+                            <span id="telegram-text">Telegram канал</span>
+                        </a>
+                    </div>
+                    
+                    <div id="volume-control" class="volume-control mt-2" style="display: none;">
+                        <i class="fas fa-volume-down text-white" style="font-size: 0.8rem;"></i>
+                        <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+                        <i class="fas fa-volume-up text-white" style="font-size: 0.8rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Основной контейнер игры -->
+    <div class="container py-3" id="game-container">
+        <div class="row">
+            <!-- Левая колонка: Фото и карта -->
+            <div class="col-lg-8 col-12 mb-4">
+                <!-- Контейнер для фотографии -->
+                <div class="photo-container mb-3">
+                    <div class="language-badge" id="language-badge">RU</div>
+                    <div id="mode-badge" class="mode-badge mode-all">Все годы</div>
+                    <img id="old-photo" src="" alt="Старая фотография Москвы" loading="lazy">
+                    <div class="photo-placeholder" id="photo-placeholder">
+                        <i class="fas fa-images"></i>
+                        <p id="placeholder-text">Выберите режим игры, чтобы начать. Select the game mode to start.</p>
+                    </div>
+                    <div class="preview-indicator" id="preview-indicator" style="display: none;">
+                        <i class="fas fa-sync-alt me-1"></i>
+                        <span id="preview-text">Превью: фото меняются каждые 5 сек</span>
+                    </div>
+                </div>
+                
+                <!-- Подсказка для мобильных -->
+                <div class="alert alert-info mobile-only mb-3 text-center py-2">
+                    <i class="fas fa-mobile-alt me-2"></i>
+                    <span id="mobile-hint">Нажмите на карту, чтобы отметить место</span>
+                </div>
+                
+                <!-- Карта -->
+                <div class="card shadow border-0 mb-4">
+                    <div class="card-header bg-primary text-white py-3">
+                        <h5 class="mb-0">
+                            <i class="fas fa-map-marked-alt me-2"></i> 
+                            <span id="map-title">Отметьте место на карте</span>
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div id="map" class="map-container"></div>
+                    </div>
+                    <div class="card-footer bg-light py-2">
+                        <small class="text-muted" id="map-hint">
+                            <i class="fas fa-hand-pointer me-1"></i>
+                            Кликните на карте, чтобы отметить предполагаемое место съемки
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Правая колонка: Управление игрой -->
+            <div class="col-lg-4 col-12">
+                <!-- 1. ВЫБОР ГОДА -->
+                <div class="year-slider-container p-3 mb-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-calendar-alt me-2"></i> 
+                        <span id="year-title">Выберите год съемки</span>
+                    </h5>
+                    <div class="slider-value" id="selected-year">1900</div>
+                    <input type="range" 
+                           class="form-range" 
+                           id="year-slider" 
+                           min="1800" 
+                           max="2000" 
+                           value="1900" 
+                           step="1"
+                           aria-label="Выбор года">
+                    <div class="d-flex justify-content-between mt-2 text-muted small">
+                        <span id="min-year">1800</span>
+                        <span id="mid-year">1900</span>
+                        <span id="max-year">2000</span>
+                    </div>
+                </div>
+                
+                <!-- 2. КНОПКИ УПРАВЛЕНИЯ -->
+                <div class="d-grid gap-2 mb-4">
+                    <button id="submit-btn" class="btn btn-game btn-submit" disabled>
+                        <i class="fas fa-check-circle me-2"></i> 
+                        <span id="submit-text">Подтвердить ответ</span>
+                    </button>
+                    <button id="next-btn" class="btn btn-game btn-next" style="display: none;">
+                        <i class="fas fa-arrow-right me-2"></i> 
+                        <span id="next-text">Следующий раунд</span>
+                    </button>
+                    <button id="hint-btn" class="btn btn-game btn-outline-secondary">
+                        <i class="fas fa-lightbulb me-2"></i> 
+                        <span id="hint-text">Подсказка (-1 балл)</span>
+                    </button>
+                </div>
+                
+                <!-- 3. СЧЕТЧИК БАЛЛОВ (перемещен выше) -->
+                <div class="score-card p-3 mb-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="mb-0">
+                            <i class="fas fa-trophy me-2"></i> 
+                            <span id="score-title">Ваш счет</span>
+                        </h4>
+                        <div class="desktop-only">
+                            <span class="badge bg-primary">Очки</span>
+                        </div>
+                    </div>
+                    <div class="score-value text-center mb-3">
+                        <span id="score-board">0.0</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="badge bg-primary fs-6 px-3 py-2" id="points-text">баллов</span>
+                    </div>
+                </div>
+                
+                <!-- 4. ВЫБОР РЕЖИМА ИГРЫ -->
+                <div class="mode-card p-3 mb-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <span id="mode-title">Выберите период игры</span>
+                    </h5>
+                    
+                    <!-- Информация о текущем режиме -->
+                    <div id="mode-info" class="mode-info mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong id="current-mode-name">Все годы</strong>
+                                <div class="small text-muted" id="current-year-range">1800-2000</div>
+                            </div>
+                            <span class="badge bg-primary" id="photos-count">0 фото</span>
+                        </div>
+                        <div class="small mt-1" id="mode-status-text"></div>
+                    </div>
+                    
+                    <!-- Кнопки режимов -->
+                    <div class="mb-3">
+                        <button id="mode-all-btn" class="mode-btn mode-btn-all active">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <strong>Все годы</strong>
+                                <div class="small text-muted">1800-2000</div>
+                            </div>
+                        </button>
+                        
+                        <button id="mode-90s-btn" class="mode-btn mode-btn-90s">
+                            <i class="fas fa-guitar"></i>
+                            <div>
+                                <strong>ЛИХИЕ 90-е</strong>
+                                <div class="small text-muted">1992-2000</div>
+                            </div>
+                        </button>
+                        
+                        <button id="mode-ussr-btn" class="mode-btn mode-btn-ussr">
+                            <i class="fas fa-hammer"></i>
+                            <div>
+                                <strong>СССР</strong>
+                                <div class="small text-muted">1917-1991</div>
+                            </div>
+                        </button>
+                    </div>
+                    
+                    <!-- Произвольный диапазон -->
+                    <div class="mb-3">
+                        <h6 class="mb-2">
+                            <i class="fas fa-sliders-h me-2"></i>
+                            <span>Произвольный диапазон</span>
+                        </h6>
+                        <div class="row g-2 mb-2">
+                            <div class="col">
+                                <input type="number" id="custom-min-year" class="form-control form-control-sm" 
+                                       placeholder="От" min="1800" max="2000" value="1990">
+                            </div>
+                            <div class="col">
+                                <input type="number" id="custom-max-year" class="form-control form-control-sm" 
+                                       placeholder="До" min="1800" max="2000" value="2000">
+                            </div>
+                        </div>
+                        <button id="mode-custom-btn" class="btn btn-outline-secondary btn-sm w-100">
+                            <i class="fas fa-play me-1"></i>
+                            <span id="play-text">Играть</span>
+                        </button>
+                    </div>
+                    
+                    <div class="small text-muted mt-2">
+                        <i class="fas fa-info-circle me-1"></i>
+                        <span id="mode-hint">Для игры нужно минимум 10 фотографий в выбранном периоде</span>
+                    </div>
+                </div>
+                
+                <!-- 5. ТАЙМЕР -->
+                <div class="timer-card mb-4">
+                    <div class="text-center">
+                        <h6 class="mb-2">
+                            <i class="fas fa-clock me-2"></i> 
+                            <span id="timer-title">Время на раунд</span>
+                        </h6>
+                        <div id="timer" class="display-6 text-primary">60</div>
+                        <small class="text-muted" id="seconds-text">секунд</small>
+                    </div>
+                </div>
+                
+                <!-- 6. НАСТРОЙКИ ИГРЫ -->
+                <div class="settings-card">
+                    <h5 class="mb-3">
+                        <i class="fas fa-cog me-2"></i>
+                        <span id="settings-title">Настройки игры</span>
+                    </h5>
+                    
+                    <!-- Время раунда -->
+                    <div class="setting-item">
+                        <h6 class="mb-2">
+                            <i class="fas fa-clock me-2"></i>
+                            <span id="time-setting-title">Время на раунд</span>
+                        </h6>
+                        <div class="time-options">
+                            <button class="time-btn active" data-time="30">30 сек</button>
+                            <button class="time-btn" data-time="60">1 мин</button>
+                            <button class="time-btn" data-time="90">1.5 мин</button>
+                            <button class="time-btn" data-time="120">2 мин</button>
+                        </div>
+                        <div class="small text-muted mt-1">
+                            <i class="fas fa-info-circle me-1"></i>
+                            <span id="time-hint">Текущее время: <span id="current-time-display">60</span> сек</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Штрафы за расстояние -->
+                    <div class="setting-item">
+                        <h6 class="mb-2">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <span id="penalty-setting-title">Штрафы за ошибки места</span>
+                        </h6>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="distance-penalty-toggle" class="toggle-checkbox" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label" id="penalty-toggle-label">Включить штрафы</span>
+                        </label>
+                        <div class="toggle-hint" id="penalty-hint">
+                            >5 км: -2 балла | >10 км: -3 балла
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Правила игры -->
+        <div class="rules-card p-3 mb-4">
+            <h4 class="mb-3">
+                <i class="fas fa-book me-2"></i> 
+                <span id="rules-title">Правила подсчета очков</span>
+            </h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="rule-item">
+                        <span class="rule-points positive">+3 <span class="points-unit">балла</span></span>
+                        <span id="rule1">Точный год</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points positive">+2 <span class="points-unit">балла</span></span>
+                        <span id="rule2">Погрешность 2 года</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points positive">+1 <span class="points-unit">балл</span></span>
+                        <span id="rule3">Погрешность 5 лет</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-2 <span class="points-unit">балла</span></span>
+                        <span id="rule4">Ошибка 5-10 лет</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-3 <span class="points-unit">балла</span></span>
+                        <span id="rule5">Ошибка >10 лет</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="rule-item">
+                        <span class="rule-points positive">+2 <span class="points-unit">балла</span></span>
+                        <span id="rule6">Точное место (200 м)</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points positive">+0.5 <span class="points-unit">балла</span></span>
+                        <span id="rule7">Менее 1 км</span>
+                    </div>
+                    <div class="rule-item penalty-rule" id="penalty-rule-8">
+                        <span class="rule-points negative">-2 <span class="points-unit">балла</span></span>
+                        <span id="rule8">Ошибка >5 км</span>
+                    </div>
+                    <div class="rule-item penalty-rule" id="penalty-rule-9">
+                        <span class="rule-points negative">-3 <span class="points-unit">балла</span></span>
+                        <span id="rule9">Ошибка >10 км</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points warning">-1 <span class="points-unit">балл</span></span>
+                        <span id="rule10">Подсказка</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 small text-muted">
+                <i class="fas fa-info-circle me-1"></i>
+                <span id="rules-hint">Штрафы за ошибки места можно включить/выключить в настройках</span>
+            </div>
+        </div>
+        
+        <!-- Футер -->
+        <div class="game-footer">
+            <p class="mb-1">
+                <span id="footer-text">Игра создана с ❤️ для любителей истории Москвы</span>
+            </p>
+            <p class="small">
+                <span id="footer-subtext">Фотографии из различных источников</span>
+                <span class="mx-2">•</span>
+                <a href="https://t.me/MoscowTheTimeMachine" target="_blank" class="text-decoration-none">
+                    <i class="fab fa-telegram me-1"></i>Telegram
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Модальное окно с результатами раунда -->
+    <div id="result-modal" class="result-modal">
+        <div class="modal-content">
+            <h3 id="result-title" class="mb-3"></h3>
+            <div id="result-details" class="mb-4"></div>
+            <button id="close-modal" class="btn btn-primary w-100 py-2">
+                <i class="fas fa-arrow-right me-2"></i>
+                <span id="continue-text">Продолжить</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Аудио элемент (скрытый) -->
+    <audio id="background-music" loop>
+        <source src="audio/moscow_never_sleep.mp3" type="audio/mpeg">
+        Ваш браузер не поддерживает аудио элемент.
+    </audio>
+
+    <!-- Аудио-индикатор (плавающая кнопка) -->
+    <div id="audio-indicator" class="audio-indicator" title="Управление музыкой">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- Подключаем скрипты -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="game-loader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

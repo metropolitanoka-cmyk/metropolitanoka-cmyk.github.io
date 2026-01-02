@@ -1,0 +1,436 @@
+[
+  {
+    "id": 1,
+    "fileName": "1.jpg",
+    "year": 1996,
+    "location": "Гостиница Россия",
+    "coordinates": {"lat": 55.751080, "lng": 37.634210}
+  },
+  {
+    "id": 1,
+    "fileName": "2.jpg",
+    "year": 2000,
+    "location": "Гостиница Москва",
+    "coordinates": {"lat": 55.755844, "lng": 37.614205}
+  },
+  {
+    "id": 1,
+    "fileName": "3.jpg",
+    "year": 2000,
+    "location": "Аквапарк Аквадром",
+    "coordinates": {"lat": 55.706178, "lng": 37.458548}
+  },
+  {
+    "id": 1,
+    "fileName": "4.jpg",
+    "year": 1999,
+    "location": "Недостроенный бизнес-центр Зенит",
+    "coordinates": {"lat": 55.669361, "lng": 37.479739}
+  },
+  {
+    "id": 1,
+    "fileName": "5.jpg",
+    "year": 1925,
+    "location": "Ярославский вокзал",
+    "coordinates": {"lat": 55.778249, "lng": 37.656704}
+  },
+  {
+    "id": 1,
+    "fileName": "6.jpg",
+    "year": 1922,
+    "location": "Шуховская башня",
+    "coordinates": {"lat": 55.718662, "lng": 37.611758}
+  },
+  {
+    "id": 1,
+    "fileName": "7.jpg",
+    "year": 1980,
+    "location": "Аэропорт Шереметьево-2 перед открытием",
+    "coordinates": {"lat": 55.966040, "lng": 37.418501}
+  },
+  {
+    "id": 1,
+    "fileName": "8.jpg",
+    "year": 1977,
+    "location": "ТУ-144 в аэропорту Домодедово",
+    "coordinates": {"lat": 55.408910, "lng": 37.894984}
+  },
+  {
+    "id": 1,
+    "fileName": "9.jpg",
+    "year": 2000,
+    "location": "Строительство Москвы-Сити",
+    "coordinates": {"lat": 55.745787, "lng": 37.533389}
+  },
+  {
+    "id": 1,
+    "fileName": "10.jpg",
+    "year": 1989,
+    "location": "Лубянка и железный Феликс",
+    "coordinates": {"lat": 55.759596, "lng": 37.625797}
+  },
+  {
+    "id": 1,
+    "fileName": "11.jpg",
+    "year": 1998,
+    "location": "Кинотеатр Россия",
+    "coordinates": {"lat": 55.765658, "lng": 37.607282}
+  },
+  {
+    "id": 1,
+    "fileName": "12.jpg",
+    "year": 2000,
+    "location": "Метро Братиславская",
+    "coordinates": {"lat": 55.659633, "lng": 37.750638}
+  },
+  {
+    "id": 1,
+    "fileName": "13.jpg",
+    "year": 1982,
+    "location": "Красная площадь",
+    "coordinates": {"lat": 55.754760, "lng": 37.619211}
+  },
+  {
+    "id": 1,
+    "fileName": "14.jpg",
+    "year": 1870,
+    "location": "Товарищество Прохоровской Трёхгорной мануфактуры",
+    "coordinates": {"lat": 55.752864, "lng": 37.565498}
+  },
+  {
+    "id": 1,
+    "fileName": "15.jpg",
+    "year": 1988,
+    "location": "Дом Советов РСФСР",
+    "coordinates": {"lat": 55.753554, "lng": 37.574617}
+  },
+  {
+    "id": 1,
+    "fileName": "16.jpg",
+    "year": 1984,
+    "location": "1-я Останкинская улица",
+    "coordinates": {"lat": 55.823682, "lng": 37.631690}
+  },
+  {
+    "id": 1,
+    "fileName": "17.jpg",
+    "year": 1994,
+    "location": "Бассейн Москва",
+    "coordinates": {"lat": 55.744369, "lng": 37.606246}
+  },
+  {
+    "id": 1,
+    "fileName": "18.jpg",
+    "year": 2000,
+    "location": "Арбат",
+    "coordinates": {"lat": 55.750912, "lng": 37.596000}
+  },
+  {
+    "id": 1,
+    "fileName": "19.jpg",
+    "year": 1998,
+    "location": "Гостиничная улица д.6",
+    "coordinates": {"lat": 55.844335, "lng": 37.581288}
+  },
+  {
+    "id": 1,
+    "fileName": "20.jpg",
+    "year": 1990,
+    "location": "Первый макдоналдс в СССР",
+    "coordinates": {"lat": 55.764937, "lng": 37.603705}
+  },
+  {
+    "id": 1,
+    "fileName": "21.jpg",
+    "year": 1995,
+    "location": "Воробьёвы горы",
+    "coordinates": {"lat": 55.708516, "lng": 37.557236}
+  },
+  {
+    "id": 1,
+    "fileName": "22.jpg",
+    "year": 1994,
+    "location": "Эскалаторная галерея",
+    "coordinates": {"lat": 55.707888, "lng": 37.554261}
+  },
+  {
+    "id": 1,
+    "fileName": "23.jpg",
+    "year": 1970,
+    "location": "Улица Рогожский вал",
+    "coordinates": {"lat": 55.740889, "lng": 37.674792}
+  },
+  {
+    "id": 1,
+    "fileName": "24.jpg",
+    "year": 1936,
+    "location": "Метро Сокольники",
+    "coordinates": {"lat": 55.789526, "lng": 37.679709}
+  },
+  {
+    "id": 1,
+    "fileName": "25.jpg",
+    "year": 1980,
+    "location": "Вид на здание МИДа",
+    "coordinates": {"lat": 55.744759, "lng": 37.564253}
+  },
+  {
+    "id": 1,
+    "fileName": "26.jpg",
+    "year": 2000,
+    "location": "Паровоз на Курском вокзале в честь 55-летия Победы.",
+    "coordinates": {"lat": 55.757019, "lng": 37.662051}
+  },
+  {
+    "id": 1,
+    "fileName": "27.jpg",
+    "year": 1978,
+    "location": "Строится гостиничный комплекс Измайлово.",
+    "coordinates": {"lat": 55.790504, "lng": 37.747621}
+  },
+  {
+    "id": 1,
+    "fileName": "28.jpg",
+    "year": 1856,
+    "location": "Храм Василия Блаженного",
+    "coordinates": {"lat": 55.752025, "lng": 37.622736}
+  },
+  {
+    "id": 1,
+    "fileName": "29.jpg",
+    "year": 1877,
+    "location": "Вокзал Курской железной дороги. Прибытие в Москву санитарного поезда князя В. А. Долгорукова",
+    "coordinates": {"lat": 55.757024, "lng": 37.661153}
+  },
+  {
+    "id": 1,
+    "fileName": "30.jpg",
+    "year": 1880,
+    "location": "Дом Третьяковых",
+    "coordinates": {"lat": 55.741448, "lng": 37.621013}
+  },
+  {
+    "id": 1,
+    "fileName": "31.jpg",
+    "year": 1986,
+    "location": "Реконструкция Третьяковской галереи",
+    "coordinates": {"lat": 55.741245, "lng": 37.621609}
+  },
+  {
+    "id": 1,
+    "fileName": "32.jpg",
+    "year": 1980,
+    "location": "Центральный дом художника",
+    "coordinates": {"lat": 55.733575, "lng": 37.603923}
+  },
+  {
+    "id": 1,
+    "fileName": "33.jpg",
+    "year": 2000,
+    "location": "Кутузовский проспект",
+    "coordinates": {"lat": 55.746856, "lng": 37.552941}
+  },
+  {
+    "id": 1,
+    "fileName": "34.jpg",
+    "year": 1999,
+    "location": "Мост Багратион и Башня 2000",
+    "coordinates": {"lat": 55.747308, "lng": 37.544911}
+  },
+  {
+    "id": 1,
+    "fileName": "35.jpg",
+    "year": 1950,
+    "location": "Строительство высотки на Котельнической набережной.",
+    "coordinates": {"lat": 55.747717, "lng": 37.640567}
+  },
+  {
+    "id": 1,
+    "fileName": "36.jpg",
+    "year": 1955,
+    "location": "Стадион Динамо.",
+    "coordinates": {"lat": 55.790363, "lng": 37.557966}
+  },
+  {
+    "id": 1,
+    "fileName": "37.jpg",
+    "year": 1992,
+    "location": "Шоссе Энтузиастов.",
+    "coordinates": {"lat": 55.758500, "lng": 37.751437}
+  },
+  {
+    "id": 1,
+    "fileName": "38.jpg",
+    "year": 1983,
+    "location": "перестройка здания КГБ",
+    "coordinates": {"lat": 55.760042, "lng": 37.626089}
+  },
+  {
+    "id": 1,
+    "fileName": "39.jpg",
+    "year": 1963,
+    "location": "Строительство Останкинской телебашни.",
+    "coordinates": {"lat": 55.818458, "lng": 37.608286}
+  },
+  {
+    "id": 1,
+    "fileName": "40.jpg",
+    "year": 1980,
+    "location": "Велотрек в Крылатском.",
+    "coordinates": {"lat": 55.764102, "lng": 37.438046}
+  },
+  {
+    "id": 1,
+    "fileName": "41.jpg",
+    "year": 1985,
+    "location": "Троллейбус у гостиницы Интурист.",
+    "coordinates": {"lat": 55.757398, "lng": 37.613336}
+  },
+  {
+    "id": 1,
+    "fileName": "42.jpg",
+    "year": 1978,
+    "location": "Цирк на Проспекте Вернадского.",
+    "coordinates": {"lat": 55.694509, "lng": 37.538487}
+  },
+  {
+    "id": 1,
+    "fileName": "43.jpg",
+    "year": 1995,
+    "location": "Восстанавливают разобранные в 1931 году Воскресенские ворота.",
+    "coordinates": {"lat": 55.755905, "lng": 37.617330}
+  },
+  {
+    "id": 1,
+    "fileName": "44.jpg",
+    "year": 1939,
+    "location": "Восстанавливают разобранные в 1931 году Воскресенские ворота.",
+    "coordinates": {"lat": 55.735692, "lng": 37.593809}
+  },
+  {
+    "id": 1,
+    "fileName": "45.jpg",
+    "year": 1995,
+    "location": "Строительство 4-ого микрорайона Южного Бутово.",
+    "coordinates": {"lat": 55.545296, "lng": 37.547368}
+  },
+  {
+    "id": 1,
+    "fileName": "46.jpg",
+    "year": 1957,
+    "location": "Ил-18 на Ходынском поле.",
+    "coordinates": {"lat": 55.786710, "lng": 37.528608}
+  },
+  {
+    "id": 1,
+    "fileName": "47.jpg",
+    "year": 1979,
+    "location": "Аэропорт Внуково",
+    "coordinates": {"lat": 55.594446, "lng": 37.271715}
+  },
+  {
+    "id": 1,
+    "fileName": "48.jpg",
+    "year": 1986,
+    "location": "Белорусский вокзал.",
+    "coordinates": {"lat": 55.774619, "lng": 37.575130}
+  },
+  {
+    "id": 1,
+    "fileName": "49.jpg",
+    "year": 1906,
+    "location": "Ильинский крестец.",
+    "coordinates": {"lat": 55.755658, "lng": 37.632387}
+  },
+  {
+    "id": 1,
+    "fileName": "50.jpg",
+    "year": 1982,
+    "location": "Крытый рынок.",
+    "coordinates": {"lat": 55.792705, "lng": 37.636383}
+  },
+  {
+    "id": 1,
+    "fileName": "51.jpg",
+    "year": 1967,
+    "location": "Панорамный вид с здания СЭВ.",
+    "coordinates": {"lat": 55.753799, "lng": 37.577560}
+  },
+  {
+    "id": 1,
+    "fileName": "52.jpg",
+    "year": 1872,
+    "location": "Новодевичий монастырь.",
+    "coordinates": {"lat": 55.729212, "lng": 37.562640}
+  },
+  {
+    "id": 1,
+    "fileName": "53.jpg",
+    "year": 2000,
+    "location": "Гостиница Интурист.",
+    "coordinates": {"lat": 55.758366, "lng": 37.612794}
+  },
+  {
+    "id": 1,
+    "fileName": "54.jpg",
+    "year": 1920,
+    "location": "Руины Царицынского дворца.",
+    "coordinates": {"lat": 55.614780, "lng": 37.682933}
+  },
+  {
+    "id": 1,
+    "fileName": "55.jpg",
+    "year": 1995,
+    "location": "Cтроительство торгового центра Охотный ряд.",
+    "coordinates": {"lat": 55.756362, "lng": 37.616194}
+  },
+  {
+    "id": 1,
+    "fileName": "56.jpg",
+    "year": 1999,
+    "location": "Нижний Кисельный переулок.",
+    "coordinates": {"lat": 55.765420, "lng": 37.620446}
+  },
+  {
+    "id": 1,
+    "fileName": "57.jpg",
+    "year": 1999,
+    "location": "Вид с крыши гостиницы Измайлово на Черкизон.",
+    "coordinates": {"lat": 55.792285, "lng": 37.748973}
+  },
+  {
+    "id": 1,
+    "fileName": "58.jpg",
+    "year": 1880,
+    "location": "Вид Нижней Таганской площади.",
+    "coordinates": {"lat": 55.740376, "lng": 37.652250}
+  },
+  {
+    "id": 1,
+    "fileName": "59.jpg",
+    "year": 1973,
+    "location": "Большой Устьинский мост.",
+    "coordinates": {"lat": 55.743112, "lng": 37.643463}
+  },
+  {
+    "id": 1,
+    "fileName": "60.jpg",
+    "year": 1980,
+    "location": "Пятницкая улица.",
+    "coordinates": {"lat": 55.742655, "lng": 37.628327}
+  },
+  {
+    "id": 1,
+    "fileName": "61.jpg",
+    "year": 1999,
+    "location": "Триумфальная площадь.",
+    "coordinates": {"lat": 55.769648, "lng": 37.595857}
+  },
+  {
+    "id": 1,
+    "fileName": "62.jpg",
+    "year": 1987,
+    "location": "Платформа Ржевская",
+    "coordinates": {"lat": 55.793383, "lng": 37.639510}
+  }
+]
