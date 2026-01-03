@@ -504,6 +504,14 @@ const allPhotos = [
     "coordinates": {"lat": 55.765308, "lng": 37.638019},
     "location": "Макдоналдс на Чистопрудном бульваре.",
     "mode": "90s"
+  },
+  {
+    "id": 64,
+    "imageUrl": "photos/64.jpg",
+    "year": 1993,
+    "coordinates": {"lat": 55.743561, "lng": 37.497100},
+    "location": "Метро Багратионовская.",
+    "mode": "90s"
   }
 ];
 
@@ -560,3 +568,4 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
