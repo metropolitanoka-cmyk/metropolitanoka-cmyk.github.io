@@ -496,6 +496,14 @@ const allPhotos = [
     "coordinates": {"lat": 55.793383, "lng": 37.639510},
     "location": "Платформа Ржевская",
     "mode": "ussr"
+  },
+  {
+    "id": 63,
+    "imageUrl": "photos/63.jpg",
+    "year": 1999,
+    "coordinates": {"lat": 55.765308, "lng": 37.638019},
+    "location": "Макдоналдс на Чистопрудном бульваре.",
+    "mode": "90s"
   }
 ];
 
