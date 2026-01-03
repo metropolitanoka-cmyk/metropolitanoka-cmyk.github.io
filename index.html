@@ -62,7 +62,44 @@
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Скрытый контент для поисковиков (стиль) -->
     <style>
+        .seo-content-hidden {
+            position: absolute;
+            left: -9999px;
+            top: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .seo-content-visible {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .seo-content-visible h1, .seo-content-visible h2, .seo-content-visible h3 {
+            color: #2c3e50;
+            margin-top: 20px;
+        }
+        
+        .seo-content-visible p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .seo-content-visible ul, .seo-content-visible ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        
+        /* Остальные существующие стили остаются без изменений */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -841,17 +878,18 @@
         }
     </style>
     
-    <!-- Schema.org разметка -->
+    <!-- Улучшенная Schema.org разметка -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
+        "@type": ["VideoGame", "EducationalGame"],
         "name": "Москва: Машина Времени",
         "url": "https://moscow-time-machine.online/",
-        "description": "Онлайн-игра по истории Москвы, в которой нужно угадывать год и место старых фотографий. 3 режима: Все годы, ЛИХИЕ 90-е, СССР",
+        "description": "Онлайн-игра по истории Москвы, в которой нужно угадывать год и место старых фотографий. 3 режима: Все годы (1800-2000), ЛИХИЕ 90-е, СССР",
         "applicationCategory": "EducationalGame",
+        "gamePlatform": "Web",
         "operatingSystem": "Any",
-        "browserRequirements": "Requires JavaScript",
+        "browserRequirements": "Требуется JavaScript",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -861,12 +899,102 @@
             "@type": "Organization",
             "name": "Moscow Time Machine"
         },
-        "genre": ["Educational", "History", "Puzzle"],
-        "keywords": "Москва, история, фотографии, игра, викторина, образование, СССР, 90-е"
+        "genre": ["Educational", "History", "Puzzle", "Quiz"],
+        "keywords": "Москва, история, фотографии, игра, викторина, образование, СССР, 90-е, архивные фото, старая Москва, угадай год, машина времени",
+        "playMode": "SinglePlayer",
+        "numberOfPlayers": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 1
+        },
+        "publisher": "Moscow Time Machine",
+        "datePublished": "2024-01-03",
+        "softwareVersion": "1.0",
+        "contentRating": "Everyone",
+        "countryOfOrigin": "RU",
+        "inLanguage": "ru",
+        "gameLocation": {
+            "@type": "City",
+            "name": "Москва",
+            "description": "Столица России, город с богатой историей"
+        },
+        "characteristic": [
+            "Угадывание года по фотографиям",
+            "Определение места на карте",
+            "Исторические факты о Москве",
+            "Несколько режимов игры"
+        ],
+        "educationalUse": "Историческое образование, изучение Москвы",
+        "timeRequired": "PT10M",
+        "typicalAgeRange": "12-99"
+    }
+    </script>
+    
+    <!-- Дополнительная разметка для поисковиков -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Москва: Машина Времени",
+        "url": "https://moscow-time-machine.online/",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://moscow-time-machine.online/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "description": "Бесплатная онлайн-игра по истории Москвы. Угадай год съемки и отметь место на карте."
     }
     </script>
 </head>
 <body>
+    <!-- Скрытый контент для поисковиков (виден только им) -->
+    <div class="seo-content-hidden" aria-hidden="true">
+        <h1>Москва: Машина Времени - историческая игра-викторина</h1>
+        <p>Бесплатная онлайн-игра по истории Москвы. Угадайте год съемки старых фотографий Москвы и отметьте место на карте. Три режима игры: Все годы (1800-2000), ЛИХИЕ 90-е (1992-2000), СССР (1917-1991).</p>
+        
+        <h2>Как играть в Moscow Time Machine?</h2>
+        <p>1. Выберите режим игры: Все годы, ЛИХИЕ 90-е или СССР.</p>
+        <p>2. Вам покажут старую фотографию Москвы.</p>
+        <p>3. С помощью ползунка угадайте год съемки (от 1800 до 2000 года).</p>
+        <p>4. На карте Москвы отметьте место, где сделана фотография.</p>
+        <p>5. Нажмите "Подтвердить ответ" и узнайте результат.</p>
+        
+        <h2>Особенности игры:</h2>
+        <ul>
+            <li>100+ архивных фотографий Москвы разных периодов</li>
+            <li>Три режима игры для разных уровней сложности</li>
+            <li>Система подсчета очков с бонусами и штрафами</li>
+            <li>Таймер на каждый раунд</li>
+            <li>Подсказки для сложных фотографий</li>
+            <li>Музыкальное сопровождение в стиле эпохи</li>
+        </ul>
+        
+        <h2>Почему стоит играть в Moscow Time Machine?</h2>
+        <p>Игра "Москва: Машина Времени" - это увлекательный способ изучить историю столицы России. Вы увидите, как менялся город на протяжении двух веков: от Москвы 19 века до современного мегаполиса. Игра подходит для школьников, студентов и всех, кто интересуется историей Москвы.</p>
+        
+        <h3>Ключевые слова для поиска:</h3>
+        <p>старые фотографии Москвы, история Москвы игра, угадай год фото Москвы, архивные снимки Москвы, викторина по истории Москвы, Москва 19 век, Москва 20 век, СССР Москва, 90-е Москва, образовательные игры про Москву, интерактивная карта Москвы, машина времени Москва.</p>
+        
+        <p>Играйте бесплатно прямо в браузере без регистрации. Подключайтесь к нашему Telegram каналу для обновлений и новых фотографий.</p>
+    </div>
+    
+    <!-- Контент для пользователей с отключенным JavaScript -->
+    <noscript>
+        <div class="seo-content-visible">
+            <h1>Москва: Машина Времени - историческая игра-викторина</h1>
+            <p>Для работы игры требуется JavaScript. Пожалуйста, включите JavaScript в настройках вашего браузера.</p>
+            <p><strong>Moscow Time Machine</strong> - это бесплатная онлайн-игра по истории Москвы. Вам показывают старую фотографию Москвы, а вы должны угадать год съемки и отметить место на карте.</p>
+            <p><strong>Режимы игры:</strong></p>
+            <ul>
+                <li><strong>Все годы</strong> (1800-2000) - фотографии за два века</li>
+                <li><strong>ЛИХИЕ 90-е</strong> (1992-2000) - Москва в период перемен</li>
+                <li><strong>СССР</strong> (1917-1991) - советская Москва</li>
+            </ul>
+            <p>Игра содержит более 100 исторических фотографий Москвы разных периодов. Это отличный способ изучать историю города в интерактивном формате.</p>
+            <p>Перейдите по ссылке: <a href="https://moscow-time-machine.online/">https://moscow-time-machine.online/</a></p>
+        </div>
+    </noscript>
+
     <!-- Шапка игры -->
     <div class="game-header">
         <div class="container">
@@ -1275,5 +1403,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="game-loader.js"></script>
     <script src="script.js"></script>
+    
+    <!-- Дополнительный скрытый контент для поисковиков (в самом конце) -->
+    <div class="seo-content-hidden" aria-hidden="true">
+        <h2>Историческая игра про Москву: изучайте город через архивные фотографии</h2>
+        <p>Moscow Time Machine - это уникальная образовательная игра, которая позволяет увидеть, как менялась Москва на протяжении 200 лет. Каждая фотография в игре - это кусочек истории столицы России.</p>
+        
+        <h3>Темы, охватываемые игрой:</h3>
+        <ul>
+            <li>Архитектура Москвы 19 века</li>
+            <li>Советская Москва: от революции до перестройки</li>
+            <li>Москва 90-х годов: период радикальных изменений</li>
+            <li>Исторические районы: Кремль, Красная площадь, Арбат, Тверская</li>
+            <li>Транспорт Москвы: от конки до метро</li>
+        </ul>
+        
+        <p>Игра бесплатна и доступна всем желающим. Подходит для школьников, студентов, учителей истории и всех, кто хочет лучше узнать Москву.</p>
+        
+        <p><strong>Поисковые запросы:</strong> игра про историю Москвы, викторина по Москве, угадай год фотографии Москвы, архивные фото Москвы 19 века, советская Москва фото, Москва 90-е годы фото, образовательные игры онлайн, история России интерактивно.</p>
+    </div>
 </body>
 </html>
