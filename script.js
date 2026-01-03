@@ -201,7 +201,7 @@ const translations = {
         yearTitle: "Select Year",
         mapTitle: "Mark Location on Map",
         mapHint: "Click on map to mark location",
-        mobileHint: "Tap on map to mark location",
+        mobileHint: "Tap on map to mark location. To start selecting a mode (below).",
         timerTitle: "Time per Round",
         secondsText: "seconds",
         
@@ -326,7 +326,7 @@ const translations = {
         yearTitle: "Jahr auswählen",
         mapTitle: "Ort auf Karte markieren",
         mapHint: "Klicken Sie auf die Karte, um den Ort zu markieren",
-        mobileHint: "Tippen Sie auf die Karte, um den Ort zu markieren",
+        mobileHint: "Tippen Sie auf die Karte, um den Ort zu markieren. Um das Spiel zu starten, wählen Sie den Modus (unten).",
         timerTitle: "Zeit pro Runde",
         secondsText: "Sekunden",
         
@@ -1563,4 +1563,5 @@ if (document.readyState === 'loading') {
 } else {
     initGame();
 }
+
 
