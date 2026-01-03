@@ -512,6 +512,54 @@ const allPhotos = [
     "coordinates": {"lat": 55.743561, "lng": 37.497100},
     "location": "Метро Багратионовская.",
     "mode": "90s"
+  },
+  {
+    "id": 65,
+    "imageUrl": "photos/65.jpg",
+    "year": 1997,
+    "coordinates": {"lat": 55.736776, "lng": 37.517771},
+    "location": "МАЗ-205 на Кутузовском проспекте. Празднование 850-летия Москвы.",
+    "mode": "90s"
+  },
+  {
+    "id": 66,
+    "imageUrl": "photos/66.jpg",
+    "year": 1951,
+    "coordinates": {"lat": 55.703716, "lng": 37.533836},
+    "location": "Укладка асфальта у МГУ.",
+    "mode": "ussr"
+  },
+  {
+    "id": 67,
+    "imageUrl": "photos/67.jpg",
+    "year": 1996,
+    "coordinates": {"lat": 55.786496, "lng": 37.634961},
+    "location": "Проспект Мира.",
+    "mode": "90s"
+  },
+  {
+    "id": 68,
+    "imageUrl": "photos/68.jpg",
+    "year": 1979,
+    "coordinates": {"lat": 55.739970, "lng": 37.534259},
+    "location": "Станция метро Кутузовская.",
+    "mode": "ussr"
+  },
+  {
+    "id": 69,
+    "imageUrl": "photos/69.jpg",
+    "year": 1994,
+    "coordinates": {"lat": 55.707759, "lng": 37.580448},
+    "location": "Площадь Гагарина.",
+    "mode": "90s"
+  },
+  {
+    "id": 70,
+    "imageUrl": "photos/70.jpg",
+    "year": 1920,
+    "coordinates": {"lat": 55.761143, "lng": 37.643991},
+    "location": "Чистые пруды.",
+    "mode": "ussr"
   }
 ];
 
@@ -568,4 +616,5 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
 
