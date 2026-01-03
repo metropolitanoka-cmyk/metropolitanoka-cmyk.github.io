@@ -75,12 +75,39 @@
             --card-bg: #ffffff;
             --shadow-color: rgba(0,0,0,0.1);
             --warning-color: #f39c12;
+            --body-bg: #f5f7fa;
+            --body-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-color: #333333;
+            --border-color: #dee2e6;
+            --toggle-bg: #dee2e6;
+            --toggle-checked-bg: #3498db;
+            --timer-normal-color: #3498db;
+            --timer-warning-color: #e74c3c;
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #1a2530;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --music-color: #8e44ad;
+            --card-bg: #2c3e50;
+            --shadow-color: rgba(0,0,0,0.3);
+            --warning-color: #f39c12;
+            --body-bg: #1a1a2e;
+            --body-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --text-color: #ecf0f1;
+            --border-color: #4a6278;
+            --toggle-bg: #4a6278;
+            --toggle-checked-bg: #2980b9;
+            --timer-normal-color: #5dade2;
+            --timer-warning-color: #e74c3c;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.5s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
         html, body {
@@ -91,9 +118,10 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--body-gradient);
             min-height: 100vh;
             overflow-x: hidden;
+            color: var(--text-color);
         }
         
         .game-header {
@@ -196,6 +224,7 @@
             box-shadow: 0 4px 12px var(--shadow-color);
             border: none;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-color);
         }
         
         .score-card:hover, .year-slider-container:hover, .rules-card:hover, .mode-card:hover, .settings-card:hover {
@@ -277,11 +306,12 @@
             text-align: left;
             padding: 0.75rem;
             border-radius: 8px;
-            border: 2px solid #dee2e6;
-            background: white;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
             transition: all 0.3s ease;
             width: 100%;
             margin-bottom: 0.5rem;
+            color: var(--text-color);
         }
         
         .mode-btn:hover {
@@ -357,7 +387,7 @@
         
         .rule-item {
             padding: 0.75rem 0;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             font-size: 0.95rem;
@@ -388,8 +418,20 @@
         #timer {
             font-size: 2.2rem;
             font-weight: 700;
-            color: var(--secondary-color);
+            color: var(--timer-normal-color);
             margin: 0.3rem 0;
+            transition: color 0.5s ease;
+        }
+        
+        #timer.timer-warning {
+            color: var(--timer-warning-color);
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .result-modal {
@@ -408,13 +450,14 @@
         }
         
         .modal-content {
-            background: white;
+            background: var(--card-bg);
             padding: 1.5rem;
             border-radius: 15px;
             max-width: 500px;
             width: 100%;
             animation: modalAppear 0.3s ease;
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            color: var(--text-color);
         }
         
         @keyframes modalAppear {
@@ -484,11 +527,6 @@
             animation: pulse 1.5s infinite;
         }
         
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
         .mode-info {
             background: rgba(52, 152, 219, 0.1);
             border-left: 4px solid #3498db;
@@ -515,7 +553,7 @@
         .setting-item {
             margin-bottom: 1rem;
             padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid var(--border-color);
         }
         
         .setting-item:last-child {
@@ -535,13 +573,14 @@
             flex: 1;
             min-width: 70px;
             padding: 8px 12px;
-            border: 2px solid #dee2e6;
+            border: 2px solid var(--border-color);
             border-radius: 8px;
-            background: white;
+            background: var(--card-bg);
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: 500;
             text-align: center;
+            color: var(--text-color);
         }
         
         .time-btn:hover {
@@ -569,7 +608,7 @@
             position: relative;
             width: 50px;
             height: 26px;
-            background-color: #dee2e6;
+            background-color: var(--toggle-bg);
             border-radius: 34px;
             transition: background-color 0.3s;
             margin-right: 10px;
@@ -588,7 +627,7 @@
         }
         
         .toggle-checkbox:checked + .toggle-slider {
-            background-color: #3498db;
+            background-color: var(--toggle-checked-bg);
         }
         
         .toggle-checkbox:checked + .toggle-slider:before {
@@ -620,6 +659,56 @@
             z-index: 100;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .year-warning {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 5px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        
+        .card-header {
+            background: var(--primary-color);
+            border-color: var(--border-color);
+        }
+        
+        .alert-info {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-color: rgba(52, 152, 219, 0.2);
+            color: var(--text-color);
+        }
+        
+        .text-muted {
+            color: #6c757d !important;
+        }
+        
+        .form-control {
+            background-color: var(--card-bg);
+            border-color: var(--border-color);
+            color: var(--text-color);
+        }
+        
+        .form-control:focus {
+            background-color: var(--card-bg);
+            border-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+        
+        .form-range::-webkit-slider-track {
+            background: var(--border-color);
+        }
+        
+        .form-range::-webkit-slider-thumb {
+            background: var(--secondary-color);
         }
         
         @media (max-width: 768px) {
@@ -730,63 +819,6 @@
             
             #map {
                 height: 400px;
-            }
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary-color: #1a2530;
-                --secondary-color: #3498db;
-                --accent-color: #e74c3c;
-                --music-color: #8e44ad;
-                --card-bg: #2c3e50;
-                --shadow-color: rgba(0,0,0,0.3);
-                --warning-color: #f39c12;
-            }
-            
-            body {
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                color: #ecf0f1;
-            }
-            
-            .score-card, .year-slider-container, .rules-card, .mode-card, .settings-card {
-                background: var(--card-bg);
-                color: #ecf0f1;
-            }
-            
-            .card {
-                background: var(--card-bg);
-                border-color: #34495e;
-            }
-            
-            .modal-content {
-                background: #2c3e50;
-                color: #ecf0f1;
-            }
-            
-            .mode-btn {
-                background: #34495e;
-                border-color: #4a6278;
-                color: #ecf0f1;
-            }
-            
-            .time-btn {
-                background: #34495e;
-                border-color: #4a6278;
-                color: #ecf0f1;
-            }
-            
-            .time-btn.active {
-                background: rgba(52, 152, 219, 0.2);
-                border-color: #3498db;
-            }
-            
-            .setting-item {
-                border-bottom-color: #4a6278;
-            }
-            
-            .toggle-slider {
-                background-color: #4a6278;
             }
         }
         
@@ -954,6 +986,7 @@
                         <span id="mid-year">1900</span>
                         <span id="max-year">2000</span>
                     </div>
+                    <div id="year-warning" class="year-warning"></div>
                 </div>
                 
                 <!-- 2. КНОПКИ УПРАВЛЕНИЯ -->
@@ -972,7 +1005,7 @@
                     </button>
                 </div>
                 
-                <!-- 3. СЧЕТЧИК БАЛЛОВ (перемещен выше) -->
+                <!-- 3. СЧЕТЧИК БАЛЛОВ -->
                 <div class="score-card p-3 mb-4">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="mb-0">
@@ -1072,7 +1105,7 @@
                             <i class="fas fa-clock me-2"></i> 
                             <span id="timer-title">Время на раунд</span>
                         </h6>
-                        <div id="timer" class="display-6 text-primary">60</div>
+                        <div id="timer" class="display-6">60</div>
                         <small class="text-muted" id="seconds-text">секунд</small>
                     </div>
                 </div>
@@ -1117,6 +1150,22 @@
                             >5 км: -2 балла | >10 км: -3 балла
                         </div>
                     </div>
+                    
+                    <!-- Темная тема -->
+                    <div class="setting-item">
+                        <h6 class="mb-2">
+                            <i class="fas fa-moon me-2"></i>
+                            <span id="theme-setting-title">Темная тема</span>
+                        </h6>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="dark-theme-toggle" class="toggle-checkbox">
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-label" id="theme-toggle-label">Включить темную тему</span>
+                        </label>
+                        <div class="toggle-hint" id="theme-hint">
+                            Переключает темную и светлую тему
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1148,6 +1197,10 @@
                     <div class="rule-item">
                         <span class="rule-points negative">-3 <span class="points-unit">балла</span></span>
                         <span id="rule5">Ошибка >10 лет</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-2 <span class="points-unit">балла</span></span>
+                        <span id="rule11">Время вышло</span>
                     </div>
                 </div>
                 <div class="col-md-6">
