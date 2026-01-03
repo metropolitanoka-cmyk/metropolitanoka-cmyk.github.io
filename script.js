@@ -132,7 +132,7 @@ const translations = {
         gameOverMessage: "Нажмите OK для начала новой игры.",
         
         // Подсказки
-        hintConfirm: "Использовать подсказку? Это будет стоить 1 балл.",
+        hintConfirm: "Использовать подсказка? Это будет стоить 1 балл.",
         hintDecade: (decade) => `Подсказка: Эта фотография сделана в ${decade}-х годах`,
         noHintPoints: "Недостаточно баллов для подсказки или фото не загружено!",
         
@@ -1197,11 +1197,7 @@ function startTimer() {
             clearInterval(timerInterval);
             
             // Штраф за истечение времени: -2 балла
-            if (score >= 2) {
-                score -= 2;
-            } else {
-                score = 0; // Не может быть отрицательным
-            }
+            score -= 2; // ВОТ ИСПРАВЛЕНИЕ - теперь всегда вычитается 2 балла
             
             document.getElementById('score-board').textContent = score.toFixed(1);
             
