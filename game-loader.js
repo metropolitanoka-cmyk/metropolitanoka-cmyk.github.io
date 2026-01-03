@@ -560,6 +560,14 @@ const allPhotos = [
     "coordinates": {"lat": 55.761143, "lng": 37.643991},
     "location": "Чистые пруды.",
     "mode": "ussr"
+  },
+  {
+    "id": 71,
+    "imageUrl": "photos/71.jpg",
+    "year": 1980,
+    "coordinates": {"lat": 55.741513, "lng": 37.613597},
+    "location": "Болотная набережная. Вид с Якиманской набережной.",
+    "mode": "ussr"
   }
 ];
 
@@ -616,5 +624,6 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
 
 
