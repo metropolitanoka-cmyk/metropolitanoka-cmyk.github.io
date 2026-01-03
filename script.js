@@ -20,6 +20,7 @@ let previewInterval = null;
 // Новые переменные для настроек
 let roundTime = 60;
 let distancePenaltyEnabled = true;
+let darkThemeEnabled = false;
 
 // Переменные для музыки
 let isMusicPlaying = false;
@@ -32,6 +33,9 @@ let currentMinYear = 1800;
 let currentMaxYear = 2000;
 let currentModeName = 'Все годы';
 let photosInCurrentMode = 0;
+
+// Новая переменная: был ли перемещен ползунок года в текущем раунде
+let yearSliderMoved = false;
 
 // СИСТЕМА ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТОГРАФИЙ
 let usedPhotoIds = new Set(); // ID уже использованных фотографий в текущей игре
@@ -87,6 +91,9 @@ const translations = {
         penaltyToggleLabel: "Включить штрафы",
         penaltyHint: ">5 км: -2 балла | >10 км: -3 балла",
         timeHint: "Текущее время: ",
+        themeSettingTitle: "Темная тема",
+        themeToggleLabel: "Включить темную тему",
+        themeHint: "Переключает темную и светлую тему",
         
         // Правила
         rulesTitle: "Правила подсчета очков",
@@ -100,10 +107,11 @@ const translations = {
         rule8: "Ошибка >5 км",
         rule9: "Ошибка >10 км",
         rule10: "Подсказка",
+        rule11: "Время вышло",
         rulesHint: "Штрафы за ошибки места можно включить/выключить в настройках",
         
         // Превью
-        placeholderText: "Выберите режим игры, чтобы начать",
+        placeholderText: "Выберите режим игры, чтобы начать. Select the game mode to start.",
         previewText: "Превью: фото меняются каждые 5 сек",
         
         // Telegram
@@ -111,7 +119,9 @@ const translations = {
         
         // Сообщения
         selectPlace: "Сначала отметьте место на карте!",
-        timeOut: "Время вышло! Ответ не засчитан.",
+        selectYear: "Для ответа выберите год",
+        selectYearMessage: "Пожалуйста, выберите год с помощью ползунка перед отправкой ответа.",
+        timeOut: "Время вышло! Списывается 2 балла.",
         gameOverTitle: "🎉 Игра окончена!",
         gameOverScore: "Ваш итоговый счет:",
         gameOverPerformance: (score) => {
@@ -212,6 +222,9 @@ const translations = {
         penaltyToggleLabel: "Enable Penalties",
         penaltyHint: ">5 km: -2 points | >10 km: -3 points",
         timeHint: "Current time: ",
+        themeSettingTitle: "Dark Theme",
+        themeToggleLabel: "Enable Dark Theme",
+        themeHint: "Switches between dark and light theme",
         
         // Rules
         rulesTitle: "Scoring Rules",
@@ -225,6 +238,7 @@ const translations = {
         rule8: "Mistake >5 km",
         rule9: "Mistake >10 km",
         rule10: "Hint",
+        rule11: "Time's up",
         rulesHint: "Distance penalties can be toggled in settings",
         
         // Preview
@@ -236,7 +250,9 @@ const translations = {
         
         // Messages
         selectPlace: "First mark a place on the map!",
-        timeOut: "Time's up! Answer not counted.",
+        selectYear: "Please select a year",
+        selectYearMessage: "Please select a year using the slider before submitting your answer.",
+        timeOut: "Time's up! Minus 2 points.",
         gameOverTitle: "🎉 Game Over!",
         gameOverScore: "Your final score:",
         gameOverPerformance: (score) => {
@@ -337,6 +353,9 @@ const translations = {
         penaltyToggleLabel: "Strafen aktivieren",
         penaltyHint: ">5 km: -2 Punkte | >10 km: -3 Punkte",
         timeHint: "Aktuelle Zeit: ",
+        themeSettingTitle: "Dunkles Design",
+        themeToggleLabel: "Dunkles Design aktivieren",
+        themeHint: "Wechselt zwischen dunklem und hellem Design",
         
         // Rules
         rulesTitle: "Punktvergabe",
@@ -350,6 +369,7 @@ const translations = {
         rule8: "Fehler >5 км",
         rule9: "Fehler >10 км",
         rule10: "Hinweis",
+        rule11: "Zeit abgelaufen",
         rulesHint: "Entfernungsstrafen können in den Einstellungen ein-/ausgeschaltet werden",
         
         // Preview
@@ -361,7 +381,9 @@ const translations = {
         
         // Messages
         selectPlace: "Zuerst einen Ort auf der Karte markieren!",
-        timeOut: "Zeit abgelaufen! Antwort nicht gewertet.",
+        selectYear: "Bitte wählen Sie ein Jahr aus",
+        selectYearMessage: "Bitte wählen Sie mit dem Schieberegler ein Jahr aus, bevor Sie Ihre Antwort senden.",
+        timeOut: "Zeit abgelaufen! Minus 2 Punkte.",
         gameOverTitle: "🎉 Spiel beendet!",
         gameOverScore: "Ihr Endergebnis:",
         gameOverPerformance: (score) => {
@@ -473,6 +495,9 @@ function applyTranslation() {
     document.getElementById('penalty-toggle-label').textContent = translateText('penaltyToggleLabel');
     document.getElementById('penalty-hint').textContent = translateText('penaltyHint');
     document.getElementById('time-hint').innerHTML = translateText('timeHint') + `<span id="current-time-display">${roundTime}</span>`;
+    document.getElementById('theme-setting-title').textContent = translateText('themeSettingTitle');
+    document.getElementById('theme-toggle-label').textContent = translateText('themeToggleLabel');
+    document.getElementById('theme-hint').textContent = translateText('themeHint');
     
     // Правила
     document.getElementById('rules-title').textContent = translateText('rulesTitle');
@@ -486,6 +511,7 @@ function applyTranslation() {
     document.getElementById('rule8').textContent = translateText('rule8');
     document.getElementById('rule9').textContent = translateText('rule9');
     document.getElementById('rule10').textContent = translateText('rule10');
+    document.getElementById('rule11').textContent = translateText('rule11');
     document.getElementById('rules-hint').textContent = translateText('rulesHint');
     
     // Превью
@@ -599,9 +625,61 @@ map.on('click', function(e) {
 // Ползунок года
 const yearSlider = document.getElementById('year-slider');
 const selectedYearSpan = document.getElementById('selected-year');
+
+// Сброс флага перемещения ползунка при начале нового раунда
+yearSlider.addEventListener('mousedown', function() {
+    yearSliderMoved = true;
+    // Скрываем предупреждение, если оно было показано
+    hideYearWarning();
+});
+
+yearSlider.addEventListener('touchstart', function() {
+    yearSliderMoved = true;
+    hideYearWarning();
+});
+
 yearSlider.addEventListener('input', function() {
     selectedYearSpan.textContent = this.value;
+    yearSliderMoved = true;
+    hideYearWarning();
 });
+
+// Показ предупреждения о выборе года
+function showYearWarning() {
+    const warningElement = document.getElementById('year-warning');
+    warningElement.textContent = translateText('selectYear');
+    warningElement.style.display = 'block';
+    
+    // Добавляем анимацию
+    warningElement.style.animation = 'none';
+    setTimeout(() => {
+        warningElement.style.animation = 'fadeIn 0.5s ease';
+    }, 10);
+}
+
+// Скрытие предупреждения
+function hideYearWarning() {
+    const warningElement = document.getElementById('year-warning');
+    warningElement.style.display = 'none';
+}
+
+// Проверка, нужно ли показывать предупреждение о выборе года
+function shouldShowYearWarning() {
+    // Проверяем, был ли перемещен ползунок
+    if (yearSliderMoved) {
+        return false;
+    }
+    
+    // Проверяем, является ли фото 1890-1910 годов
+    if (currentPhotoData && currentPhotoData.year) {
+        const year = currentPhotoData.year;
+        if (year >= 1890 && year <= 1910) {
+            return false; // Не показываем для фото 1890-1910
+        }
+    }
+    
+    return true;
+}
 
 // ================================================
 // ПРЕВЬЮ ФОТОГРАФИЙ (до начала игры) - БЕЗ СЕРВЕРА
@@ -1038,6 +1116,9 @@ async function loadNewPhoto() {
             currentPhotoData.coordinates = { lat: 55.7558, lng: 37.6173 };
         }
         
+        // Сбрасываем флаг перемещения ползунка для нового раунда
+        yearSliderMoved = false;
+        
         // Обновляем информацию о режиме
         const checkResult = window.GameData.checkModeAvailability(currentGameMode, currentMinYear, currentMaxYear);
         photosInCurrentMode = checkResult.count;
@@ -1066,6 +1147,9 @@ async function loadNewPhoto() {
         document.getElementById('submit-btn').style.display = 'block';
         document.getElementById('next-btn').style.display = 'none';
         
+        // Скрываем предупреждение о выборе года
+        hideYearWarning();
+        
         // Настраиваем ползунок года
         const middleYear = Math.round((currentMinYear + currentMaxYear) / 2);
         yearSlider.min = currentMinYear;
@@ -1087,7 +1171,12 @@ async function loadNewPhoto() {
 
 function startTimer() {
     timeLeft = roundTime;
-    document.getElementById('timer').textContent = timeLeft;
+    const timerElement = document.getElementById('timer');
+    timerElement.textContent = timeLeft;
+    
+    // Сбрасываем стили таймера
+    timerElement.classList.remove('timer-warning');
+    timerElement.style.color = '';
     
     if (timerInterval) {
         clearInterval(timerInterval);
@@ -1095,16 +1184,27 @@ function startTimer() {
     
     timerInterval = setInterval(() => {
         timeLeft--;
-        document.getElementById('timer').textContent = timeLeft;
+        timerElement.textContent = timeLeft;
         
+        // Добавляем пульсацию при 10 секундах или меньше
         if (timeLeft <= 10) {
-            document.getElementById('timer').style.color = '#e74c3c';
+            timerElement.classList.add('timer-warning');
         } else {
-            document.getElementById('timer').style.color = '#3498db';
+            timerElement.classList.remove('timer-warning');
         }
         
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
+            
+            // Штраф за истечение времени: -2 балла
+            if (score >= 2) {
+                score -= 2;
+            } else {
+                score = 0; // Не может быть отрицательным
+            }
+            
+            document.getElementById('score-board').textContent = score.toFixed(1);
+            
             alert(translateText('timeOut'));
             nextRound();
         }
@@ -1310,6 +1410,38 @@ function startNewGame() {
 }
 
 // ================================================
+// ТЕМНАЯ ТЕМА
+// ================================================
+
+function toggleDarkTheme() {
+    darkThemeEnabled = !darkThemeEnabled;
+    
+    const themeToggle = document.getElementById('dark-theme-toggle');
+    themeToggle.checked = darkThemeEnabled;
+    
+    if (darkThemeEnabled) {
+        document.body.setAttribute('data-theme', 'dark');
+        localStorage.setItem('moscow-game-dark-theme', 'enabled');
+    } else {
+        document.body.removeAttribute('data-theme');
+        localStorage.setItem('moscow-game-dark-theme', 'disabled');
+    }
+}
+
+function initDarkTheme() {
+    const savedTheme = localStorage.getItem('moscow-game-dark-theme');
+    
+    if (savedTheme === 'enabled') {
+        darkThemeEnabled = true;
+        document.body.setAttribute('data-theme', 'dark');
+        document.getElementById('dark-theme-toggle').checked = true;
+    } else {
+        darkThemeEnabled = false;
+        document.body.removeAttribute('data-theme');
+    }
+}
+
+// ================================================
 // НАСТРОЙКИ ИГРЫ
 // ================================================
 
@@ -1342,6 +1474,13 @@ function updateTimeDisplay() {
 document.getElementById('submit-btn').addEventListener('click', function() {
     if (!userMarker || !currentPhotoData) {
         alert(translateText('selectPlace'));
+        return;
+    }
+    
+    // Проверяем, был ли перемещен ползунок года (только если фото не 1890-1910)
+    if (shouldShowYearWarning()) {
+        showYearWarning();
+        alert(translateText('selectYearMessage'));
         return;
     }
     
@@ -1503,6 +1642,11 @@ document.getElementById('distance-penalty-toggle').addEventListener('change', fu
     localStorage.setItem('moscow-game-penalty', distancePenaltyEnabled.toString());
 });
 
+// Обработчик темной темы
+document.getElementById('dark-theme-toggle').addEventListener('change', function() {
+    toggleDarkTheme();
+});
+
 // ================================================
 // ИНИЦИАЛИЗАЦИЯ ИГРЫ (БЕЗ СЕРВЕРА)
 // ================================================
@@ -1529,6 +1673,9 @@ function initGame() {
         distancePenaltyEnabled = savedPenalty === 'true';
         document.getElementById('distance-penalty-toggle').checked = distancePenaltyEnabled;
     }
+    
+    // Инициализируем темную тему
+    initDarkTheme();
     
     initMusic();
     applyTranslation();
@@ -1563,5 +1710,3 @@ if (document.readyState === 'loading') {
 } else {
     initGame();
 }
-
-
