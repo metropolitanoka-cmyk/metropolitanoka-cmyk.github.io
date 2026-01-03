@@ -33,6 +33,10 @@ let currentMaxYear = 2000;
 let currentModeName = 'Все годы';
 let photosInCurrentMode = 0;
 
+// СИСТЕМА ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТОГРАФИЙ
+let usedPhotoIds = new Set(); // ID уже использованных фотографий в текущей игре
+let gamePhotosQueue = []; // Очередь фотографий для текущей игры (10 штук)
+
 // Система переводов (расширенная с немецким)
 const translations = {
     ru: {
@@ -603,11 +607,29 @@ yearSlider.addEventListener('input', function() {
 // ПРЕВЬЮ ФОТОГРАФИЙ (до начала игры) - БЕЗ СЕРВЕРА
 // ================================================
 
+let previewUsedPhotoIds = new Set(); // ID фото, использованных в превью
+
 function loadPreviewPhoto() {
     try {
         // Используем локальные данные вместо API
-        if (window.GameData && window.GameData.getRandomPhoto) {
-            const photoData = window.GameData.getRandomPhoto('all');
+        if (window.GameData && window.GameData.getAllPhotos) {
+            const allPhotos = window.GameData.getAllPhotos();
+            
+            // Фильтруем фото, которые еще не показывались в превью
+            let availablePhotos = allPhotos.filter(photo => !previewUsedPhotoIds.has(photo.id));
+            
+            // Если все фото были показаны, очищаем историю
+            if (availablePhotos.length === 0) {
+                previewUsedPhotoIds.clear();
+                availablePhotos = allPhotos;
+            }
+            
+            // Выбираем случайное фото
+            const randomIndex = Math.floor(Math.random() * availablePhotos.length);
+            const photoData = availablePhotos[randomIndex];
+            
+            // Добавляем в использованные
+            previewUsedPhotoIds.add(photoData.id);
             
             if (photoData && photoData.imageUrl) {
                 const img = document.getElementById('old-photo');
@@ -625,6 +647,9 @@ function loadPreviewPhoto() {
 }
 
 function startPreview() {
+    // Очищаем историю превью при старте
+    previewUsedPhotoIds.clear();
+    
     // Загружаем первое фото сразу
     loadPreviewPhoto();
     
@@ -902,6 +927,81 @@ async function switchGameMode(mode, minYear = null, maxYear = null) {
 }
 
 // ================================================
+// ФУНКЦИИ ДЛЯ ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТО
+// ================================================
+
+// Подготовка массива из 10 уникальных фотографий для игры
+function prepareGamePhotos() {
+    // Очищаем очередь
+    gamePhotosQueue = [];
+    usedPhotoIds.clear();
+    
+    // Получаем все фотографии
+    const allPhotos = window.GameData.getAllPhotos();
+    
+    // Фильтруем по текущему режиму
+    let filteredPhotos = allPhotos.filter(photo => {
+        const year = photo.year;
+        
+        // Проверяем режим
+        if (currentGameMode === '90s') {
+            return year >= 1992 && year <= 2000;
+        } else if (currentGameMode === 'ussr') {
+            return year >= 1917 && year <= 1991;
+        } else if (currentGameMode === 'custom') {
+            return year >= currentMinYear && year <= currentMaxYear;
+        } else {
+            // 'all' - все годы от 1800 до 2000
+            return year >= 1800 && year <= 2000;
+        }
+    });
+    
+    // Проверяем, достаточно ли фото
+    if (filteredPhotos.length < 10) {
+        console.error(`Недостаточно фото для режима ${currentGameMode}: ${filteredPhotos.length} вместо 10`);
+        return false;
+    }
+    
+    // Исключаем фото, которые уже были использованы в предыдущих играх
+    let availablePhotos = filteredPhotos.filter(photo => !usedPhotoIds.has(photo.id));
+    
+    // Если доступных фото меньше 10, начинаем заново (очищаем историю)
+    if (availablePhotos.length < 10) {
+        console.log('Очищаем историю использованных фото, начинаем заново');
+        usedPhotoIds.clear();
+        availablePhotos = filteredPhotos;
+    }
+    
+    // Перемешиваем массив (алгоритм Фишера-Йетса)
+    for (let i = availablePhotos.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [availablePhotos[i], availablePhotos[j]] = [availablePhotos[j], availablePhotos[i]];
+    }
+    
+    // Берем первые 10 фото
+    gamePhotosQueue = availablePhotos.slice(0, 10);
+    
+    // Добавляем их в историю использованных
+    gamePhotosQueue.forEach(photo => usedPhotoIds.add(photo.id));
+    
+    console.log(`Подготовлено ${gamePhotosQueue.length} уникальных фото для игры`);
+    console.log('Использованные ID:', Array.from(usedPhotoIds));
+    
+    return true;
+}
+
+// Получение фотографии для текущего раунда
+function getPhotoForCurrentRound() {
+    if (gamePhotosQueue.length === 0 || currentRound > gamePhotosQueue.length) {
+        console.error('Нет фото для текущего раунда');
+        return null;
+    }
+    
+    // Возвращаем фото для текущего раунда (раунды начинаются с 1)
+    return gamePhotosQueue[currentRound - 1];
+}
+
+// ================================================
 // ОСНОВНЫЕ ФУНКЦИИ ИГРЫ (БЕЗ СЕРВЕРА)
 // ================================================
 
@@ -919,20 +1019,12 @@ async function loadNewPhoto() {
         
         document.getElementById('old-photo').style.opacity = '0.5';
         
-        // Используем локальные данные вместо API
-        if (!window.GameData || !window.GameData.getRandomPhoto) {
-            alert('Данные игры не загружены. Пожалуйста, обновите страницу.');
-            return;
-        }
-        
-        const photoData = window.GameData.getRandomPhoto(
-            currentGameMode, 
-            currentMinYear, 
-            currentMaxYear
-        );
+        // Получаем фото для текущего раунда
+        const photoData = getPhotoForCurrentRound();
         
         if (!photoData) {
-            alert(translateText('modeNotEnoughText', photosInCurrentMode));
+            console.error('Не удалось получить фото для раунда', currentRound);
+            alert('Ошибка загрузки фотографии. Попробуйте начать игру заново.');
             return;
         }
         
@@ -953,6 +1045,7 @@ async function loadNewPhoto() {
         
         const img = document.getElementById('old-photo');
         img.src = photoData.imageUrl;
+        img.alt = `${photoData.location || 'Фото Москвы'} (${photoData.year})`;
         img.style.opacity = '1';
         
         // Очищаем карту
@@ -1200,6 +1293,13 @@ function startNewGame() {
         isGameStarted = true;
         stopPreview();
         document.getElementById('photo-placeholder').style.display = 'none';
+    }
+    
+    // Подготавливаем 10 уникальных фото для игры
+    const success = prepareGamePhotos();
+    if (!success) {
+        alert(translateText('modeNotEnoughText', photosInCurrentMode));
+        return;
     }
     
     currentRound = 1;
