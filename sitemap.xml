@@ -2,18 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moscow-time-machine.online/</loc>
-    <lastmod>2024-01-03</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-01-04</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Если есть другие страницы, добавляйте их тут -->
-  <!-- 
-  <url>
-    <loc>https://moscow-time-machine.online/about.html</loc>
-    <lastmod>2024-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  -->
 </urlset>
