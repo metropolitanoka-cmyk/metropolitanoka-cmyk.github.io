@@ -568,6 +568,110 @@ const allPhotos = [
     "coordinates": {"lat": 55.741513, "lng": 37.613597},
     "location": "Болотная набережная. Вид с Якиманской набережной.",
     "mode": "ussr"
+  },
+  {
+    "id": 72,
+    "imageUrl": "photos/72.jpg",
+    "year": 1988,
+    "coordinates": {"lat": 55.757630, "lng": 37.661937},
+    "location": "Курский вокзал",
+    "mode": "ussr"
+  },
+  {
+    "id": 73,
+    "imageUrl": "photos/73.jpg",
+    "year": 1994,
+    "coordinates": {"lat": 55.733755, "lng": 37.696779},
+    "location": "Новоконная площадь",
+    "mode": "90s"
+  },
+  {
+    "id": 74,
+    "imageUrl": "photos/74.jpg",
+    "year": 1969,
+    "coordinates": {"lat": 55.741514, "lng": 37.65551},
+    "location": "Таганская улица",
+    "mode": "ussr"
+  },
+  {
+    "id": 75,
+    "imageUrl": "photos/75.jpg",
+    "year": 1958,
+    "coordinates": {"lat": 55.73891, "lng": 37.548373}, 
+    "location": "Станция метро Студенческая",
+    "mode": "ussr"
+  },
+  {
+    "id": 76,
+    "imageUrl": "photos/76.jpg",
+    "year": 1998,
+    "coordinates": {"lat": 55.754016, "lng": 37.538764},
+    "location": "Улица Антонова-Овсеенко. После урагана.",
+    "mode": "90s"
+  },
+  {
+    "id": 77,
+    "imageUrl": "photos/77.jpg",
+    "year": 1999,
+    "coordinates": {"lat": 55.75069, "lng": 37.529887}, 
+    "location": "Путепровод окружной железной дороги через пути Белорусского направления",
+    "mode": "90s"
+  },
+  {
+    "id": 78,
+    "imageUrl": "photos/78.jpg",
+    "year": 1964,
+    "coordinates": {"lat": 55.74087, "lng": 37.536918},    
+    "location": "Кутузовский проспект",
+    "mode": "ussr"
+  },   
+  {
+    "id": 79,
+    "imageUrl": "photos/79.jpg",
+    "year": 1999,
+    "coordinates": {"lat": 55.750545, "lng": 37.542016},      
+    "location": "Строительство Делового центра",
+    "mode": "90s"
+  }, 
+  {
+    "id": 80,
+    "imageUrl": "photos/80.jpg",
+    "year": 1989,
+    "coordinates": {"lat": 55.792343, "lng": 37.560614},      
+    "location": "Стадион "Динамо"",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 81,
+    "imageUrl": "photos/81.jpg",
+    "year": 1986,
+    "coordinates": {"lat": 55.803068, "lng": 37.563169},       
+    "location": "Вторая Хуторская улица",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 82,
+    "imageUrl": "photos/82.jpg",
+    "year": 1988,
+    "coordinates": {"lat": 55.836066, "lng": 37.590826},       
+    "location": "Ботаническая улица",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 83,
+    "imageUrl": "photos/83.jpg",
+    "year": 1997,
+    "coordinates": {"lat": 55.859568, "lng": 37.618553},       
+    "location": "Улица Декабристов",
+    "mode": "90s"
+  }, 
+  {
+    "id": 84,
+    "imageUrl": "photos/84.jpg",
+    "year": 1996,
+    "coordinates": {"lat": 55.659722, "lng": 37.561912},       
+    "location": "Улица Каховка",
+    "mode": "90s"
   }
 ];
 
@@ -624,6 +728,7 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
 
 
 
