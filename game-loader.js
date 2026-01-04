@@ -672,6 +672,62 @@ const allPhotos = [
     "coordinates": {"lat": 55.659722, "lng": 37.561912},       
     "location": "Улица Каховка",
     "mode": "90s"
+  }, 
+  {
+    "id": 85,
+    "imageUrl": "photos/85.jpg",
+    "year": 1987,
+    "coordinates": {"lat": 55.687383, "lng": 37.665467},       
+    "location": "Вид на Нагатинскую набережную.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 86,
+    "imageUrl": "photos/86.jpg",
+    "year": 1997,
+    "coordinates": {"lat": 55.698957, "lng": 37.687109},       
+    "location": "Южный порт.",
+    "mode": "90s"
+  }, 
+  {
+    "id": 87,
+    "imageUrl": "photos/87.jpg",
+    "year": 1988,
+    "coordinates": {"lat": 55.784, "lng": 37.565191},       
+    "location": "Дом на Беговой.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 88,
+    "imageUrl": "photos/88.jpg",
+    "year": 1980,
+    "coordinates": {"lat": 55.781062, "lng": 37.627326},       
+    "location": "Стадион Олимпийский.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 89,
+    "imageUrl": "photos/89.jpg",
+    "year": 1922,
+    "coordinates": {"lat": 55.774533, "lng": 37.652968},       
+    "location": "Каланчевская площадь.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 90,
+    "imageUrl": "photos/90.jpg",
+    "year": 1993,
+    "coordinates": {"lat": 55.752215, "lng": 37.589319},       
+    "location": "Новый Арбат.",
+    "mode": "90s"
+  }, 
+  {
+    "id": 91,
+    "imageUrl": "photos/91.jpg",
+    "year": 1993,
+    "coordinates": {"lat": 55.752254, "lng": 37.587758},       
+    "location": "Новый Арбат, казино Метелица.",
+    "mode": "90s"
   }
 ];
 
@@ -728,6 +784,7 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
 
 
 
