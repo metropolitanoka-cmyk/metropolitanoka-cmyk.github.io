@@ -25,6 +25,7 @@ let darkThemeEnabled = false;
 // Переменные для музыки
 let isMusicPlaying = false;
 let musicVolume = 0.5;
+let isMusicLoaded = false; // Флаг: была ли музыка загружена
 const backgroundMusic = document.getElementById('background-music');
 
 // Переменные для режимов игры
@@ -396,7 +397,7 @@ const translations = {
         // Hints
         hintConfirm: "Hinweis verwenden? Das kostet 1 Punkt.",
         hintDecade: (decade) => `Hinweis: Dieses Foto wurde in den ${decade}er Jahren aufgenommen`,
-        noHintPoints: "Nicht genug Punkte für einen Hinweis oder Foto nicht geladen!",
+        noHintPoints: "Nicht genug Punkте für einen Hinweis oder Foto nicht geladen!",
         
         // Errors
         loadError: "Foto konnte nicht geladen werden. Bitte Seite aktualisieren.",
@@ -748,39 +749,75 @@ function stopPreview() {
 }
 
 // ================================================
-// УПРАВЛЕНИЕ МУЗЫКОЙ
+// УПРАВЛЕНИЕ МУЗЫКОЙ (ЗАГРУЖАЕТСЯ ТОЛЬКО ПРИ НАЖАТИИ)
 // ================================================
 
 function initMusic() {
-    const savedMusicState = localStorage.getItem('moscow-game-music');
+    // Загружаем только громкость из localStorage (если есть)
     const savedVolume = localStorage.getItem('moscow-game-volume');
-    
-    if (savedMusicState === 'on') {
-        isMusicPlaying = true;
-    }
     
     if (savedVolume) {
         musicVolume = parseFloat(savedVolume);
     }
     
+    // Устанавливаем громкость (но музыка еще не загружена)
     backgroundMusic.volume = musicVolume;
     backgroundMusic.loop = true;
     
+    // Настройка слайдера громкости
     const volumeSlider = document.getElementById('volume-slider');
     if (volumeSlider) {
         volumeSlider.value = musicVolume;
     }
     
+    // Скрываем регулятор громкости по умолчанию
     const volumeControl = document.getElementById('volume-control');
-    if (isMusicPlaying) {
-        document.getElementById('music-btn').classList.add('active');
-        volumeControl.style.display = 'flex';
-        playMusic();
-    } else {
-        volumeControl.style.display = 'none';
+    volumeControl.style.display = 'none';
+    
+    // Кнопка музыки не активна по умолчанию
+    document.getElementById('music-btn').classList.remove('active');
+    
+    // Обновляем индикатор аудио
+    updateAudioIndicator();
+}
+
+function loadAndPlayMusic() {
+    // Если музыка еще не загружена, загружаем её
+    if (!isMusicLoaded) {
+        // Создаем source элемент и добавляем его
+        const source = document.createElement('source');
+        source.src = 'audio/moscow_never_sleep.mp3';
+        source.type = 'audio/mpeg';
+        
+        // Очищаем предыдущие источники (если есть)
+        while (backgroundMusic.firstChild) {
+            backgroundMusic.removeChild(backgroundMusic.firstChild);
+        }
+        
+        // Добавляем новый источник
+        backgroundMusic.appendChild(source);
+        
+        // Загружаем аудио
+        backgroundMusic.load();
+        
+        isMusicLoaded = true;
+        console.log('Музыка загружена');
     }
     
-    updateAudioIndicator();
+    // Воспроизводим музыку
+    const playPromise = backgroundMusic.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            console.log('Музыка воспроизводится');
+        }).catch(error => {
+            console.log('Ошибка воспроизведения музыки:', error);
+            // Показываем пользователю сообщение, если нужно
+            if (error.name === 'NotAllowedError') {
+                alert('Разрешите воспроизведение музыки в вашем браузере');
+            }
+        });
+    }
 }
 
 function toggleMusic() {
@@ -790,26 +827,24 @@ function toggleMusic() {
     isMusicPlaying = !isMusicPlaying;
     
     if (isMusicPlaying) {
-        playMusic();
+        // Загружаем и воспроизводим музыку
+        loadAndPlayMusic();
         musicBtn.classList.add('active');
         volumeControl.style.display = 'flex';
     } else {
+        // Останавливаем музыку
         pauseMusic();
         musicBtn.classList.remove('active');
         volumeControl.style.display = 'none';
     }
     
-    localStorage.setItem('moscow-game-music', isMusicPlaying ? 'on' : 'off');
+    // Не сохраняем состояние музыки в localStorage (как вы просили)
     updateAudioIndicator();
 }
 
 function playMusic() {
-    const playPromise = backgroundMusic.play();
-    if (playPromise !== undefined) {
-        playPromise.catch(error => {
-            console.log('Автовоспроизведение заблокировано:', error);
-        });
-    }
+    // Эта функция теперь просто вызывает loadAndPlayMusic
+    loadAndPlayMusic();
 }
 
 function pauseMusic() {
