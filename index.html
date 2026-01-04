@@ -1392,10 +1392,9 @@
         </div>
     </div>
 
-    <!-- Аудио элемент (скрытый) -->
-    <audio id="background-music" loop>
-        <source src="audio/moscow_never_sleep.mp3" type="audio/mpeg">
-        Ваш браузер не поддерживает аудио элемент.
+    <!-- Аудио элемент (скрытый, без предзагрузки) -->
+    <audio id="background-music" loop preload="none">
+        <!-- Убираем source из HTML, будем загружать динамически -->
     </audio>
 
     <!-- Аудио-индикатор (плавающая кнопка) -->
