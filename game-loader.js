@@ -350,7 +350,7 @@ const allPhotos = [
     "imageUrl": "photos/44.jpg",
     "year": 1939,
     "coordinates": {"lat": 55.735692, "lng": 37.593809},
-    "location": "Метро Маяковская",
+    "location": "Крымский мост.",
     "mode": "ussr"
   },
   {
@@ -624,6 +624,7 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
 
 
 
