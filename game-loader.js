@@ -728,6 +728,78 @@ const allPhotos = [
     "coordinates": {"lat": 55.752254, "lng": 37.587758},       
     "location": "Новый Арбат, казино Метелица.",
     "mode": "90s"
+  }, 
+  {
+    "id": 92,
+    "imageUrl": "photos/92.jpg",
+    "year": 1987,
+    "coordinates": {"lat": 55.866967, "lng": 37.503118},       
+    "location": "Строительство Ховринскойй больницы.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 93,
+    "imageUrl": "photos/93.jpg",
+    "year": 1976,
+    "coordinates": {"lat": 55.772795, "lng": 37.632966},       
+    "location": "Большая Колхозная площадь.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 94,
+    "imageUrl": "photos/94.jpg",
+    "year": 1980,
+    "coordinates": {"lat": 55.826009, "lng": 37.635625},       
+    "location": "ВДНХ СССР. Автопоезд РАФ.",
+    "mode": "ussr"
+  }, 
+  {
+    "id": 95,
+    "imageUrl": "photos/95.jpg",
+    "year": 1997,
+    "coordinates": {"lat": 55.765651, "lng": 37.604072},       
+    "location": "Торговый Центр Пирамида.",
+    "mode": "90s"
+  }, 
+  {
+    "id": 96,
+    "imageUrl": "photos/96.jpg",
+    "year": 1997,
+    "coordinates": {"lat": 55.731254, "lng": 37.648515},       
+    "location": "Российский культурно-деловой центр.",
+    "mode": "90s"
+  }, 
+  {
+    "id": 97,
+    "imageUrl": "photos/97.jpg",
+    "year": 1999,
+    "coordinates": {"lat": 55.752664, "lng": 37.6054},       
+    "location": "Военторг на Воздвиженке.",
+    "mode": "90s"
+  }, 
+  {
+    "id": 98,
+    "imageUrl": "photos/98.jpg",
+    "year": 1916,
+    "coordinates": {"lat": 55.742852, "lng": 37.565925},       
+    "location": "Строительство Киевского вокзала.",
+    "mode": "all"
+  }, 
+  {
+    "id": 99,
+    "imageUrl": "photos/99.jpg",
+    "year": 1913,
+    "coordinates": {"lat": 55.768151, "lng": 37.621855},       
+    "location": "Романовский обелиск на Цветном бульваре.",
+    "mode": "all"
+  }, 
+  {
+    "id": 100,
+    "imageUrl": "photos/100.jpg",
+    "year": 1913,
+    "coordinates": {"lat": 55.745992, "lng": 37.612013},       
+    "location": "Кремль, старейшее фото Москвы.",
+    "mode": "all"
   }
 ];
 
@@ -784,6 +856,7 @@ console.log('✅ GameData загружен! Всего фото:', allPhotos.len
 console.log('90-е:', allPhotos.filter(p => p.mode === '90s').length, 'фото');
 console.log('СССР:', allPhotos.filter(p => p.mode === 'ussr').length, 'фото');
 console.log('Все годы:', allPhotos.filter(p => p.mode === 'all').length, 'фото');
+
 
 
 
