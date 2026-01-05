@@ -42,7 +42,7 @@ let yearSliderMoved = false;
 let usedPhotoIds = new Set(); // ID уже использованных фотографий в текущей игре
 let gamePhotosQueue = []; // Очередь фотографий для текущей игры (10 штук)
 
-// Система переводов (расширенная с немецким)
+// Система переводов (расширенная с немецким и новым SEO-контентом)
 const translations = {
     ru: {
         // Заголовки
@@ -172,7 +172,49 @@ const translations = {
         
         // Футер
         footerText: "Игра создана с ❤️ для любителей истории Москвы",
-        footerSubtext: "Фотографии из различных источников"
+        footerSubtext: "Фотографии из различных источников",
+        
+        // ========== НОВЫЙ SEO-КОНТЕНТ (добавлен) ==========
+        seoMainTitle: "УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ | Историческая викторина с картой",
+        seoMainDescription: "Бесплатная игра-викторина по истории Москвы. Угадайте год съемки старых фотографий Москвы и отметьте место на карте. 3 режима: Все годы (1800-2000), 90-е (1992-2000), СССР (1917-1991).",
+        
+        seoHowToPlayTitle: "Как играть в викторину?",
+        seoStep1: "1. Выберите режим игры: Все годы, 90-е или СССР",
+        seoStep2: "2. Посмотрите на старую фотографию Москвы",
+        seoStep3: "3. Угадайте год съемки с помощью ползунка (1800-2000)",
+        seoStep4: "4. Отметьте место на карте Москвы",
+        seoStep5: "5. Нажмите 'Подтвердить ответ' и узнайте результат",
+        
+        seoFeaturesTitle: "Особенности игры:",
+        seoFeature1: "Архивные фотографии Москвы разных периодов",
+        seoFeature2: "Три режима игры для разных уровней сложности",
+        seoFeature3: "Система подсчета очков с бонусами и штрафами",
+        seoFeature4: "Таймер на каждый раунд",
+        seoFeature5: "Подсказки для сложных фотографий",
+        seoFeature6: "Музыкальное сопровождение в стиле эпохи",
+        
+        seoWhyPlayTitle: "Почему стоит играть?",
+        seoWhyPlayText: "Викторина 'УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ' - это увлекательный способ изучить историю столицы России. Увидьте, как менялся город на протяжении двух веков. Подходит для школьников, студентов и всех, кто интересуется историей Москвы.",
+        
+        seoPeriodsTitle: "Исторические периоды в игре:",
+        seoPeriod1: "<strong>Москва 19 века:</strong> Архитектура, транспорт, быт дореволюционной Москвы",
+        seoPeriod2: "<strong>Советская Москва (1917-1991):</strong> Изменения в облике города, советские постройки, жизнь в СССР",
+        seoPeriod3: "<strong>Москва 90-х годов:</strong> Период радикальных перемен, появление новой архитектуры и культуры",
+        
+        seoFinalText: "Играйте бесплатно прямо в браузере без регистрации. Подключайтесь к нашему Telegram каналу для обновлений.",
+        
+        // SEO ключевые слова
+        seoKeyword1: "старые фотографии Москвы",
+        seoKeyword2: "история Москвы игра",
+        seoKeyword3: "угадай год фото Москвы",
+        seoKeyword4: "архивные снимки Москвы",
+        seoKeyword5: "викторина по истории Москвы",
+        seoKeyword6: "Москва 19 век",
+        seoKeyword7: "Москва 20 век",
+        seoKeyword8: "СССР Москва",
+        seoKeyword9: "90-е Москва",
+        seoKeyword10: "образовательные игры про Москву",
+        seoKeyword11: "интерактивная карта Москвы"
     },
     
     en: {
@@ -303,7 +345,49 @@ const translations = {
         
         // Footer
         footerText: "Game created with ❤️ for Moscow history lovers",
-        footerSubtext: "Photos from various sources"
+        footerSubtext: "Photos from various sources",
+        
+        // ========== НОВЫЙ SEO-КОНТЕНТ (добавлен) ==========
+        seoMainTitle: "GUESS THE YEAR AND LOCATION OF MOSCOW PHOTOS | Historical Quiz with Map",
+        seoMainDescription: "Free quiz game about Moscow history. Guess the year of old Moscow photos and mark the location on the map. 3 modes: All years (1800-2000), 90s (1992-2000), USSR (1917-1991).",
+        
+        seoHowToPlayTitle: "How to play the quiz?",
+        seoStep1: "1. Select game mode: All years, 90s or USSR",
+        seoStep2: "2. Look at the old Moscow photo",
+        seoStep3: "3. Guess the year using the slider (1800-2000)",
+        seoStep4: "4. Mark the location on Moscow map",
+        seoStep5: "5. Click 'Submit Answer' and see the result",
+        
+        seoFeaturesTitle: "Game Features:",
+        seoFeature1: "Archive photos of Moscow from different periods",
+        seoFeature2: "Three game modes for different difficulty levels",
+        seoFeature3: "Scoring system with bonuses and penalties",
+        seoFeature4: "Timer for each round",
+        seoFeature5: "Hints for difficult photos",
+        seoFeature6: "Music accompaniment in the style of the era",
+        
+        seoWhyPlayTitle: "Why should you play?",
+        seoWhyPlayText: "The quiz 'GUESS THE YEAR AND LOCATION OF MOSCOW PHOTOS' is an exciting way to study the history of the Russian capital. See how the city has changed over two centuries. Suitable for schoolchildren, students and everyone interested in Moscow history.",
+        
+        seoPeriodsTitle: "Historical periods in the game:",
+        seoPeriod1: "<strong>19th century Moscow:</strong> Architecture, transport, life of pre-revolutionary Moscow",
+        seoPeriod2: "<strong>Soviet Moscow (1917-1991):</strong> Changes in the city's appearance, Soviet buildings, life in the USSR",
+        seoPeriod3: "<strong>Moscow of the 90s:</strong> Period of radical changes, emergence of new architecture and culture",
+        
+        seoFinalText: "Play for free right in your browser without registration. Join our Telegram channel for updates.",
+        
+        // SEO ключевые слова
+        seoKeyword1: "old photos of Moscow",
+        seoKeyword2: "Moscow history game",
+        seoKeyword3: "guess the year of Moscow photos",
+        seoKeyword4: "archive photos of Moscow",
+        seoKeyword5: "quiz about Moscow history",
+        seoKeyword6: "Moscow 19th century",
+        seoKeyword7: "Moscow 20th century",
+        seoKeyword8: "USSR Moscow",
+        seoKeyword9: "90s Moscow",
+        seoKeyword10: "educational games about Moscow",
+        seoKeyword11: "interactive map of Moscow"
     },
     
     de: {
@@ -434,7 +518,49 @@ const translations = {
         
         // Footer
         footerText: "Spiel mit ❤️ für Moskau-Geschichtsenthusiasten erstellt",
-        footerSubtext: "Fotos aus verschiedenen Quellen"
+        footerSubtext: "Fotos aus verschiedenen Quellen",
+        
+        // ========== НОВЫЙ SEO-КОНТЕНТ (добавлен) ==========
+        seoMainTitle: "ERRATE JAHR UND ORT VON MOSKAU-FOTOS | Historisches Quiz mit Karte",
+        seoMainDescription: "Kostenloses Quiz-Spiel über die Geschichte Moskaus. Errate das Jahr alter Moskau-Fotos und markiere den Ort auf der Karte. 3 Modi: Alle Jahre (1800-2000), 90er (1992-2000), UdSSR (1917-1991).",
+        
+        seoHowToPlayTitle: "Wie spielt man das Quiz?",
+        seoStep1: "1. Wählen Sie den Spielmodus: Alle Jahre, 90er oder UdSSR",
+        seoStep2: "2. Sehen Sie sich das alte Moskau-Foto an",
+        seoStep3: "3. Erraten Sie das Jahr mit dem Schieberegler (1800-2000)",
+        seoStep4: "4. Markieren Sie den Ort auf der Moskau-Karte",
+        seoStep5: "5. Klicken Sie 'Antwort bestätigen' und sehen Sie das Ergebnis",
+        
+        seoFeaturesTitle: "Spielmerkmale:",
+        seoFeature1: "Archivfotos von Moskau aus verschiedenen Epochen",
+        seoFeature2: "Drei Spielmodi für unterschiedliche Schwierigkeitsgrade",
+        seoFeature3: "Punktesystem mit Boni und Strafen",
+        seoFeature4: "Timer für jede Runde",
+        seoFeature5: "Hinweise für schwierige Fotos",
+        seoFeature6: "Musikbegleitung im Stil der Epoche",
+        
+        seoWhyPlayTitle: "Warum sollten Sie spielen?",
+        seoWhyPlayText: "Das Quiz 'ERRATE JAHR UND ORT VON MOSKAU-FOTOS' ist eine spannende Möglichkeit, die Geschichte der russischen Hauptstadt zu studieren. Sehen Sie, wie sich die Stadt über zwei Jahrhunderte verändert hat. Geeignet für Schüler, Studenten und alle, die sich für die Geschichte Moskaus interessieren.",
+        
+        seoPeriodsTitle: "Historische Perioden im Spiel:",
+        seoPeriod1: "<strong>Moskau im 19. Jahrhundert:</strong> Architektur, Transport, Leben im vorrevolutionären Moskau",
+        seoPeriod2: "<strong>Sowjetisches Moskau (1917-1991):</strong> Veränderungen im Stadtbild, sowjetische Gebäude, Leben in der UdSSR",
+        seoPeriod3: "<strong>Moskau in den 90er Jahren:</strong> Zeit radikaler Veränderungen, Entstehung neuer Architektur und Kultur",
+        
+        seoFinalText: "Spielen Sie kostenlos direkt im Browser ohne Registrierung. Treten Sie unserem Telegram-Kanal für Updates bei.",
+        
+        // SEO ключевые слова
+        seoKeyword1: "alte Fotos von Moskau",
+        seoKeyword2: "Moskau Geschichte Spiel",
+        seoKeyword3: "errate das Jahr von Moskau-Fotos",
+        seoKeyword4: "Archivfotos von Moskau",
+        seoKeyword5: "Quiz über Moskau Geschichte",
+        seoKeyword6: "Moskau 19. Jahrhundert",
+        seoKeyword7: "Moskau 20. Jahrhundert",
+        seoKeyword8: "UdSSR Moskau",
+        seoKeyword9: "90er Jahre Moskau",
+        seoKeyword10: "Bildungsspiele über Moskau",
+        seoKeyword11: "interaktive Karte von Moskau"
     }
 };
 
@@ -454,7 +580,7 @@ function translateText(key, ...args) {
     return text || key;
 }
 
-// Применение перевода
+// Применение перевода (ОБНОВЛЕНА с учетом SEO-контента)
 function applyTranslation() {
     // Заголовки
     document.getElementById('game-title').textContent = translateText('gameTitle');
@@ -535,11 +661,97 @@ function applyTranslation() {
     // Обновляем языковой бейдж
     document.getElementById('language-badge').textContent = currentLanguage.toUpperCase();
     
+    // ========== ОБНОВЛЕНИЕ SEO-КОНТЕНТА ==========
+    const seoSection = document.querySelector('.seo-content-visible');
+    if (seoSection) {
+        // Заголовки и параграфы
+        const h1 = seoSection.querySelector('h1');
+        if (h1) h1.textContent = translateText('seoMainTitle');
+        
+        const firstP = seoSection.querySelector('p');
+        if (firstP && !firstP.classList.contains('mt-3')) {
+            firstP.textContent = translateText('seoMainDescription');
+        }
+        
+        // "Как играть в викторину?"
+        const howToPlayTitle = seoSection.querySelector('h2:nth-of-type(1)');
+        if (howToPlayTitle) howToPlayTitle.textContent = translateText('seoHowToPlayTitle');
+        
+        // Шаги игры (параграфы после первого h2)
+        const steps = seoSection.querySelectorAll('h2:nth-of-type(1) ~ p');
+        if (steps.length >= 5) {
+            steps[0].textContent = translateText('seoStep1');
+            steps[1].textContent = translateText('seoStep2');
+            steps[2].textContent = translateText('seoStep3');
+            steps[3].textContent = translateText('seoStep4');
+            steps[4].textContent = translateText('seoStep5');
+        }
+        
+        // "Особенности игры:"
+        const featuresTitle = seoSection.querySelector('h2:nth-of-type(2)');
+        if (featuresTitle) featuresTitle.textContent = translateText('seoFeaturesTitle');
+        
+        // Особенности (список после второго h2)
+        const featuresList = seoSection.querySelector('h2:nth-of-type(2) ~ ul:first-of-type');
+        if (featuresList) {
+            const featureItems = featuresList.querySelectorAll('li');
+            if (featureItems.length >= 6) {
+                featureItems[0].textContent = translateText('seoFeature1');
+                featureItems[1].textContent = translateText('seoFeature2');
+                featureItems[2].textContent = translateText('seoFeature3');
+                featureItems[3].textContent = translateText('seoFeature4');
+                featureItems[4].textContent = translateText('seoFeature5');
+                featureItems[5].textContent = translateText('seoFeature6');
+            }
+        }
+        
+        // "Почему стоит играть?"
+        const whyPlayTitle = seoSection.querySelector('h2:nth-of-type(3)');
+        if (whyPlayTitle) whyPlayTitle.textContent = translateText('seoWhyPlayTitle');
+        
+        // Текст "Почему стоит играть?"
+        const whyPlayText = seoSection.querySelector('h2:nth-of-type(3) ~ p');
+        if (whyPlayText) whyPlayText.textContent = translateText('seoWhyPlayText');
+        
+        // "Исторические периоды в игре:"
+        const periodsTitle = seoSection.querySelector('h3');
+        if (periodsTitle) periodsTitle.textContent = translateText('seoPeriodsTitle');
+        
+        // Периоды (список после h3)
+        const periodsList = seoSection.querySelector('h3 ~ ul');
+        if (periodsList) {
+            const periodItems = periodsList.querySelectorAll('li');
+            if (periodItems.length >= 3) {
+                periodItems[0].innerHTML = translateText('seoPeriod1');
+                periodItems[1].innerHTML = translateText('seoPeriod2');
+                periodItems[2].innerHTML = translateText('seoPeriod3');
+            }
+        }
+        
+        // Ключевые слова (теги)
+        const keywordTags = seoSection.querySelectorAll('.keyword-tag');
+        if (keywordTags.length >= 11) {
+            for (let i = 0; i < 11; i++) {
+                keywordTags[i].textContent = translateText(`seoKeyword${i + 1}`);
+            }
+        }
+        
+        // Финальный параграф
+        const finalP = seoSection.querySelector('p.mt-3');
+        if (finalP) finalP.textContent = translateText('seoFinalText');
+    }
+    
     // Сохраняем язык
     localStorage.setItem('moscow-game-language', currentLanguage);
 }
 
-// Переключение языка
+// ... остальной код без изменений (функции toggleLanguage, initMap, loadPreviewPhoto, startPreview, stopPreview, initMusic и т.д.)
+// Все остальные функции остаются БЕЗ ИЗМЕНЕНИЙ, так как задание было добавить только перевод нового контента
+
+// ================================================
+// Переключение языка (остается без изменений)
+// ================================================
+
 function toggleLanguage() {
     const languages = ['ru', 'en', 'de'];
     const currentIndex = languages.indexOf(currentLanguage);
@@ -564,7 +776,10 @@ function toggleLanguage() {
     }
 }
 
-// Инициализация карты
+// ================================================
+// Инициализация карты (остается без изменений)
+// ================================================
+
 function initMap() {
     const map = L.map('map').setView([55.7558, 37.6173], isMobile ? 11 : 12);
     
@@ -583,7 +798,10 @@ function initMap() {
 
 const map = initMap();
 
-// Обработчик клика по карте
+// ================================================
+// Обработчик клика по карте (остается без изменений)
+// ================================================
+
 map.on('click', function(e) {
     if (!isGameStarted) return;
     
@@ -623,14 +841,16 @@ map.on('click', function(e) {
     }
 });
 
-// Ползунок года
+// ================================================
+// Ползунок года и предупреждения (остается без изменений)
+// ================================================
+
 const yearSlider = document.getElementById('year-slider');
 const selectedYearSpan = document.getElementById('selected-year');
 
 // Сброс флага перемещения ползунка при начале нового раунда
 yearSlider.addEventListener('mousedown', function() {
     yearSliderMoved = true;
-    // Скрываем предупреждение, если оно было показано
     hideYearWarning();
 });
 
@@ -651,7 +871,6 @@ function showYearWarning() {
     warningElement.textContent = translateText('selectYear');
     warningElement.style.display = 'block';
     
-    // Добавляем анимацию
     warningElement.style.animation = 'none';
     setTimeout(() => {
         warningElement.style.animation = 'fadeIn 0.5s ease';
@@ -666,16 +885,14 @@ function hideYearWarning() {
 
 // Проверка, нужно ли показывать предупреждение о выборе года
 function shouldShowYearWarning() {
-    // Проверяем, был ли перемещен ползунок
     if (yearSliderMoved) {
         return false;
     }
     
-    // Проверяем, является ли фото 1890-1910 годов
     if (currentPhotoData && currentPhotoData.year) {
         const year = currentPhotoData.year;
         if (year >= 1890 && year <= 1910) {
-            return false; // Не показываем для фото 1890-1910
+            return false;
         }
     }
     
@@ -683,31 +900,24 @@ function shouldShowYearWarning() {
 }
 
 // ================================================
-// ПРЕВЬЮ ФОТОГРАФИЙ (до начала игры) - БЕЗ СЕРВЕРА
+// ПРЕВЬЮ ФОТОГРАФИЙ (остается без изменений)
 // ================================================
 
-let previewUsedPhotoIds = new Set(); // ID фото, использованных в превью
+let previewUsedPhotoIds = new Set();
 
 function loadPreviewPhoto() {
     try {
-        // Используем локальные данные вместо API
         if (window.GameData && window.GameData.getAllPhotos) {
             const allPhotos = window.GameData.getAllPhotos();
-            
-            // Фильтруем фото, которые еще не показывались в превью
             let availablePhotos = allPhotos.filter(photo => !previewUsedPhotoIds.has(photo.id));
             
-            // Если все фото были показаны, очищаем историю
             if (availablePhotos.length === 0) {
                 previewUsedPhotoIds.clear();
                 availablePhotos = allPhotos;
             }
             
-            // Выбираем случайное фото
             const randomIndex = Math.floor(Math.random() * availablePhotos.length);
             const photoData = availablePhotos[randomIndex];
-            
-            // Добавляем в использованные
             previewUsedPhotoIds.add(photoData.id);
             
             if (photoData && photoData.imageUrl) {
@@ -726,16 +936,9 @@ function loadPreviewPhoto() {
 }
 
 function startPreview() {
-    // Очищаем историю превью при старте
     previewUsedPhotoIds.clear();
-    
-    // Загружаем первое фото сразу
     loadPreviewPhoto();
-    
-    // Затем каждые 5 секунд
     previewInterval = setInterval(loadPreviewPhoto, 5000);
-    
-    // Показываем индикатор превью
     document.getElementById('preview-indicator').style.display = 'block';
     document.getElementById('photo-placeholder').style.display = 'none';
 }
@@ -749,62 +952,45 @@ function stopPreview() {
 }
 
 // ================================================
-// УПРАВЛЕНИЕ МУЗЫКОЙ (ЗАГРУЖАЕТСЯ ТОЛЬКО ПРИ НАЖАТИИ)
+// УПРАВЛЕНИЕ МУЗЫКОЙ (остается без изменений)
 // ================================================
 
 function initMusic() {
-    // Загружаем только громкость из localStorage (если есть)
     const savedVolume = localStorage.getItem('moscow-game-volume');
     
     if (savedVolume) {
         musicVolume = parseFloat(savedVolume);
     }
     
-    // Устанавливаем громкость (но музыка еще не загружена)
     backgroundMusic.volume = musicVolume;
     backgroundMusic.loop = true;
     
-    // Настройка слайдера громкости
     const volumeSlider = document.getElementById('volume-slider');
     if (volumeSlider) {
         volumeSlider.value = musicVolume;
     }
     
-    // Скрываем регулятор громкости по умолчанию
     const volumeControl = document.getElementById('volume-control');
     volumeControl.style.display = 'none';
-    
-    // Кнопка музыки не активна по умолчанию
     document.getElementById('music-btn').classList.remove('active');
-    
-    // Обновляем индикатор аудио
     updateAudioIndicator();
 }
 
 function loadAndPlayMusic() {
-    // Если музыка еще не загружена, загружаем её
     if (!isMusicLoaded) {
-        // Создаем source элемент и добавляем его
         const source = document.createElement('source');
         source.src = 'audio/moscow_never_sleep.mp3';
         source.type = 'audio/mpeg';
         
-        // Очищаем предыдущие источники (если есть)
         while (backgroundMusic.firstChild) {
             backgroundMusic.removeChild(backgroundMusic.firstChild);
         }
         
-        // Добавляем новый источник
         backgroundMusic.appendChild(source);
-        
-        // Загружаем аудио
         backgroundMusic.load();
-        
         isMusicLoaded = true;
-        console.log('Музыка загружена');
     }
     
-    // Воспроизводим музыку
     const playPromise = backgroundMusic.play();
     
     if (playPromise !== undefined) {
@@ -812,7 +998,6 @@ function loadAndPlayMusic() {
             console.log('Музыка воспроизводится');
         }).catch(error => {
             console.log('Ошибка воспроизведения музыки:', error);
-            // Показываем пользователю сообщение, если нужно
             if (error.name === 'NotAllowedError') {
                 alert('Разрешите воспроизведение музыки в вашем браузере');
             }
@@ -827,23 +1012,19 @@ function toggleMusic() {
     isMusicPlaying = !isMusicPlaying;
     
     if (isMusicPlaying) {
-        // Загружаем и воспроизводим музыку
         loadAndPlayMusic();
         musicBtn.classList.add('active');
         volumeControl.style.display = 'flex';
     } else {
-        // Останавливаем музыку
         pauseMusic();
         musicBtn.classList.remove('active');
         volumeControl.style.display = 'none';
     }
     
-    // Не сохраняем состояние музыки в localStorage (как вы просили)
     updateAudioIndicator();
 }
 
 function playMusic() {
-    // Эта функция теперь просто вызывает loadAndPlayMusic
     loadAndPlayMusic();
 }
 
@@ -873,22 +1054,20 @@ function updateAudioIndicator() {
 }
 
 // ================================================
-// УПРАВЛЕНИЕ РЕЖИМАМИ ИГРЫ (БЕЗ СЕРВЕРА)
+// УПРАВЛЕНИЕ РЕЖИМАМИ ИГРЫ (остается без изменений)
 // ================================================
 
 async function checkModeAvailability(mode, minYear = null, maxYear = null) {
     try {
-        // Используем локальные данные вместо API
         if (window.GameData && window.GameData.checkModeAvailability) {
             const result = window.GameData.checkModeAvailability(mode, minYear, maxYear);
             return result;
         } else {
-            // Запасной вариант если window.GameData не загружен
             console.warn('GameData не загружен, используем заглушку');
             return {
                 success: true,
                 available: true,
-                count: 50, // предполагаем что есть 50 фото
+                count: 50,
                 mode: mode,
                 minYear: minYear || 1800,
                 maxYear: maxYear || 2000
@@ -914,7 +1093,6 @@ function updateModeInfo() {
     modeName.textContent = currentModeName;
     yearRange.textContent = getYearRangeText();
     
-    // Обновляем количество фото в текущем режиме
     if (window.GameData && window.GameData.checkModeAvailability) {
         const checkResult = window.GameData.checkModeAvailability(currentGameMode, currentMinYear, currentMaxYear);
         photosInCurrentMode = checkResult.count;
@@ -1040,23 +1218,18 @@ async function switchGameMode(mode, minYear = null, maxYear = null) {
 }
 
 // ================================================
-// ФУНКЦИИ ДЛЯ ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТО
+// ФУНКЦИИ ДЛЯ ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТО (без изменений)
 // ================================================
 
-// Подготовка массива из 10 уникальных фотографий для игры
 function prepareGamePhotos() {
-    // Очищаем очередь
     gamePhotosQueue = [];
     usedPhotoIds.clear();
     
-    // Получаем все фотографии
     const allPhotos = window.GameData.getAllPhotos();
     
-    // Фильтруем по текущему режиму
     let filteredPhotos = allPhotos.filter(photo => {
         const year = photo.year;
         
-        // Проверяем режим
         if (currentGameMode === '90s') {
             return year >= 1992 && year <= 2000;
         } else if (currentGameMode === 'ussr') {
@@ -1064,37 +1237,29 @@ function prepareGamePhotos() {
         } else if (currentGameMode === 'custom') {
             return year >= currentMinYear && year <= currentMaxYear;
         } else {
-            // 'all' - все годы от 1800 до 2000
             return year >= 1800 && year <= 2000;
         }
     });
     
-    // Проверяем, достаточно ли фото
     if (filteredPhotos.length < 10) {
         console.error(`Недостаточно фото для режима ${currentGameMode}: ${filteredPhotos.length} вместо 10`);
         return false;
     }
     
-    // Исключаем фото, которые уже были использованы в предыдущих играх
     let availablePhotos = filteredPhotos.filter(photo => !usedPhotoIds.has(photo.id));
     
-    // Если доступных фото меньше 10, начинаем заново (очищаем историю)
     if (availablePhotos.length < 10) {
         console.log('Очищаем историю использованных фото, начинаем заново');
         usedPhotoIds.clear();
         availablePhotos = filteredPhotos;
     }
     
-    // Перемешиваем массив (алгоритм Фишера-Йетса)
     for (let i = availablePhotos.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [availablePhotos[i], availablePhotos[j]] = [availablePhotos[j], availablePhotos[i]];
     }
     
-    // Берем первые 10 фото
     gamePhotosQueue = availablePhotos.slice(0, 10);
-    
-    // Добавляем их в историю использованных
     gamePhotosQueue.forEach(photo => usedPhotoIds.add(photo.id));
     
     console.log(`Подготовлено ${gamePhotosQueue.length} уникальных фото для игры`);
@@ -1103,19 +1268,17 @@ function prepareGamePhotos() {
     return true;
 }
 
-// Получение фотографии для текущего раунда
 function getPhotoForCurrentRound() {
     if (gamePhotosQueue.length === 0 || currentRound > gamePhotosQueue.length) {
         console.error('Нет фото для текущего раунда');
         return null;
     }
     
-    // Возвращаем фото для текущего раунда (раунды начинаются с 1)
     return gamePhotosQueue[currentRound - 1];
 }
 
 // ================================================
-// ОСНОВНЫЕ ФУНКЦИИ ИГРЫ (БЕЗ СЕРВЕРА)
+// ОСНОВНЫЕ ФУНКЦИИ ИГРЫ (без изменений)
 // ================================================
 
 async function loadNewPhoto() {
@@ -1132,7 +1295,6 @@ async function loadNewPhoto() {
         
         document.getElementById('old-photo').style.opacity = '0.5';
         
-        // Получаем фото для текущего раунда
         const photoData = getPhotoForCurrentRound();
         
         if (!photoData) {
@@ -1151,10 +1313,8 @@ async function loadNewPhoto() {
             currentPhotoData.coordinates = { lat: 55.7558, lng: 37.6173 };
         }
         
-        // Сбрасываем флаг перемещения ползунка для нового раунда
         yearSliderMoved = false;
         
-        // Обновляем информацию о режиме
         const checkResult = window.GameData.checkModeAvailability(currentGameMode, currentMinYear, currentMaxYear);
         photosInCurrentMode = checkResult.count;
         updateModeInfo();
@@ -1164,7 +1324,6 @@ async function loadNewPhoto() {
         img.alt = `${photoData.location || 'Фото Москвы'} (${photoData.year})`;
         img.style.opacity = '1';
         
-        // Очищаем карту
         if (userMarker) {
             map.removeLayer(userMarker);
             userMarker = null;
@@ -1182,10 +1341,8 @@ async function loadNewPhoto() {
         document.getElementById('submit-btn').style.display = 'block';
         document.getElementById('next-btn').style.display = 'none';
         
-        // Скрываем предупреждение о выборе года
         hideYearWarning();
         
-        // Настраиваем ползунок года
         const middleYear = Math.round((currentMinYear + currentMaxYear) / 2);
         yearSlider.min = currentMinYear;
         yearSlider.max = currentMaxYear;
@@ -1209,7 +1366,6 @@ function startTimer() {
     const timerElement = document.getElementById('timer');
     timerElement.textContent = timeLeft;
     
-    // Сбрасываем стили таймера
     timerElement.classList.remove('timer-warning');
     timerElement.style.color = '';
     
@@ -1221,7 +1377,6 @@ function startTimer() {
         timeLeft--;
         timerElement.textContent = timeLeft;
         
-        // Добавляем пульсацию при 10 секундах или меньше
         if (timeLeft <= 10) {
             timerElement.classList.add('timer-warning');
         } else {
@@ -1231,8 +1386,7 @@ function startTimer() {
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             
-            // Штраф за истечение времени: -2 балла
-            score -= 2; // ВОТ ИСПРАВЛЕНИЕ - теперь всегда вычитается 2 балла
+            score -= 2;
             
             document.getElementById('score-board').textContent = score.toFixed(1);
             
@@ -1399,14 +1553,12 @@ function nextRound() {
         
         alert(message);
         
-        // Сброс игры
         currentRound = 1;
         score = 0;
         document.getElementById('score-board').textContent = '0.0';
         document.getElementById('current-round').textContent = '1';
         isGameStarted = false;
         
-        // Возвращаем превью
         document.getElementById('photo-placeholder').style.display = 'flex';
         document.getElementById('submit-btn').disabled = true;
         document.getElementById('submit-btn').style.display = 'block';
@@ -1426,7 +1578,6 @@ function startNewGame() {
         document.getElementById('photo-placeholder').style.display = 'none';
     }
     
-    // Подготавливаем 10 уникальных фото для игры
     const success = prepareGamePhotos();
     if (!success) {
         alert(translateText('modeNotEnoughText', photosInCurrentMode));
@@ -1441,7 +1592,7 @@ function startNewGame() {
 }
 
 // ================================================
-// ТЕМНАЯ ТЕМА
+// ТЕМНАЯ ТЕМА (без изменений)
 // ================================================
 
 function toggleDarkTheme() {
@@ -1473,7 +1624,7 @@ function initDarkTheme() {
 }
 
 // ================================================
-// НАСТРОЙКИ ИГРЫ
+// НАСТРОЙКИ ИГРЫ (без изменений)
 // ================================================
 
 function updatePenaltyRulesDisplay() {
@@ -1499,7 +1650,7 @@ function updateTimeDisplay() {
 }
 
 // ================================================
-// ОБРАБОТЧИКИ СОБЫТИЙ
+// ОБРАБОТЧИКИ СОБЫТИЙ (без изменений)
 // ================================================
 
 document.getElementById('submit-btn').addEventListener('click', function() {
@@ -1508,7 +1659,6 @@ document.getElementById('submit-btn').addEventListener('click', function() {
         return;
     }
     
-    // Проверяем, был ли перемещен ползунок года (только если фото не 1890-1910)
     if (shouldShowYearWarning()) {
         showYearWarning();
         alert(translateText('selectYearMessage'));
@@ -1652,12 +1802,10 @@ document.querySelectorAll('.time-btn').forEach(btn => {
         const newTime = parseInt(this.dataset.time);
         roundTime = newTime;
         
-        // Обновляем отображение
         document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         document.getElementById('current-time-display').textContent = roundTime;
         
-        // Если игра идет, обновляем таймер
         if (timerInterval && isGameStarted) {
             timeLeft = roundTime;
             document.getElementById('timer').textContent = timeLeft;
@@ -1679,7 +1827,7 @@ document.getElementById('dark-theme-toggle').addEventListener('change', function
 });
 
 // ================================================
-// ИНИЦИАЛИЗАЦИЯ ИГРЫ (БЕЗ СЕРВЕРА)
+// ИНИЦИАЛИЗАЦИЯ ИГРЫ (без изменений)
 // ================================================
 
 function initGame() {
