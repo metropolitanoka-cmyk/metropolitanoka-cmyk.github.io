@@ -124,7 +124,7 @@ const translations = {
         selectYearMessage: "Пожалуйста, выберите год с помощью ползунка перед отправкой ответа.",
         timeOut: "Время вышло! Списывается 2 балла.",
         gameOverTitle: "🎉 Игра окончена!",
-        gameOverScore: "Ваш итоговый счет:",
+        gameOverScore: "Ваш итоговый счет (максимально: 50 баллов):",
         gameOverPerformance: (score) => {
             if (score >= 20) return "отличной";
             if (score >= 10) return "хорошей";
@@ -297,7 +297,7 @@ const translations = {
         selectYearMessage: "Please select a year using the slider before submitting your answer.",
         timeOut: "Time's up! Minus 2 points.",
         gameOverTitle: "🎉 Game Over!",
-        gameOverScore: "Your final score:",
+        gameOverScore: "Your final score (maximum: 50 points):",
         gameOverPerformance: (score) => {
             if (score >= 20) return "excellent";
             if (score >= 10) return "good";
@@ -470,7 +470,7 @@ const translations = {
         selectYearMessage: "Bitte wählen Sie mit dem Schieberegler ein Jahr aus, bevor Sie Ihre Antwort senden.",
         timeOut: "Zeit abgelaufen! Minus 2 Punkte.",
         gameOverTitle: "🎉 Spiel beendet!",
-        gameOverScore: "Ihr Endergebnis:",
+        gameOverScore: "Ihr Endergebnis (maximal: 50 Punkte):",
         gameOverPerformance: (score) => {
             if (score >= 20) return "ausgezeichnetem";
             if (score >= 10) return "gutem";
@@ -1889,3 +1889,4 @@ if (document.readyState === 'loading') {
 } else {
     initGame();
 }
+
