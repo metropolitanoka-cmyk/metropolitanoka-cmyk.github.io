@@ -71,74 +71,9 @@
     <!-- Font Awesome для иконок -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Скрытый контент для поисковиков (стиль) -->
+    <!-- Стили для игры -->
     <style>
-        .seo-content-visible {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 25px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            color: var(--text-color);
-            border-left: 5px solid var(--secondary-color);
-        }
-        
-        .seo-content-visible h1, .seo-content-visible h2, .seo-content-visible h3 {
-            color: var(--primary-color);
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-        
-        .seo-content-visible h1 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-        
-        .seo-content-visible h2 {
-            font-size: 1.5rem;
-        }
-        
-        .seo-content-visible h3 {
-            font-size: 1.3rem;
-            color: var(--secondary-color);
-        }
-        
-        .seo-content-visible p {
-            margin-bottom: 15px;
-            line-height: 1.7;
-        }
-        
-        .seo-content-visible ul, .seo-content-visible ol {
-            margin-bottom: 20px;
-            padding-left: 25px;
-        }
-        
-        .seo-content-visible li {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        
-        .keywords-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .keyword-tag {
-            background: rgba(52, 152, 219, 0.1);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--secondary-color);
-            border: 1px solid rgba(52, 152, 219, 0.2);
-        }
-        
-        /* Остальные существующие стили остаются без изменений */
+        /* Основные стили остаются без изменений */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -159,6 +94,7 @@
             --toggle-checked-bg: #3498db;
             --timer-normal-color: #3498db;
             --timer-warning-color: #e74c3c;
+            --rules-color: #2ecc71; /* Салатовый цвет для кнопки Правила */
         }
         
         [data-theme="dark"] {
@@ -177,6 +113,7 @@
             --toggle-checked-bg: #2980b9;
             --timer-normal-color: #5dade2;
             --timer-warning-color: #e74c3c;
+            --rules-color: #27ae60; /* Темнее для темной темы */
         }
         
         * {
@@ -378,40 +315,26 @@
             box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
         }
         
-        .mode-btn {
-            text-align: left;
-            padding: 0.75rem;
+        .btn-rules {
+            background: linear-gradient(135deg, var(--rules-color) 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
-            border: 2px solid var(--border-color);
-            background: var(--card-bg);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             transition: all 0.3s ease;
-            width: 100%;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-        }
-        
-        .mode-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        
-        .mode-btn.active {
-            border-width: 3px;
             font-weight: 600;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
         }
         
-        .mode-btn-all.active { border-color: #3498db; background: rgba(52, 152, 219, 0.1); }
-        .mode-btn-90s.active { border-color: #27ae60; background: rgba(39, 174, 96, 0.1); }
-        .mode-btn-ussr.active { border-color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
-        
-        .mode-btn i {
-            font-size: 1.2rem;
-            margin-right: 0.5rem;
+        .btn-rules:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 204, 113, 0.3);
         }
-        
-        .mode-btn-all i { color: #3498db; }
-        .mode-btn-90s i { color: #27ae60; }
-        .mode-btn-ussr i { color: #e74c3c; }
         
         .btn-telegram {
             background: linear-gradient(135deg, var(--telegram-color) 0%, #0077b5 100%);
@@ -787,6 +710,42 @@
             background: var(--secondary-color);
         }
         
+        /* Кнопки режимов */
+        .mode-btn {
+            text-align: left;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .mode-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .mode-btn.active {
+            border-width: 3px;
+            font-weight: 600;
+        }
+        
+        .mode-btn-all.active { border-color: #3498db; background: rgba(52, 152, 219, 0.1); }
+        .mode-btn-90s.active { border-color: #27ae60; background: rgba(39, 174, 96, 0.1); }
+        .mode-btn-ussr.active { border-color: #e74c3c; background: rgba(231, 76, 60, 0.1); }
+        
+        .mode-btn i {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+        
+        .mode-btn-all i { color: #3498db; }
+        .mode-btn-90s i { color: #27ae60; }
+        .mode-btn-ussr i { color: #e74c3c; }
+        
         @media (max-width: 768px) {
             .game-header {
                 padding: 1rem 0;
@@ -886,28 +845,6 @@
                 width: 40px;
                 height: 40px;
             }
-            
-            .seo-content-visible {
-                padding: 20px;
-                margin: 20px 15px;
-            }
-            
-            .seo-content-visible h1 {
-                font-size: 1.6rem;
-            }
-            
-            .seo-content-visible h2 {
-                font-size: 1.3rem;
-            }
-            
-            .keywords-tags {
-                gap: 6px;
-            }
-            
-            .keyword-tag {
-                padding: 4px 10px;
-                font-size: 0.8rem;
-            }
         }
         
         @media (min-width: 1025px) {
@@ -920,7 +857,8 @@
             }
         }
         
-        .btn-game:focus, .btn-telegram:focus, .btn-translate:focus, .btn-music:focus, .time-btn:focus {
+        .btn-game:focus, .btn-telegram:focus, .btn-translate:focus, .btn-music:focus, 
+        .btn-rules:focus, .time-btn:focus {
             outline: 3px solid var(--secondary-color);
             outline-offset: 2px;
         }
@@ -936,6 +874,29 @@
         
         .mode-card, .settings-card {
             animation: fadeIn 0.5s ease;
+        }
+        
+        /* Кнопка Играть на странице правил */
+        .btn-play {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn-play:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
         }
     </style>
     
@@ -983,7 +944,7 @@
         "characteristic": [
             "Угадывание года по фотографиям",
             "Определение места на карте",
-            "Исторические факты о Москве",
+            "Исторические факты о Москвы",
             "Несколько режимов игры"
         ],
         "educationalUse": "Историческое образование, изучение Москвы, география",
@@ -1012,53 +973,11 @@
 <body>
     <!-- Контент для пользователей с отключенным JavaScript -->
     <noscript>
-        <div class="seo-content-visible">
-            <h1>УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ | Историческая викторина с картой</h1>
-            
-            <h2>Описание игры</h2>
-            <p>Это бесплатная онлайн-викторина по истории Москвы. Вам показывают старую фотографию Москвы, а вы должны угадать год съемки и отметить место на карте.</p>
-            
-            <h2>Режимы игры</h2>
-            <ul>
-                <li><strong>Все годы</strong> (1800-2000) - фотографии за два века</li>
-                <li><strong>90-е</strong> (1992-2000) - Москва в период перемен</li>
-                <li><strong>СССР</strong> (1917-1991) - советская Москва</li>
-            </ul>
-            
-            <h2>Правила игры</h2>
-            <p>В каждом раунде вам показывают старую фотографию Москвы. Вы должны:</p>
-            <ol>
-                <li>Угадать год съемки, перемещая ползунок от 1800 до 2000 года.</li>
-                <li>Отметить место на карте Москвы, где, по вашему мнению, сделана фотография.</li>
-                <li>Нажать кнопку "Подтвердить ответ".</li>
-                <li>Получить очки за точность.</li>
-            </ol>
-            
-            <h2>Система подсчета очков</h2>
-            <ul>
-                <li><strong>За год:</strong> Точный год +3 балла, погрешность 2 года +2 балла, погрешность 5 лет +1 балл, ошибка 5-10 лет -2 балла, ошибка больше 10 лет -3 балла.</li>
-                <li><strong>За место:</strong> Точное место (200 м) +2 балла, менее 1 км +0.5 балла, ошибка больше 5 км -2 балла, ошибка больше 10 км -3 балла.</li>
-                <li><strong>Подсказка:</strong> -1 балл.</li>
-                <li><strong>Время вышло:</strong> -2 балла.</li>
-            </ul>
-            
-            <h2>Примеры вопросов</h2>
-            <p>Вот несколько примеров фотографий, которые вы можете встретить в игре:</p>
-            <ul>
-                <li>Красная площадь в 1950-х годах</li>
-                <li>Тверская улица в 1990-х годах</li>
-                <li>Москва-река в 19 веке</li>
-                <li>Советские автомобили на улицах Москвы</li>
-                <li>Исторические здания, которые сохранились до наших дней</li>
-            </ul>
-            
-            <h2>Как начать играть?</h2>
-            <p>Для игры требуется включить JavaScript в настройках вашего браузера. После включения обновите страницу.</p>
-            
-            <h2>Контакты</h2>
-            <p>Если у вас есть вопросы или предложения, пишите нам в Telegram: <a href="https://t.me/MoscowTheTimeMachine">@MoscowTheTimeMachine</a></p>
-            
-            <p>Перейдите по ссылке для игры с включенным JavaScript: <a href="https://moscow-time-machine.online/">https://moscow-time-machine.online/</a></p>
+        <div class="container mt-5">
+            <div class="alert alert-danger text-center">
+                <h4>Для работы игры требуется JavaScript!</h4>
+                <p>Пожалуйста, включите JavaScript в настройках вашего браузера и обновите страницу.</p>
+            </div>
         </div>
     </noscript>
 
@@ -1092,6 +1011,11 @@
                             <i class="fas fa-language"></i> 
                             <span id="translate-text">EN</span>
                         </button>
+                        
+                        <a href="rules.html" class="btn btn-rules">
+                            <i class="fas fa-book"></i> 
+                            <span id="rules-btn-text">Правила</span>
+                        </a>
                         
                         <a href="https://t.me/MoscowTheTimeMachine" 
                            target="_blank" 
@@ -1365,11 +1289,11 @@
             </div>
         </div>
         
-        <!-- ПРАВИЛА ИГРЫ И ПОДРОБНОЕ ОПИСАНИЕ -->
+        <!-- ТОЛЬКО ПРАВИЛА ПОДСЧЕТА БАЛЛОВ -->
         <div class="rules-card p-3 mb-4">
             <h4 class="mb-3">
                 <i class="fas fa-book me-2"></i> 
-                <span id="rules-title">ПРАВИЛА ИГРЫ</span>
+                <span id="rules-title">ПРАВИЛА ПОДСЧЕТА БАЛЛОВ</span>
             </h4>
             <div class="row">
                 <div class="col-md-6">
@@ -1427,55 +1351,6 @@
             </div>
         </div>
         
-        <!-- Подробное описание игры (бывший скрытый контент, теперь видимый) -->
-        <div class="seo-content-visible">
-            <h1>УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ | Историческая викторина с картой</h1>
-            <p>Бесплатная игра-викторина по истории Москвы. Угадайте год съемки старых фотографий Москвы и отметьте место на карте. 3 режима: Все годы (1800-2000), 90-е (1992-2000), СССР (1917-1991).</p>
-            
-            <h2>Как играть в викторину?</h2>
-            <p>1. Выберите режим игры: Все годы, 90-е или СССР</p>
-            <p>2. Посмотрите на старую фотографию Москвы</p>
-            <p>3. Угадайте год съемки с помощью ползунка (1800-2000)</p>
-            <p>4. Отметьте место на карте Москвы</p>
-            <p>5. Нажмите "Подтвердить ответ" и узнайте результат</p>
-            
-            <h2>Особенности игры:</h2>
-            <ul>
-                <li>Архивные фотографии Москвы разных периодов</li>
-                <li>Три режима игры для разных уровней сложности</li>
-                <li>Система подсчета очков с бонусами и штрафами</li>
-                <li>Таймер на каждый раунд</li>
-                <li>Подсказки для сложных фотографий</li>
-                <li>Музыкальное сопровождение в стиле эпохи</li>
-            </ul>
-            
-            <h2>Почему стоит играть?</h2>
-            <p>Викторина "УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ" - это увлекательный способ изучить историю столицы России. Увидьте, как менялся город на протяжении двух веков. Подходит для школьников, студентов и всех, кто интересуется историей Москвы.</p>
-            
-            <h3>Исторические периоды в игре:</h3>
-            <ul>
-                <li><strong>Москва 19 века:</strong> Архитектура, транспорт, быт дореволюционной Москвы</li>
-                <li><strong>Советская Москва (1917-1991):</strong> Изменения в облике города, советские постройки, жизнь в СССР</li>
-                <li><strong>Москва 90-х годов:</strong> Период радикальных перемен, появление новой архитектуры и культуры</li>
-            </ul>
-            
-            <div class="keywords-tags">
-                <span class="keyword-tag">старые фотографии Москвы</span>
-                <span class="keyword-tag">история Москвы игра</span>
-                <span class="keyword-tag">угадай год фото Москвы</span>
-                <span class="keyword-tag">архивные снимки Москвы</span>
-                <span class="keyword-tag">викторина по истории Москвы</span>
-                <span class="keyword-tag">Москва 19 век</span>
-                <span class="keyword-tag">Москва 20 век</span>
-                <span class="keyword-tag">СССР Москва</span>
-                <span class="keyword-tag">90-е Москва</span>
-                <span class="keyword-tag">образовательные игры про Москву</span>
-                <span class="keyword-tag">интерактивная карта Москвы</span>
-            </div>
-            
-            <p class="mt-3">Играйте бесплатно прямо в браузере без регистрации. Подключайтесь к нашему Telegram каналу для обновлений.</p>
-        </div>
-        
         <!-- Футер -->
         <div class="game-footer">
             <p class="mb-1">
@@ -1520,4 +1395,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
