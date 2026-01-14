@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: https://ogp.me/ns#">
+<head>
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="_l54Xogq2EVZ3kAqD1dieQZA8yTVo1QoaIivHDdb-_g">
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TML89S2L0X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TML89S2L0X');
+    </script>
+    <!-- Конец Google Analytics 4 -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- =================== ОПТИМИЗИРОВАННЫЕ МЕТА-ТЕГИ =================== -->
+    
+    <!-- 1. КРИЧАЩИЙ ЗАГОЛОВОК -->
+    <title>Правила игры: УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ! | Историческая викторина</title>
+    
+    <!-- 2. ЦЕПЛЯЮЩЕЕ ОПИСАНИЕ -->
+    <meta name="description" content="📖 Правила игры: УГАДАЙ ГОД И МЕСТО старых фото Москвы! Викторина-игра с архивными снимками и картой. 3 режима: СССР, 90-е, Все годы.">
+    
+    <!-- 3. ОСНОВНЫЕ КЛЮЧЕВЫЕ СЛОВА -->
+    <meta name="keywords" content="правила игры угадай год Москвы, правила викторины Москва, как играть угадай год фото, правила подсчета баллов, историческая игра правила">
+    
+    <!-- 4. ОСНОВНЫЕ МЕТА-ТЕГИ -->
+    <meta name="author" content="Moscow Time Machine">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="rating" content="general">
+    
+    <!-- 5. ОПЕН ГРАФ -->
+    <meta property="og:title" content="Правила игры: УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ!">
+    <meta property="og:description" content="📖 Правила игры: УГАДАЙ ГОД И МЕСТО старых фото Москвы! Викторина-игра с архивными снимками и картой.">
+    <meta property="og:url" content="https://moscow-time-machine.online/rules.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Машина Времени Москвы">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- 6. CANONICAL -->
+    <link rel="canonical" href="https://moscow-time-machine.online/rules.html">
+    
+    <!-- 7. ФАВИКОНЫ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <meta name="theme-color" content="#2c3e50">
+    
+    <!-- 8. ДОПОЛНИТЕЛЬНЫЕ МЕТА-ТЕГИ -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Угадай год и место Москвы">
+    <meta name="application-name" content="Угадай год и место Москвы">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    
+    <!-- Подключаем Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Стили для страницы правил -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+            --telegram-color: #0088cc;
+            --music-color: #9b59b6;
+            --card-bg: #ffffff;
+            --shadow-color: rgba(0,0,0,0.1);
+            --body-bg: #f5f7fa;
+            --body-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-color: #333333;
+            --border-color: #dee2e6;
+            --rules-color: #2ecc71;
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #1a2530;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --music-color: #8e44ad;
+            --card-bg: #2c3e50;
+            --shadow-color: rgba(0,0,0,0.3);
+            --body-bg: #1a1a2e;
+            --body-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --text-color: #ecf0f1;
+            --border-color: #4a6278;
+            --rules-color: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        html, body {
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: var(--body-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
+        
+        .game-header {
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            position: relative;
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .btn-music {
+            background: linear-gradient(135deg, var(--music-color) 0%, #8e44ad 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.2);
+        }
+        
+        .btn-music:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(155, 89, 182, 0.3);
+        }
+        
+        .btn-music.active {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn-play-header {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+        }
+        
+        .btn-play-header:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn-translate {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-translate:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: white;
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(135deg, var(--telegram-color) 0%, #0077b5 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2);
+        }
+        
+        .btn-telegram:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 136, 204, 0.3);
+        }
+        
+        .btn-play {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn-play:hover {
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 0 4px;
+        }
+        
+        .volume-slider {
+            flex-grow: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .rules-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .rules-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .rules-card h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        .rules-card h2 {
+            color: var(--secondary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .rules-card h3 {
+            color: var(--text-color);
+            margin-top: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .rules-card p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .rules-card ul, .rules-card ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        
+        .rules-card li {
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        .rule-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+        
+        .rule-points {
+            font-weight: 700;
+            margin-right: 12px;
+            min-width: 70px;
+            text-align: right;
+        }
+        
+        .positive { color: var(--success-color); }
+        .negative { color: var(--accent-color); }
+        .warning { color: #f39c12; }
+        
+        .keywords-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .keyword-tag {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .game-footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .audio-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(155, 89, 182, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .audio-indicator.pulsing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .game-header {
+                padding: 1rem 0;
+            }
+            
+            .display-4 {
+                font-size: 1.8rem !important;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            .header-controls {
+                justify-content: center !important;
+                margin-top: 0.5rem;
+            }
+            
+            .header-controls .btn {
+                padding: 0.5rem 0.8rem !important;
+                font-size: 0.85rem !important;
+            }
+            
+            .rules-card {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            
+            .btn-play {
+                padding: 0.8rem 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .audio-indicator {
+                bottom: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+    
+    <!-- Улучшенная Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Правила игры: УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ! | Историческая викторина",
+        "description": "📖 Правила игры: УГАДАЙ ГОД И МЕСТО старых фото Москвы! Викторина-игра с архивными снимками и картой. 3 режима: СССР, 90-е, Все годы.",
+        "image": "https://moscow-time-machine.online/icon-512.png",
+        "author": {
+            "@type": "Organization",
+            "name": "Moscow Time Machine"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Moscow Time Machine",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://moscow-time-machine.online/icon-192.png"
+            }
+        },
+        "datePublished": "2024-01-03",
+        "dateModified": "2024-01-03",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://moscow-time-machine.online/rules.html"
+        },
+        "inLanguage": "ru"
+    }
+    </script>
+</head>
+<body>
+    <!-- Шапка -->
+    <div class="game-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 col-md-6 col-12">
+                    <h1 class="display-4 mb-2" id="page-title">📖 ПРАВИЛА ИГРЫ</h1>
+                    <p class="lead mb-3" id="page-subtitle">УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ | Историческая викторина с картой</p>
+                </div>
+                
+                <div class="col-lg-5 col-md-6 col-12 mt-md-0 mt-3">
+                    <div class="header-controls">
+                        <button id="music-btn" class="btn btn-music">
+                            <i class="fas fa-music"></i> 
+                            <span id="music-text">Музыка</span>
+                        </button>
+                        
+                        <button id="translate-btn" class="btn btn-translate">
+                            <i class="fas fa-language"></i> 
+                            <span id="translate-text">EN</span>
+                        </button>
+                        
+                        <a href="index.html" class="btn btn-play-header">
+                            <i class="fas fa-play-circle"></i> 
+                            <span id="play-header-text">Играть</span>
+                        </a>
+                        
+                        <a href="https://t.me/MoscowTheTimeMachine" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn btn-telegram"
+                           id="telegram-link">
+                            <i class="fab fa-telegram"></i> 
+                            <span id="telegram-text">Telegram</span>
+                        </a>
+                    </div>
+                    
+                    <div id="volume-control" class="volume-control mt-2" style="display: none;">
+                        <i class="fas fa-volume-down text-white" style="font-size: 0.8rem;"></i>
+                        <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+                        <i class="fas fa-volume-up text-white" style="font-size: 0.8rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной контент правил -->
+    <div class="rules-container">
+        <div class="rules-card">
+            <h1 id="main-title">УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ | Историческая викторина с картой</h1>
+            
+            <p id="main-description">Бесплатная игра-викторина по истории Москвы. Угадайте год съемки старых фотографий Москвы и отметьте место на карте. 3 режима: Все годы (1800-2000), 90-е (1992-2000), СССР (1917-1991).</p>
+            
+            <h2 id="how-to-play-title">Как играть в викторину?</h2>
+            <p id="step1">1. Выберите режим игры: Все годы, 90-е или СССР</p>
+            <p id="step2">2. Посмотрите на старую фотографию Москвы</p>
+            <p id="step3">3. Угадайте год съемки с помощью ползунка (1800-2000)</p>
+            <p id="step4">4. Отметьте место на карте Москвы</p>
+            <p id="step5">5. Нажмите "Подтвердить ответ" и узнайте результат</p>
+            
+            <h2 id="features-title">Особенности игры:</h2>
+            <ul id="features-list">
+                <li id="feature1">Архивные фотографии Москвы разных периодов</li>
+                <li id="feature2">Три режима игры для разных уровней сложности</li>
+                <li id="feature3">Система подсчета очков с бонусами и штрафами</li>
+                <li id="feature4">Таймер на каждый раунд</li>
+                <li id="feature5">Подсказки для сложных фотографий</li>
+                <li id="feature6">Музыкальное сопровождение в стиле эпохи</li>
+            </ul>
+            
+            <h2 id="why-play-title">Почему стоит играть?</h2>
+            <p id="why-play-text">Викторина "УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ" - это увлекательный способ изучить историю столицы России. Увидьте, как менялся город на протяжении двух веков. Подходит для школьников, студентов и всех, кто интересуется историей Москвы.</p>
+            
+            <h3 id="periods-title">Исторические периоды в игре:</h3>
+            <ul id="periods-list">
+                <li id="period1"><strong>Москва 19 века:</strong> Архитектура, транспорт, быт дореволюционной Москвы</li>
+                <li id="period2"><strong>Советская Москва (1917-1991):</strong> Изменения в облике города, советские постройки, жизнь в СССР</li>
+                <li id="period3"><strong>Москва 90-х годов:</strong> Период радикальных перемен, появление новой архитектуры и культуры</li>
+            </ul>
+            
+            <h2 id="scoring-title">ПРАВИЛА ПОДСЧЕТА БАЛЛОВ</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="rule-item">
+                        <span class="rule-points positive">+3 <span class="points-unit">балла</span></span>
+                        <span id="rule1">Точный год</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points positive">+2 <span class="points-unit">балла</span></span>
+                        <span id="rule2">Погрешность 2 года</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points positive">+1 <span class="points-unit">балл</span></span>
+                        <span id="rule3">Погрешность 5 лет</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-2 <span class="points-unit">балла</span></span>
+                        <span id="rule4">Ошибка 5-10 лет</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-3 <span class="points-unit">балла</span></span>
+                        <span id="rule5">Ошибка >10 лет</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-2 <span class="points-unit">балла</span></span>
+                        <span id="rule11">Время вышло</span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="rule-item">
+                        <span class="rule-points positive">+2 <span class="points-unit">балла</span></span>
+                        <span id="rule6">Точное место (200 м)</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points positive">+0.5 <span class="points-unit">балла</span></span>
+                        <span id="rule7">Менее 1 км</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-2 <span class="points-unit">балла</span></span>
+                        <span id="rule8">Ошибка >5 км</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points negative">-3 <span class="points-unit">балла</span></span>
+                        <span id="rule9">Ошибка >10 км</span>
+                    </div>
+                    <div class="rule-item">
+                        <span class="rule-points warning">-1 <span class="points-unit">балл</span></span>
+                        <span id="rule10">Подсказка</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="keywords-tags">
+                <span class="keyword-tag" id="keyword1">старые фотографии Москвы</span>
+                <span class="keyword-tag" id="keyword2">история Москвы игра</span>
+                <span class="keyword-tag" id="keyword3">угадай год фото Москвы</span>
+                <span class="keyword-tag" id="keyword4">архивные снимки Москвы</span>
+                <span class="keyword-tag" id="keyword5">викторина по истории Москвы</span>
+                <span class="keyword-tag" id="keyword6">Москва 19 век</span>
+                <span class="keyword-tag" id="keyword7">Москва 20 век</span>
+                <span class="keyword-tag" id="keyword8">СССР Москва</span>
+                <span class="keyword-tag" id="keyword9">90-е Москва</span>
+                <span class="keyword-tag" id="keyword10">образовательные игры про Москву</span>
+                <span class="keyword-tag" id="keyword11">интерактивная карта Москвы</span>
+            </div>
+            
+            <p class="mt-4" id="final-text">Играйте бесплатно прямо в браузере без регистрации. Подключайтесь к нашему Telegram каналу для обновлений.</p>
+            
+            <div class="text-center mt-4">
+                <a href="index.html" class="btn-play">
+                    <i class="fas fa-play-circle me-2"></i>
+                    <span id="play-big-text">НАЧАТЬ ИГРАТЬ</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Футер -->
+        <div class="game-footer">
+            <p class="mb-1">
+                <span id="footer-text">Игра создана с ❤️ для любителей истории Москвы</span>
+            </p>
+            <p class="small">
+                <span id="footer-subtext">Архивные фотографии Москвы</span>
+                <span class="mx-2">•</span>
+                <a href="https://t.me/MoscowTheTimeMachine" target="_blank" class="text-decoration-none">
+                    <i class="fab fa-telegram me-1"></i>Telegram
+                </a>
+                <span class="mx-2">•</span>
+                <a href="index.html" class="text-decoration-none">
+                    <i class="fas fa-home me-1"></i>Главная
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Аудио элемент (скрытый, без предзагрузки) -->
+    <audio id="background-music" loop preload="none">
+        <!-- Убираем source из HTML, будем загружать динамически -->
+    </audio>
+
+    <!-- Аудио-индикатор (плавающая кнопка) -->
+    <div id="audio-indicator" class="audio-indicator" title="Управление музыкой">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- Подключаем скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="rules.js"></script>
+</body>
+</html>
