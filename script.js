@@ -42,21 +42,22 @@ let yearSliderMoved = false;
 let usedPhotoIds = new Set(); // ID уже использованных фотографий в текущей игре
 let gamePhotosQueue = []; // Очередь фотографий для текущей игры (10 штук)
 
-// Система переводов (расширенная с немецким и новым SEO-контентом)
+// Система переводов (расширенная с немецким)
 const translations = {
     ru: {
         // Заголовки
-        gameTitle: "🚀 Москва: Машина Времени",
-        gameSubtitle: "Угадай год и место старых фотографий Москвы!",
+        gameTitle: "🚀 УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ!",
+        gameSubtitle: "Угадай год и место старых фото Москвы! Онлайн игра с картой!",
         roundText: "Раунд:",
         
         // Управление
-        submitText: "Подтвердить ответ",
-        nextText: "Следующий раунд",
-        hintText: "Подсказка (-1 балл)",
-        continueText: "Продолжить",
+        submitText: "ПРОВЕРИТЬ ОТВЕТ",
+        nextText: "ДАЛЕЕ",
+        hintText: "ПОДСКАЗКА (-1)",
+        continueText: "ДАЛЕЕ",
         translateBtn: "EN",
-        playText: "Играть",
+        playText: "ИГРАТЬ",
+        rulesBtnText: "Правила",
         
         // Музыка
         musicOn: "Музыка",
@@ -64,9 +65,9 @@ const translations = {
         volume: "Громкость",
         
         // Режимы игры
-        modeTitle: "Выберите период игры",
-        modeAll: "Все годы",
-        mode90s: "ЛИХИЕ 90-е",
+        modeTitle: "РЕЖИМЫ ИГРЫ",
+        modeAll: "ВСЕ ГОДЫ",
+        mode90s: "90-Е",
         modeUSSR: "СССР",
         modeCustom: "Произвольный",
         modeHint: "Для игры нужно минимум 10 фотографий в выбранном периоде",
@@ -76,28 +77,28 @@ const translations = {
         rangeUSSR: "1917-1991",
         
         // Интерфейс
-        scoreTitle: "Ваш счет",
-        pointsText: "баллов",
-        yearTitle: "Выберите год съемки",
+        scoreTitle: "ОЧКИ",
+        pointsText: "БАЛЛОВ",
+        yearTitle: "УГАДАЙ ГОД",
         mapTitle: "Отметьте место на карте",
         mapHint: "Кликните на карте, чтобы отметить предполагаемое место съемки",
         mobileHint: "Нажмите на карту, чтобы отметить место. Чтобы начать игру выберите режим (ниже).",
-        timerTitle: "Время на раунд",
-        secondsText: "секунд",
+        timerTitle: "ТАЙМЕР",
+        secondsText: "СЕКУНД",
         
         // Настройки
-        settingsTitle: "Настройки игры",
-        timeSettingTitle: "Время на раунд",
-        penaltySettingTitle: "Штрафы за ошибки места",
-        penaltyToggleLabel: "Включить штрафы",
+        settingsTitle: "НАСТРОЙКИ",
+        timeSettingTitle: "ВРЕМЯ НА РАУНД",
+        penaltySettingTitle: "ШТРАФЫ ЗА ОШИБКИ",
+        penaltyToggleLabel: "Штрафы включены",
         penaltyHint: ">5 км: -2 балла | >10 км: -3 балла",
         timeHint: "Текущее время: ",
-        themeSettingTitle: "Темная тема",
-        themeToggleLabel: "Включить темную тему",
+        themeSettingTitle: "ТЕМНАЯ ТЕМА",
+        themeToggleLabel: "Темная тема",
         themeHint: "Переключает темную и светлую тему",
         
         // Правила
-        rulesTitle: "Правила подсчета очков",
+        rulesTitle: "ПРАВИЛА ПОДСЧЕТА БАЛЛОВ",
         rule1: "Точный год",
         rule2: "Погрешность 2 года",
         rule3: "Погрешность 5 лет",
@@ -116,7 +117,7 @@ const translations = {
         previewText: "Превью: фото меняются каждые 5 сек",
         
         // Telegram
-        telegramText: "Telegram канал",
+        telegramText: "Telegram",
         
         // Сообщения
         selectPlace: "Сначала отметьте место на карте!",
@@ -172,64 +173,23 @@ const translations = {
         
         // Футер
         footerText: "Игра создана с ❤️ для любителей истории Москвы",
-        footerSubtext: "Фотографии из различных источников",
-        
-        // ========== НОВЫЙ SEO-КОНТЕНТ (добавлен) ==========
-        seoMainTitle: "УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ | Историческая викторина с картой",
-        seoMainDescription: "Бесплатная игра-викторина по истории Москвы. Угадайте год съемки старых фотографий Москвы и отметьте место на карте. 3 режима: Все годы (1800-2000), 90-е (1992-2000), СССР (1917-1991).",
-        
-        seoHowToPlayTitle: "Как играть в викторину?",
-        seoStep1: "1. Выберите режим игры: Все годы, 90-е или СССР",
-        seoStep2: "2. Посмотрите на старую фотографию Москвы",
-        seoStep3: "3. Угадайте год съемки с помощью ползунка (1800-2000)",
-        seoStep4: "4. Отметьте место на карте Москвы",
-        seoStep5: "5. Нажмите 'Подтвердить ответ' и узнайте результат",
-        
-        seoFeaturesTitle: "Особенности игры:",
-        seoFeature1: "Архивные фотографии Москвы разных периодов",
-        seoFeature2: "Три режима игры для разных уровней сложности",
-        seoFeature3: "Система подсчета очков с бонусами и штрафами",
-        seoFeature4: "Таймер на каждый раунд",
-        seoFeature5: "Подсказки для сложных фотографий",
-        seoFeature6: "Музыкальное сопровождение в стиле эпохи",
-        
-        seoWhyPlayTitle: "Почему стоит играть?",
-        seoWhyPlayText: "Викторина 'УГАДАЙ ГОД И МЕСТО ФОТО МОСКВЫ' - это увлекательный способ изучить историю столицы России. Увидьте, как менялся город на протяжении двух веков. Подходит для школьников, студентов и всех, кто интересуется историей Москвы.",
-        
-        seoPeriodsTitle: "Исторические периоды в игре:",
-        seoPeriod1: "<strong>Москва 19 века:</strong> Архитектура, транспорт, быт дореволюционной Москвы",
-        seoPeriod2: "<strong>Советская Москва (1917-1991):</strong> Изменения в облике города, советские постройки, жизнь в СССР",
-        seoPeriod3: "<strong>Москва 90-х годов:</strong> Период радикальных перемен, появление новой архитектуры и культуры",
-        
-        seoFinalText: "Играйте бесплатно прямо в браузере без регистрации. Подключайтесь к нашему Telegram каналу для обновлений.",
-        
-        // SEO ключевые слова
-        seoKeyword1: "старые фотографии Москвы",
-        seoKeyword2: "история Москвы игра",
-        seoKeyword3: "угадай год фото Москвы",
-        seoKeyword4: "архивные снимки Москвы",
-        seoKeyword5: "викторина по истории Москвы",
-        seoKeyword6: "Москва 19 век",
-        seoKeyword7: "Москва 20 век",
-        seoKeyword8: "СССР Москва",
-        seoKeyword9: "90-е Москва",
-        seoKeyword10: "образовательные игры про Москву",
-        seoKeyword11: "интерактивная карта Москвы"
+        footerSubtext: "Архивные фотографии Москвы",
     },
     
     en: {
         // Titles
-        gameTitle: "🚀 Moscow: Time Machine",
-        gameSubtitle: "Guess the year and location of old Moscow photos!",
+        gameTitle: "🚀 GUESS THE YEAR AND PLACE OF MOSCOW PHOTOS!",
+        gameSubtitle: "Guess the year and location of old Moscow photos! Online game with map!",
         roundText: "Round:",
         
         // Controls
-        submitText: "Submit Answer",
-        nextText: "Next Round",
-        hintText: "Hint (-1 point)",
-        continueText: "Continue",
+        submitText: "SUBMIT ANSWER",
+        nextText: "NEXT",
+        hintText: "HINT (-1)",
+        continueText: "CONTINUE",
         translateBtn: "DE",
-        playText: "Play",
+        playText: "PLAY",
+        rulesBtnText: "Rules",
         
         // Music
         musicOn: "Music",
@@ -237,11 +197,11 @@ const translations = {
         volume: "Volume",
         
         // Game modes
-        modeTitle: "Select Game Mode",
-        modeAll: "All Years",
-        mode90s: "WILD 90s",
+        modeTitle: "GAME MODES",
+        modeAll: "ALL YEARS",
+        mode90s: "90S",
         modeUSSR: "USSR",
-        modeCustom: "Custom Range",
+        modeCustom: "Custom",
         modeHint: "Minimum 10 photos required for selected period",
         photosCount: "photos",
         rangeAll: "1800-2000",
@@ -249,28 +209,28 @@ const translations = {
         rangeUSSR: "1917-1991",
         
         // Interface
-        scoreTitle: "Your Score",
-        pointsText: "points",
-        yearTitle: "Select Year",
-        mapTitle: "Mark Location on Map",
+        scoreTitle: "SCORE",
+        pointsText: "POINTS",
+        yearTitle: "GUESS YEAR",
+        mapTitle: "Mark location on map",
         mapHint: "Click on map to mark location",
         mobileHint: "Tap on map to mark location. To start selecting a mode (below).",
-        timerTitle: "Time per Round",
-        secondsText: "seconds",
+        timerTitle: "TIMER",
+        secondsText: "SECONDS",
         
         // Settings
-        settingsTitle: "Game Settings",
-        timeSettingTitle: "Time per Round",
-        penaltySettingTitle: "Distance Penalties",
-        penaltyToggleLabel: "Enable Penalties",
+        settingsTitle: "SETTINGS",
+        timeSettingTitle: "TIME PER ROUND",
+        penaltySettingTitle: "DISTANCE PENALTIES",
+        penaltyToggleLabel: "Penalties enabled",
         penaltyHint: ">5 km: -2 points | >10 km: -3 points",
         timeHint: "Current time: ",
-        themeSettingTitle: "Dark Theme",
-        themeToggleLabel: "Enable Dark Theme",
+        themeSettingTitle: "DARK THEME",
+        themeToggleLabel: "Dark theme",
         themeHint: "Switches between dark and light theme",
         
         // Rules
-        rulesTitle: "Scoring Rules",
+        rulesTitle: "SCORING RULES",
         rule1: "Exact year",
         rule2: "Error ±2 years",
         rule3: "Error ±5 years",
@@ -289,7 +249,7 @@ const translations = {
         previewText: "Preview: photos change every 5 sec",
         
         // Telegram
-        telegramText: "Telegram Channel",
+        telegramText: "Telegram",
         
         // Messages
         selectPlace: "First mark a place on the map!",
@@ -345,64 +305,23 @@ const translations = {
         
         // Footer
         footerText: "Game created with ❤️ for Moscow history lovers",
-        footerSubtext: "Photos from various sources",
-        
-        // ========== НОВЫЙ SEO-КОНТЕНТ (добавлен) ==========
-        seoMainTitle: "GUESS THE YEAR AND LOCATION OF MOSCOW PHOTOS | Historical Quiz with Map",
-        seoMainDescription: "Free quiz game about Moscow history. Guess the year of old Moscow photos and mark the location on the map. 3 modes: All years (1800-2000), 90s (1992-2000), USSR (1917-1991).",
-        
-        seoHowToPlayTitle: "How to play the quiz?",
-        seoStep1: "1. Select game mode: All years, 90s or USSR",
-        seoStep2: "2. Look at the old Moscow photo",
-        seoStep3: "3. Guess the year using the slider (1800-2000)",
-        seoStep4: "4. Mark the location on Moscow map",
-        seoStep5: "5. Click 'Submit Answer' and see the result",
-        
-        seoFeaturesTitle: "Game Features:",
-        seoFeature1: "Archive photos of Moscow from different periods",
-        seoFeature2: "Three game modes for different difficulty levels",
-        seoFeature3: "Scoring system with bonuses and penalties",
-        seoFeature4: "Timer for each round",
-        seoFeature5: "Hints for difficult photos",
-        seoFeature6: "Music accompaniment in the style of the era",
-        
-        seoWhyPlayTitle: "Why should you play?",
-        seoWhyPlayText: "The quiz 'GUESS THE YEAR AND LOCATION OF MOSCOW PHOTOS' is an exciting way to study the history of the Russian capital. See how the city has changed over two centuries. Suitable for schoolchildren, students and everyone interested in Moscow history.",
-        
-        seoPeriodsTitle: "Historical periods in the game:",
-        seoPeriod1: "<strong>19th century Moscow:</strong> Architecture, transport, life of pre-revolutionary Moscow",
-        seoPeriod2: "<strong>Soviet Moscow (1917-1991):</strong> Changes in the city's appearance, Soviet buildings, life in the USSR",
-        seoPeriod3: "<strong>Moscow of the 90s:</strong> Period of radical changes, emergence of new architecture and culture",
-        
-        seoFinalText: "Play for free right in your browser without registration. Join our Telegram channel for updates.",
-        
-        // SEO ключевые слова
-        seoKeyword1: "old photos of Moscow",
-        seoKeyword2: "Moscow history game",
-        seoKeyword3: "guess the year of Moscow photos",
-        seoKeyword4: "archive photos of Moscow",
-        seoKeyword5: "quiz about Moscow history",
-        seoKeyword6: "Moscow 19th century",
-        seoKeyword7: "Moscow 20th century",
-        seoKeyword8: "USSR Moscow",
-        seoKeyword9: "90s Moscow",
-        seoKeyword10: "educational games about Moscow",
-        seoKeyword11: "interactive map of Moscow"
+        footerSubtext: "Archive photos of Moscow",
     },
     
     de: {
         // Titles
-        gameTitle: "🚀 Moskau: Zeitmaschine",
-        gameSubtitle: "Errate das Jahr und den Ort alter Moskau-Fotos!",
+        gameTitle: "🚀 ERRATE JAHR UND ORT DER MOSKAU-FOTOS!",
+        gameSubtitle: "Errate Jahr und Ort alter Moskau-Fotos! Online-Spiel mit Karte!",
         roundText: "Runde:",
         
         // Controls
-        submitText: "Antwort bestätigen",
-        nextText: "Nächste Runde",
-        hintText: "Hinweis (-1 Punkt)",
-        continueText: "Weiter",
+        submitText: "ANTWORT SENDEN",
+        nextText: "WEITER",
+        hintText: "HINWEIS (-1)",
+        continueText: "WEITER",
         translateBtn: "RU",
-        playText: "Spielen",
+        playText: "SPIELEN",
+        rulesBtnText: "Regeln",
         
         // Music
         musicOn: "Musik",
@@ -410,11 +329,11 @@ const translations = {
         volume: "Lautstärke",
         
         // Game modes
-        modeTitle: "Spielmodus auswählen",
-        modeAll: "Alle Jahre",
-        mode90s: "WILDE 90er",
+        modeTitle: "SPIELMODI",
+        modeAll: "ALLE JAHRE",
+        mode90s: "90ER",
         modeUSSR: "UdSSR",
-        modeCustom: "Benutzerdefinierter Bereich",
+        modeCustom: "Benutzerdef.",
         modeHint: "Mindestens 10 Fotos im ausgewählten Zeitraum erforderlich",
         photosCount: "Fotos",
         rangeAll: "1800-2000",
@@ -422,28 +341,28 @@ const translations = {
         rangeUSSR: "1917-1991",
         
         // Interface
-        scoreTitle: "Ihr Punktestand",
-        pointsText: "Punkte",
-        yearTitle: "Jahr auswählen",
+        scoreTitle: "PUNKTESTAND",
+        pointsText: "PUNKTE",
+        yearTitle: "JAHR ERATEN",
         mapTitle: "Ort auf Karte markieren",
         mapHint: "Klicken Sie auf die Karte, um den Ort zu markieren",
-        mobileHint: "Tippen Sie auf die Karte, um den Ort zu markieren. Um das Spiel zu starten, wählen Sie den Modus (unten).",
-        timerTitle: "Zeit pro Runde",
-        secondsText: "Sekunden",
+        mobileHint: "Tippen Sie auf die Karte, um den Ort zu markieren. Um zu beginnen, wählen Sie den Modus (unten).",
+        timerTitle: "TIMER",
+        secondsText: "SEKUNDEN",
         
         // Settings
-        settingsTitle: "Spieleinstellungen",
-        timeSettingTitle: "Zeit pro Runde",
-        penaltySettingTitle: "Entfernungsstrafen",
-        penaltyToggleLabel: "Strafen aktivieren",
+        settingsTitle: "EINSTELLUNGEN",
+        timeSettingTitle: "ZEIT PRO RUNDE",
+        penaltySettingTitle: "ENTFERNUNGSSTRAFEN",
+        penaltyToggleLabel: "Strafen aktiviert",
         penaltyHint: ">5 km: -2 Punkte | >10 km: -3 Punkte",
         timeHint: "Aktuelle Zeit: ",
-        themeSettingTitle: "Dunkles Design",
-        themeToggleLabel: "Dunkles Design aktivieren",
+        themeSettingTitle: "DUNKLES DESIGN",
+        themeToggleLabel: "Dunkles Design",
         themeHint: "Wechselt zwischen dunklem und hellem Design",
         
         // Rules
-        rulesTitle: "Punktvergabe",
+        rulesTitle: "PUNKTVERGABE",
         rule1: "Exaktes Jahr",
         rule2: "Abweichung ±2 Jahre",
         rule3: "Abweichung ±5 Jahre",
@@ -462,7 +381,7 @@ const translations = {
         previewText: "Vorschau: Fotos wechseln alle 5 Sekunden",
         
         // Telegram
-        telegramText: "Telegram-Kanal",
+        telegramText: "Telegram",
         
         // Messages
         selectPlace: "Zuerst einen Ort auf der Karte markieren!",
@@ -518,49 +437,7 @@ const translations = {
         
         // Footer
         footerText: "Spiel mit ❤️ für Moskau-Geschichtsenthusiasten erstellt",
-        footerSubtext: "Fotos aus verschiedenen Quellen",
-        
-        // ========== НОВЫЙ SEO-КОНТЕНТ (добавлен) ==========
-        seoMainTitle: "ERRATE JAHR UND ORT VON MOSKAU-FOTOS | Historisches Quiz mit Karte",
-        seoMainDescription: "Kostenloses Quiz-Spiel über die Geschichte Moskaus. Errate das Jahr alter Moskau-Fotos und markiere den Ort auf der Karte. 3 Modi: Alle Jahre (1800-2000), 90er (1992-2000), UdSSR (1917-1991).",
-        
-        seoHowToPlayTitle: "Wie spielt man das Quiz?",
-        seoStep1: "1. Wählen Sie den Spielmodus: Alle Jahre, 90er oder UdSSR",
-        seoStep2: "2. Sehen Sie sich das alte Moskau-Foto an",
-        seoStep3: "3. Erraten Sie das Jahr mit dem Schieberegler (1800-2000)",
-        seoStep4: "4. Markieren Sie den Ort auf der Moskau-Karte",
-        seoStep5: "5. Klicken Sie 'Antwort bestätigen' und sehen Sie das Ergebnis",
-        
-        seoFeaturesTitle: "Spielmerkmale:",
-        seoFeature1: "Archivfotos von Moskau aus verschiedenen Epochen",
-        seoFeature2: "Drei Spielmodi für unterschiedliche Schwierigkeitsgrade",
-        seoFeature3: "Punktesystem mit Boni und Strafen",
-        seoFeature4: "Timer für jede Runde",
-        seoFeature5: "Hinweise für schwierige Fotos",
-        seoFeature6: "Musikbegleitung im Stil der Epoche",
-        
-        seoWhyPlayTitle: "Warum sollten Sie spielen?",
-        seoWhyPlayText: "Das Quiz 'ERRATE JAHR UND ORT VON MOSKAU-FOTOS' ist eine spannende Möglichkeit, die Geschichte der russischen Hauptstadt zu studieren. Sehen Sie, wie sich die Stadt über zwei Jahrhunderte verändert hat. Geeignet für Schüler, Studenten und alle, die sich für die Geschichte Moskaus interessieren.",
-        
-        seoPeriodsTitle: "Historische Perioden im Spiel:",
-        seoPeriod1: "<strong>Moskau im 19. Jahrhundert:</strong> Architektur, Transport, Leben im vorrevolutionären Moskau",
-        seoPeriod2: "<strong>Sowjetisches Moskau (1917-1991):</strong> Veränderungen im Stadtbild, sowjetische Gebäude, Leben in der UdSSR",
-        seoPeriod3: "<strong>Moskau in den 90er Jahren:</strong> Zeit radikaler Veränderungen, Entstehung neuer Architektur und Kultur",
-        
-        seoFinalText: "Spielen Sie kostenlos direkt im Browser ohne Registrierung. Treten Sie unserem Telegram-Kanal für Updates bei.",
-        
-        // SEO ключевые слова
-        seoKeyword1: "alte Fotos von Moskau",
-        seoKeyword2: "Moskau Geschichte Spiel",
-        seoKeyword3: "errate das Jahr von Moskau-Fotos",
-        seoKeyword4: "Archivfotos von Moskau",
-        seoKeyword5: "Quiz über Moskau Geschichte",
-        seoKeyword6: "Moskau 19. Jahrhundert",
-        seoKeyword7: "Moskau 20. Jahrhundert",
-        seoKeyword8: "UdSSR Moskau",
-        seoKeyword9: "90er Jahre Moskau",
-        seoKeyword10: "Bildungsspiele über Moskau",
-        seoKeyword11: "interaktive Karte von Moskau"
+        footerSubtext: "Archivfotos von Moskau",
     }
 };
 
@@ -580,7 +457,7 @@ function translateText(key, ...args) {
     return text || key;
 }
 
-// Применение перевода (ОБНОВЛЕНА с учетом SEO-контента)
+// Применение перевода
 function applyTranslation() {
     // Заголовки
     document.getElementById('game-title').textContent = translateText('gameTitle');
@@ -594,6 +471,7 @@ function applyTranslation() {
     document.getElementById('hint-text').textContent = translateText('hintText');
     document.getElementById('continue-text').textContent = translateText('continueText');
     document.getElementById('play-text').textContent = translateText('playText');
+    document.getElementById('rules-btn-text').textContent = translateText('rulesBtnText');
     
     // Музыка
     document.getElementById('music-text').textContent = translateText('musicOn');
@@ -661,97 +539,11 @@ function applyTranslation() {
     // Обновляем языковой бейдж
     document.getElementById('language-badge').textContent = currentLanguage.toUpperCase();
     
-    // ========== ОБНОВЛЕНИЕ SEO-КОНТЕНТА ==========
-    const seoSection = document.querySelector('.seo-content-visible');
-    if (seoSection) {
-        // Заголовки и параграфы
-        const h1 = seoSection.querySelector('h1');
-        if (h1) h1.textContent = translateText('seoMainTitle');
-        
-        const firstP = seoSection.querySelector('p');
-        if (firstP && !firstP.classList.contains('mt-3')) {
-            firstP.textContent = translateText('seoMainDescription');
-        }
-        
-        // "Как играть в викторину?"
-        const howToPlayTitle = seoSection.querySelector('h2:nth-of-type(1)');
-        if (howToPlayTitle) howToPlayTitle.textContent = translateText('seoHowToPlayTitle');
-        
-        // Шаги игры (параграфы после первого h2)
-        const steps = seoSection.querySelectorAll('h2:nth-of-type(1) ~ p');
-        if (steps.length >= 5) {
-            steps[0].textContent = translateText('seoStep1');
-            steps[1].textContent = translateText('seoStep2');
-            steps[2].textContent = translateText('seoStep3');
-            steps[3].textContent = translateText('seoStep4');
-            steps[4].textContent = translateText('seoStep5');
-        }
-        
-        // "Особенности игры:"
-        const featuresTitle = seoSection.querySelector('h2:nth-of-type(2)');
-        if (featuresTitle) featuresTitle.textContent = translateText('seoFeaturesTitle');
-        
-        // Особенности (список после второго h2)
-        const featuresList = seoSection.querySelector('h2:nth-of-type(2) ~ ul:first-of-type');
-        if (featuresList) {
-            const featureItems = featuresList.querySelectorAll('li');
-            if (featureItems.length >= 6) {
-                featureItems[0].textContent = translateText('seoFeature1');
-                featureItems[1].textContent = translateText('seoFeature2');
-                featureItems[2].textContent = translateText('seoFeature3');
-                featureItems[3].textContent = translateText('seoFeature4');
-                featureItems[4].textContent = translateText('seoFeature5');
-                featureItems[5].textContent = translateText('seoFeature6');
-            }
-        }
-        
-        // "Почему стоит играть?"
-        const whyPlayTitle = seoSection.querySelector('h2:nth-of-type(3)');
-        if (whyPlayTitle) whyPlayTitle.textContent = translateText('seoWhyPlayTitle');
-        
-        // Текст "Почему стоит играть?"
-        const whyPlayText = seoSection.querySelector('h2:nth-of-type(3) ~ p');
-        if (whyPlayText) whyPlayText.textContent = translateText('seoWhyPlayText');
-        
-        // "Исторические периоды в игре:"
-        const periodsTitle = seoSection.querySelector('h3');
-        if (periodsTitle) periodsTitle.textContent = translateText('seoPeriodsTitle');
-        
-        // Периоды (список после h3)
-        const periodsList = seoSection.querySelector('h3 ~ ul');
-        if (periodsList) {
-            const periodItems = periodsList.querySelectorAll('li');
-            if (periodItems.length >= 3) {
-                periodItems[0].innerHTML = translateText('seoPeriod1');
-                periodItems[1].innerHTML = translateText('seoPeriod2');
-                periodItems[2].innerHTML = translateText('seoPeriod3');
-            }
-        }
-        
-        // Ключевые слова (теги)
-        const keywordTags = seoSection.querySelectorAll('.keyword-tag');
-        if (keywordTags.length >= 11) {
-            for (let i = 0; i < 11; i++) {
-                keywordTags[i].textContent = translateText(`seoKeyword${i + 1}`);
-            }
-        }
-        
-        // Финальный параграф
-        const finalP = seoSection.querySelector('p.mt-3');
-        if (finalP) finalP.textContent = translateText('seoFinalText');
-    }
-    
     // Сохраняем язык
     localStorage.setItem('moscow-game-language', currentLanguage);
 }
 
-// ... остальной код без изменений (функции toggleLanguage, initMap, loadPreviewPhoto, startPreview, stopPreview, initMusic и т.д.)
-// Все остальные функции остаются БЕЗ ИЗМЕНЕНИЙ, так как задание было добавить только перевод нового контента
-
-// ================================================
-// Переключение языка (остается без изменений)
-// ================================================
-
+// Переключение языка
 function toggleLanguage() {
     const languages = ['ru', 'en', 'de'];
     const currentIndex = languages.indexOf(currentLanguage);
@@ -777,7 +569,7 @@ function toggleLanguage() {
 }
 
 // ================================================
-// Инициализация карты (остается без изменений)
+// Инициализация карты
 // ================================================
 
 function initMap() {
@@ -799,7 +591,7 @@ function initMap() {
 const map = initMap();
 
 // ================================================
-// Обработчик клика по карте (остается без изменений)
+// Обработчик клика по карте
 // ================================================
 
 map.on('click', function(e) {
@@ -842,7 +634,7 @@ map.on('click', function(e) {
 });
 
 // ================================================
-// Ползунок года и предупреждения (остается без изменений)
+// Ползунок года и предупреждения
 // ================================================
 
 const yearSlider = document.getElementById('year-slider');
@@ -900,7 +692,7 @@ function shouldShowYearWarning() {
 }
 
 // ================================================
-// ПРЕВЬЮ ФОТОГРАФИЙ (остается без изменений)
+// ПРЕВЬЮ ФОТОГРАФИЙ
 // ================================================
 
 let previewUsedPhotoIds = new Set();
@@ -952,7 +744,7 @@ function stopPreview() {
 }
 
 // ================================================
-// УПРАВЛЕНИЕ МУЗЫКОЙ (остается без изменений)
+// УПРАВЛЕНИЕ МУЗЫКОЙ
 // ================================================
 
 function initMusic() {
@@ -1054,7 +846,7 @@ function updateAudioIndicator() {
 }
 
 // ================================================
-// УПРАВЛЕНИЕ РЕЖИМАМИ ИГРЫ (остается без изменений)
+// УПРАВЛЕНИЕ РЕЖИМАМИ ИГРЫ
 // ================================================
 
 async function checkModeAvailability(mode, minYear = null, maxYear = null) {
@@ -1218,7 +1010,7 @@ async function switchGameMode(mode, minYear = null, maxYear = null) {
 }
 
 // ================================================
-// ФУНКЦИИ ДЛЯ ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТО (без изменений)
+// ФУНКЦИИ ДЛЯ ПРЕДОТВРАЩЕНИЯ ПОВТОРЕНИЯ ФОТО
 // ================================================
 
 function prepareGamePhotos() {
@@ -1278,7 +1070,7 @@ function getPhotoForCurrentRound() {
 }
 
 // ================================================
-// ОСНОВНЫЕ ФУНКЦИИ ИГРЫ (без изменений)
+// ОСНОВНЫЕ ФУНКЦИИ ИГРЫ
 // ================================================
 
 async function loadNewPhoto() {
@@ -1592,7 +1384,7 @@ function startNewGame() {
 }
 
 // ================================================
-// ТЕМНАЯ ТЕМА (без изменений)
+// ТЕМНАЯ ТЕМА
 // ================================================
 
 function toggleDarkTheme() {
@@ -1624,7 +1416,7 @@ function initDarkTheme() {
 }
 
 // ================================================
-// НАСТРОЙКИ ИГРЫ (без изменений)
+// НАСТРОЙКИ ИГРЫ
 // ================================================
 
 function updatePenaltyRulesDisplay() {
@@ -1650,7 +1442,7 @@ function updateTimeDisplay() {
 }
 
 // ================================================
-// ОБРАБОТЧИКИ СОБЫТИЙ (без изменений)
+// ОБРАБОТЧИКИ СОБЫТИЙ
 // ================================================
 
 document.getElementById('submit-btn').addEventListener('click', function() {
@@ -1827,7 +1619,7 @@ document.getElementById('dark-theme-toggle').addEventListener('change', function
 });
 
 // ================================================
-// ИНИЦИАЛИЗАЦИЯ ИГРЫ (без изменений)
+// ИНИЦИАЛИЗАЦИЯ ИГРЫ
 // ================================================
 
 function initGame() {
@@ -1889,4 +1681,3 @@ if (document.readyState === 'loading') {
 } else {
     initGame();
 }
-
