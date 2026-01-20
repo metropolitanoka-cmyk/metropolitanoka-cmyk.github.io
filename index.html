@@ -95,6 +95,7 @@
             --timer-normal-color: #3498db;
             --timer-warning-color: #e74c3c;
             --rules-color: #2ecc71; /* Салатовый цвет для кнопки Правила */
+            --articles-color: #9b59b6; /* Фиолетовый для кнопки Статьи */
         }
         
         [data-theme="dark"] {
@@ -102,6 +103,7 @@
             --secondary-color: #3498db;
             --accent-color: #e74c3c;
             --music-color: #8e44ad;
+            --articles-color: #8e44ad;
             --card-bg: #2c3e50;
             --shadow-color: rgba(0,0,0,0.3);
             --warning-color: #f39c12;
@@ -143,6 +145,14 @@
             padding: 1.5rem 0;
             box-shadow: 0 4px 12px var(--shadow-color);
             position: relative;
+        }
+        
+        /* Кнопка перевода языка в правом верхнем углу */
+        .language-top-right {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 1000;
         }
         
         .photo-container {
@@ -336,6 +346,28 @@
             box-shadow: 0 6px 16px rgba(46, 204, 113, 0.3);
         }
         
+        /* Новая кнопка Статьи */
+        .btn-articles {
+            background: linear-gradient(135deg, var(--articles-color) 0%, #8e44ad 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.2);
+        }
+        
+        .btn-articles:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(155, 89, 182, 0.3);
+        }
+        
         .btn-telegram {
             background: linear-gradient(135deg, var(--telegram-color) 0%, #0077b5 100%);
             color: white;
@@ -357,18 +389,20 @@
             box-shadow: 0 6px 16px rgba(0, 136, 204, 0.3);
         }
         
-        .btn-translate {
+        /* Увеличенная кнопка перевода */
+        .btn-translate-large {
             background: rgba(255, 255, 255, 0.15);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.3);
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 1.4rem;
             border-radius: 8px;
             transition: all 0.3s ease;
             font-weight: 600;
             backdrop-filter: blur(10px);
+            font-size: 1.1rem;
         }
         
-        .btn-translate:hover {
+        .btn-translate-large:hover {
             background: rgba(255, 255, 255, 0.25);
             border-color: white;
         }
@@ -751,6 +785,12 @@
                 padding: 1rem 0;
             }
             
+            .language-top-right {
+                position: static;
+                margin-top: 10px;
+                text-align: center;
+            }
+            
             .display-4 {
                 font-size: 1.8rem !important;
                 margin-bottom: 0.5rem !important;
@@ -785,11 +825,17 @@
             .header-controls {
                 justify-content: center !important;
                 margin-top: 0.5rem;
+                flex-wrap: wrap;
             }
             
             .header-controls .btn {
                 padding: 0.5rem 0.8rem !important;
                 font-size: 0.85rem !important;
+            }
+            
+            .btn-translate-large {
+                padding: 0.6rem 1rem !important;
+                font-size: 1rem !important;
             }
             
             .rule-item {
@@ -857,8 +903,8 @@
             }
         }
         
-        .btn-game:focus, .btn-telegram:focus, .btn-translate:focus, .btn-music:focus, 
-        .btn-rules:focus, .time-btn:focus {
+        .btn-game:focus, .btn-telegram:focus, .btn-translate-large:focus, .btn-music:focus, 
+        .btn-rules:focus, .btn-articles:focus, .time-btn:focus {
             outline: 3px solid var(--secondary-color);
             outline-offset: 2px;
         }
@@ -1007,10 +1053,10 @@
                             <span id="music-text">Музыка</span>
                         </button>
                         
-                        <button id="translate-btn" class="btn btn-translate">
-                            <i class="fas fa-language"></i> 
-                            <span id="translate-text">EN</span>
-                        </button>
+                        <a href="articles.html" class="btn btn-articles">
+                            <i class="fas fa-newspaper"></i> 
+                            <span id="articles-text">Статьи</span>
+                        </a>
                         
                         <a href="rules.html" class="btn btn-rules">
                             <i class="fas fa-book"></i> 
@@ -1033,6 +1079,14 @@
                         <i class="fas fa-volume-up text-white" style="font-size: 0.8rem;"></i>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Кнопка перевода языка в правом верхнем углу -->
+            <div class="language-top-right">
+                <button id="translate-btn" class="btn btn-translate-large">
+                    <i class="fas fa-language"></i> 
+                    <span id="translate-text">EN</span>
+                </button>
             </div>
         </div>
     </div>
@@ -1395,4 +1449,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
