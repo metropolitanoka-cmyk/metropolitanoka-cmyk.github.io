@@ -42,7 +42,7 @@ let yearSliderMoved = false;
 let usedPhotoIds = new Set(); // ID уже использованных фотографий в текущей игре
 let gamePhotosQueue = []; // Очередь фотографий для текущей игры (10 штук)
 
-// Система переводов (расширенная с немецким)
+// Система переводов (расширенная с немецким и новыми переводами)
 const translations = {
     ru: {
         // Заголовки
@@ -58,6 +58,7 @@ const translations = {
         translateBtn: "EN",
         playText: "ИГРАТЬ",
         rulesBtnText: "Правила",
+        articlesText: "Статьи",
         
         // Музыка
         musicOn: "Музыка",
@@ -190,6 +191,7 @@ const translations = {
         translateBtn: "DE",
         playText: "PLAY",
         rulesBtnText: "Rules",
+        articlesText: "Articles",
         
         // Music
         musicOn: "Music",
@@ -322,6 +324,7 @@ const translations = {
         translateBtn: "RU",
         playText: "SPIELEN",
         rulesBtnText: "Regeln",
+        articlesText: "Artikel",
         
         // Music
         musicOn: "Musik",
@@ -400,7 +403,7 @@ const translations = {
         // Hints
         hintConfirm: "Hinweis verwenden? Das kostet 1 Punkt.",
         hintDecade: (decade) => `Hinweis: Dieses Foto wurde in den ${decade}er Jahren aufgenommen`,
-        noHintPoints: "Nicht genug Punkте für einen Hinweis oder Foto nicht geladen!",
+        noHintPoints: "Nicht genug Punkte für einen Hinweis oder Foto nicht geladen!",
         
         // Errors
         loadError: "Foto konnte nicht geladen werden. Bitte Seite aktualisieren.",
@@ -472,6 +475,7 @@ function applyTranslation() {
     document.getElementById('continue-text').textContent = translateText('continueText');
     document.getElementById('play-text').textContent = translateText('playText');
     document.getElementById('rules-btn-text').textContent = translateText('rulesBtnText');
+    document.getElementById('articles-text').textContent = translateText('articlesText');
     
     // Музыка
     document.getElementById('music-text').textContent = translateText('musicOn');
