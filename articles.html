@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="ru" prefix="og: https://ogp.me/ns#">
+<head>
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="_l54Xogq2EVZ3kAqD1dieQZA8yTVo1QoaIivHDdb-_g">
+    
+    <!-- Google Analytics 4 (GA4) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TML89S2L0X"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TML89S2L0X');
+    </script>
+    <!-- Конец Google Analytics 4 -->
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- =================== ОПТИМИЗИРОВАННЫЕ МЕТА-ТЕГИ =================== -->
+    
+    <!-- 1. КРИЧАЩИЙ ЗАГОЛОВОК -->
+    <title>Статьи об истории Москвы | Архивные фотографии и истории</title>
+    
+    <!-- 2. ЦЕПЛЯЮЩЕЕ ОПИСАНИЕ -->
+    <meta name="description" content="📚 Читайте интересные статьи об истории Москвы с архивными фотографиями. Поиск по статьям и фильтры по темам.">
+    
+    <!-- 3. ОСНОВНЫЕ КЛЮЧЕВЫЕ СЛОВА -->
+    <meta name="keywords" content="статьи об истории Москвы, архивные фото Москвы, исторические материалы, Москва СССР, Москва 90-е, архитектура Москвы">
+    
+    <!-- 4. ОСНОВНЫЕ МЕТА-ТЕГИ -->
+    <meta name="author" content="Moscow Time Machine">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="rating" content="general">
+    
+    <!-- 5. ОПЕН ГРАФ -->
+    <meta property="og:title" content="Статьи об истории Москвы | Архивные фотографии и истории">
+    <meta property="og:description" content="📚 Читайте интересные статьи об истории Москвы с архивными фотографиями. Поиск по статьям и фильтры по темам.">
+    <meta property="og:url" content="https://moscow-time-machine.online/articles.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Машина Времени Москвы">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- 6. CANONICAL -->
+    <link rel="canonical" href="https://moscow-time-machine.online/articles.html">
+    
+    <!-- 7. ФАВИКОНЫ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
+    <meta name="theme-color" content="#2c3e50">
+    
+    <!-- 8. ДОПОЛНИТЕЛЬНЫЕ МЕТА-ТЕГИ -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Статьи об истории Москвы">
+    <meta name="application-name" content="Статьи об истории Москвы">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="address=no">
+    
+    <!-- Schema.org разметка для статей -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Статьи об истории Москвы",
+        "description": "Коллекция статей об истории Москвы с архивными фотографиями",
+        "url": "https://moscow-time-machine.online/articles.html",
+        "author": {
+            "@type": "Organization",
+            "name": "Moscow Time Machine"
+        },
+        "inLanguage": ["ru", "en", "de"],
+        "keywords": "история Москвы, архивные фото, исторические статьи",
+        "datePublished": "2024-01-03",
+        "dateModified": "2024-01-03"
+    }
+    </script>
+    
+    <!-- Подключаем Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Стили для страницы статей -->
+    <style>
+        /* Основные стили из главной страницы */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --success-color: #2ecc71;
+            --telegram-color: #0088cc;
+            --music-color: #9b59b6;
+            --articles-color: #f39c12;
+            --filter-color: #3498db;
+            --card-bg: #ffffff;
+            --shadow-color: rgba(0,0,0,0.1);
+            --body-bg: #f5f7fa;
+            --body-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --text-color: #333333;
+            --border-color: #dee2e6;
+            --search-bg: #ffffff;
+            --filter-bg: #f8f9fa;
+        }
+        
+        [data-theme="dark"] {
+            --primary-color: #1a2530;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --music-color: #8e44ad;
+            --articles-color: #f39c12;
+            --filter-color: #3498db;
+            --card-bg: #2c3e50;
+            --shadow-color: rgba(0,0,0,0.3);
+            --body-bg: #1a1a2e;
+            --body-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            --text-color: #ecf0f1;
+            --border-color: #4a6278;
+            --search-bg: #2c3e50;
+            --filter-bg: #1a2530;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.5s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        html, body {
+            height: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: var(--body-gradient);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: var(--text-color);
+        }
+        
+        .game-header {
+            background: linear-gradient(90deg, var(--primary-color) 0%, #1a2530 100%);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            position: relative;
+        }
+        
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .language-switcher-top {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .btn-translate-top {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .btn-translate-top:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+        
+        .header-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-music {
+            background: linear-gradient(135deg, var(--music-color) 0%, #8e44ad 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.2);
+        }
+        
+        .btn-music:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(155, 89, 182, 0.3);
+        }
+        
+        .btn-music.active {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn-play {
+            background: linear-gradient(135deg, var(--success-color) 0%, #27ae60 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+        }
+        
+        .btn-play:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(46, 204, 113, 0.3);
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(135deg, var(--telegram-color) 0%, #0077b5 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2);
+        }
+        
+        .btn-telegram:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 136, 204, 0.3);
+        }
+        
+        .btn-home {
+            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(149, 165, 166, 0.2);
+        }
+        
+        .btn-home:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(149, 165, 166, 0.3);
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 0 4px;
+        }
+        
+        .volume-slider {
+            flex-grow: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            outline: none;
+        }
+        
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        
+        /* Стили для страницы статей */
+        .articles-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #3498db 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Поисковая строка */
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 0 1rem;
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem 1.5rem 1rem 3rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            background: var(--search-bg);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            font-size: 1.2rem;
+        }
+        
+        /* Фильтры */
+        .filters-container {
+            background: var(--filter-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        
+        .filters-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+        
+        .filters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--filter-color);
+            transform: translateY(-2px);
+        }
+        
+        .filter-btn.active {
+            background: var(--filter-color);
+            color: white;
+            border-color: var(--filter-color);
+            font-weight: 600;
+        }
+        
+        .filter-btn.clear-btn {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
+        }
+        
+        .filter-btn.clear-btn:hover {
+            background: #c0392b;
+            border-color: #c0392b;
+        }
+        
+        /* Сортировка */
+        .sort-container {
+            padding: 1rem;
+            background: var(--filter-bg);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sort-label {
+            font-weight: 600;
+            color: var(--text-color);
+            white-space: nowrap;
+        }
+        
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            flex-grow: 1;
+        }
+        
+        /* Список статей */
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .article-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .article-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .article-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+        
+        .article-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            line-height: 1.3;
+            margin: 0;
+            flex-grow: 1;
+        }
+        
+        .article-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .article-category {
+            background: var(--filter-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        
+        .article-category-more {
+            background: #95a5a6;
+            color: white;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: help;
+        }
+        
+        .article-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        .article-id {
+            font-weight: 500;
+        }
+        
+        .article-id span {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .article-date {
+            font-weight: 500;
+        }
+        
+        .read-btn {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2980b9 100%);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .read-btn:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        /* Сообщение, когда нет статей */
+        .no-articles {
+            text-align: center;
+            padding: 3rem;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        
+        .no-articles i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+        
+        /* Счетчик найденных статей */
+        .results-count {
+            text-align: center;
+            margin: 1rem 0 2rem;
+            color: var(--text-color);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .results-count span {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        /* Кнопка "Играть" большая */
+        .play-big-btn {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 0 1rem;
+        }
+        
+        .play-big-btn .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 12px;
+        }
+        
+        .articles-footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+        
+        .audio-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(155, 89, 182, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .audio-indicator.pulsing {
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Новые стили */
+        .clear-search-btn {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            display: none;
+        }
+        
+        .clear-search-btn:hover {
+            color: var(--accent-color);
+        }
+        
+        .loading-articles {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .loading-articles i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .game-header {
+                padding: 1rem 0;
+            }
+            
+            .header-top-row {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .btn-translate-top {
+                padding: 8px 16px;
+                font-size: 1rem;
+                align-self: flex-end;
+            }
+            
+            .articles-hero {
+                padding: 2rem 0;
+            }
+            
+            .articles-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .articles-hero p {
+                font-size: 1rem;
+            }
+            
+            .search-input {
+                padding: 0.9rem 1.2rem 0.9rem 2.8rem;
+                font-size: 1rem;
+            }
+            
+            .article-item {
+                flex-direction: column;
+            }
+            
+            .article-image {
+                height: 200px;
+            }
+            
+            .article-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .article-title {
+                font-size: 1.2rem;
+            }
+            
+            .article-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .read-btn {
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .header-controls {
+                justify-content: center !important;
+                margin-top: 0.5rem;
+            }
+            
+            .header-controls .btn {
+                padding: 0.5rem 0.8rem !important;
+                font-size: 0.85rem !important;
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
+            
+            .audio-indicator {
+                bottom: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            
+            .filters-grid {
+                justify-content: center;
+            }
+            
+            .filter-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .article-meta {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .sort-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .article-item {
+                flex-direction: row;
+            }
+            
+            .article-image {
+                width: 300px;
+                height: auto;
+                flex-shrink: 0;
+            }
+        }
+        
+        .btn-game:focus, .btn-telegram:focus, .btn-translate-top:focus, .btn-music:focus, 
+        .btn-play:focus, .btn-home:focus, .read-btn:focus, .filter-btn:focus, .search-input:focus {
+            outline: 3px solid var(--secondary-color);
+            outline-offset: 2px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Анимация появления статей */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .article-item {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        .article-item:nth-child(odd) {
+            animation-delay: 0.1s;
+        }
+        
+        .article-item:nth-child(even) {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка страницы -->
+    <div class="game-header">
+        <div class="container">
+            <!-- Верхний ряд с языком -->
+            <div class="header-top-row">
+                <div class="header-title">
+                    <h1 class="display-4 mb-2" id="game-title">📚 Статьи об истории Москвы</h1>
+                    <p class="lead mb-3" id="game-subtitle">Читайте интересные материалы с архивными фотографиями</p>
+                </div>
+                <div class="language-switcher-top">
+                    <button id="translate-btn-top" class="btn-translate-top">
+                        <i class="fas fa-language"></i> 
+                        <span id="translate-text">EN</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6 col-12 mt-md-0 mt-3">
+                    <div class="header-controls">
+                        <button id="music-btn" class="btn btn-music">
+                            <i class="fas fa-music"></i> 
+                            <span id="music-text">Музыка</span>
+                        </button>
+                        
+                        <a href="index.html" class="btn btn-play">
+                            <i class="fas fa-gamepad"></i> 
+                            <span id="play-text">Играть</span>
+                        </a>
+                        
+                        <a href="https://t.me/MoscowTheTimeMachine" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="btn btn-telegram"
+                           id="telegram-link">
+                            <i class="fab fa-telegram"></i> 
+                            <span id="telegram-text">Telegram</span>
+                        </a>
+                    </div>
+                    
+                    <div id="volume-control" class="volume-control mt-2" style="display: none;">
+                        <i class="fas fa-volume-down text-white" style="font-size: 0.8rem;"></i>
+                        <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+                        <i class="fas fa-volume-up text-white" style="font-size: 0.8rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Основной контент -->
+    <div class="container py-4">
+        <!-- Поисковая строка -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" 
+                       id="search-input" 
+                       class="search-input" 
+                       placeholder="Поиск по названию и описанию статей..."
+                       autocomplete="off">
+                <button class="clear-search-btn" id="clear-search-btn" title="Очистить поиск">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <!-- Фильтры -->
+            <div class="filters-container">
+                <div class="filters-title" id="filters-title">Фильтры:</div>
+                <div class="filters-grid" id="filters-grid">
+                    <!-- Фильтры будут загружены динамически -->
+                </div>
+                
+                <!-- Сортировка -->
+                <div id="sort-container"></div>
+            </div>
+        </div>
+        
+        <!-- Счетчик результатов -->
+        <div class="results-count" id="results-count">
+            Найдено статей: <span id="articles-count">0</span>
+        </div>
+        
+        <!-- Список статей -->
+        <div class="articles-list" id="articles-list">
+            <!-- Статьи будут загружены динамически -->
+        </div>
+        
+        <!-- Сообщение, когда статей нет -->
+        <div class="no-articles" id="no-articles" style="display: none;">
+            <i class="fas fa-newspaper"></i>
+            <p id="no-articles-text">Статьи не найдены. Попробуйте изменить поисковый запрос или фильтры.</p>
+        </div>
+        
+        <!-- Кнопка "Играть" -->
+        <div class="play-big-btn">
+            <a href="index.html" class="btn btn-play">
+                <i class="fas fa-gamepad me-2"></i> 
+                <span id="play-big-text">ИГРАТЬ В "УГАДАЙ ГОД И МЕСТО"</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Футер -->
+    <div class="articles-footer">
+        <div class="container">
+            <p class="mb-1">
+                <span id="footer-text">Проект создан с ❤️ для любителей истории Москвы</span>
+            </p>
+            <p class="small">
+                <span id="footer-subtext">Архивные фотографии и исторические материалы</span>
+                <span class="mx-2">•</span>
+                <a href="https://t.me/MoscowTheTimeMachine" target="_blank" class="text-decoration-none">
+                    <i class="fab fa-telegram me-1"></i>Telegram
+                </a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Аудио элемент -->
+    <audio id="background-music" loop preload="none"></audio>
+
+    <!-- Аудио-индикатор -->
+    <div id="audio-indicator" class="audio-indicator" title="Управление музыкой">
+        <i class="fas fa-music"></i>
+    </div>
+
+    <!-- Подключаем скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- СКРИПТ ДЛЯ СТРАНИЦЫ СТАТЕЙ -->
+    <script>
+        // ================================================
+        // УЛУЧШЕННЫЙ СКРИПТ ДЛЯ СТРАНИЦЫ СТАТЕЙ
+        // ================================================
+
+        // Глобальные переменные
+        let currentLanguage = 'ru';
+        let activeFilters = new Set(["all"]);
+        let currentSearchQuery = "";
+        let isMusicPlaying = false;
+        let musicVolume = 0.5;
+        let currentTrackIndex = 0;
+        let articlesData = [];
+        let filtersData = [];
+        let sortBy = "date_desc";
+
+        // Расширенная система переводов
+        const translations = {
+            ru: {
+                pageTitle: "📚 Статьи об истории Москвы",
+                pageSubtitle: "Читайте интересные материалы с архивными фотографиями",
+                translateBtn: "EN",
+                musicOn: "Музыка",
+                musicOff: "Музыка",
+                playText: "Играть",
+                telegramText: "Telegram",
+                homeText: "Главная",
+                articlesText: "Статьи",
+                searchPlaceholder: "Поиск по названию, описанию и тегам...",
+                filtersTitle: "Фильтры:",
+                filterAll: "Все",
+                filterHistory: "История",
+                filterBuildings: "Строения",
+                filterUSSR: "СССР",
+                filter90s: "90-е",
+                filterTransport: "Транспорт",
+                filterCulture: "Культура",
+                readText: "Читать",
+                articlesFound: "Найдено статей:",
+                noArticles: "Статьи не найдены. Попробуйте изменить поисковый запрос или фильтры.",
+                playBigText: "ИГРАТЬ В \"УГАДАЙ ГОД И МЕСТО\"",
+                footerText: "Проект создан с ❤️ для любителей истории Москвы",
+                footerSubtext: "Архивные фотографии и исторические материалы",
+                sortTitle: "Сортировка:",
+                sortDateNew: "По дате (новые)",
+                sortDateOld: "По дате (старые)",
+                sortTitleAZ: "По названию (А-Я)",
+                sortTitleZA: "По названию (Я-А)",
+                clearFilters: "Очистить фильтры",
+                loadingArticles: "Загрузка статей..."
+            },
+            en: {
+                pageTitle: "📚 Articles about Moscow History",
+                pageSubtitle: "Read interesting materials with archival photos",
+                translateBtn: "DE",
+                musicOn: "Music",
+                musicOff: "Music",
+                playText: "Play",
+                telegramText: "Telegram",
+                homeText: "Home",
+                articlesText: "Articles",
+                searchPlaceholder: "Search by title, description and tags...",
+                filtersTitle: "Filters:",
+                filterAll: "All",
+                filterHistory: "History",
+                filterBuildings: "Buildings",
+                filterUSSR: "USSR",
+                filter90s: "90s",
+                filterTransport: "Transport",
+                filterCulture: "Culture",
+                readText: "Read",
+                articlesFound: "Found articles:",
+                noArticles: "No articles found. Try changing your search query or filters.",
+                playBigText: "PLAY \"GUESS YEAR AND LOCATION\"",
+                footerText: "Project created with ❤️ for Moscow history lovers",
+                footerSubtext: "Archive photos and historical materials",
+                sortTitle: "Sort by:",
+                sortDateNew: "By date (newest)",
+                sortDateOld: "By date (oldest)",
+                sortTitleAZ: "By title (A-Z)",
+                sortTitleZA: "By title (Z-A)",
+                clearFilters: "Clear filters",
+                loadingArticles: "Loading articles..."
+            },
+            de: {
+                pageTitle: "📚 Artikel über die Moskauer Geschichte",
+                pageSubtitle: "Lesen Sie interessante Materialien mit Archivfotos",
+                translateBtn: "RU",
+                musicOn: "Musik",
+                musicOff: "Musik",
+                playText: "Spielen",
+                telegramText: "Telegram",
+                homeText: "Home",
+                articlesText: "Artikel",
+                searchPlaceholder: "Suche nach Titel, Beschreibung und Tags...",
+                filtersTitle: "Filter:",
+                filterAll: "Alle",
+                filterHistory: "Geschichte",
+                filterBuildings: "Gebäude",
+                filterUSSR: "UdSSR",
+                filter90s: "90er",
+                filterTransport: "Verkehr",
+                filterCulture: "Kultur",
+                readText: "Lesen",
+                articlesFound: "Gefundene Artikel:",
+                noArticles: "Keine Artikel gefunden. Ändern Sie Ihre Suchanfrage oder Filter.",
+                playBigText: "SPIELE \"ERKENNE JAHR UND ORT\"",
+                footerText: "Projekt mit ❤️ für Moskau-Geschichtsenthusiasten erstellt",
+                footerSubtext: "Archivfotos und historische Materialien",
+                sortTitle: "Sortieren nach:",
+                sortDateNew: "Nach Datum (neueste)",
+                sortDateOld: "Nach Datum (älteste)",
+                sortTitleAZ: "Nach Titel (A-Z)",
+                sortTitleZA: "Nach Titel (Z-A)",
+                clearFilters: "Filter löschen",
+                loadingArticles: "Lade Artikel..."
+            }
+        };
+
+        // Список музыкальных треков
+        const musicTracks = [
+            { 
+                name: 'moscow_night', 
+                path: 'audio/moscow_never_sleep.mp3',
+                title: {
+                    ru: 'Московская ночь',
+                    en: 'Moscow Night',
+                    de: 'Moskauer Nacht'
+                }
+            },
+            { 
+                name: 'historical_moscow', 
+                path: 'audio/historical_moscow.mp3',
+                title: {
+                    ru: 'Историческая Москва',
+                    en: 'Historical Moscow',
+                    de: 'Historisches Moskau'
+                }
+            },
+            { 
+                name: 'retro_wave', 
+                path: 'audio/retro_wave.mp3',
+                title: {
+                    ru: 'Ретро волна',
+                    en: 'Retro Wave',
+                    de: 'Retro Welle'
+                }
+            }
+        ];
+
+        // Данные фильтров
+        filtersData = [
+            { id: "all", name: { ru: "Все", en: "All", de: "Alle" } },
+            { id: "history", name: { ru: "История", en: "History", de: "Geschichte" } },
+            { id: "buildings", name: { ru: "Строения", en: "Buildings", de: "Gebäude" } },
+            { id: "ussr", name: { ru: "СССР", en: "USSR", de: "UdSSR" } },
+            { id: "90s", name: { ru: "90-е", en: "90s", de: "90er" } },
+            { id: "transport", name: { ru: "Транспорт", en: "Transport", de: "Verkehr" } },
+            { id: "culture", name: { ru: "Культура", en: "Culture", de: "Kultur" } }
+        ];
+
+        // ================================================
+        // ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
+        // ================================================
+
+        function translateText(key, ...args) {
+            if (!translations[currentLanguage] || !translations[currentLanguage][key]) {
+                return translations['ru'][key] || key;
+            }
+            
+            let text = translations[currentLanguage][key];
+            return text || key;
+        }
+
+        // НОВАЯ ФУНКЦИЯ: Получение категорий статьи
+        function getArticleCategories(article) {
+            if (!article.categories) return [];
+            
+            // Если категории - массив
+            if (Array.isArray(article.categories)) {
+                return article.categories.map(cat => {
+                    if (typeof cat === 'object' && cat !== null) {
+                        return cat[currentLanguage] || cat.ru || '';
+                    }
+                    return cat.toString();
+                }).filter(cat => cat !== '');
+            }
+            
+            // Для обратной совместимости со старым форматом (одна категория)
+            if (article.category) {
+                if (typeof article.category === 'object' && article.category !== null) {
+                    const cat = article.category[currentLanguage] || article.category.ru;
+                    return cat ? [cat] : [];
+                }
+                return [article.category.toString()];
+            }
+            
+            return [];
+        }
+
+        function getFilterIdForCategory(category) {
+            if (!category) return null;
+            
+            const catLower = category.toLowerCase();
+            
+            for (const filter of filtersData) {
+                const filterName = filter.name[currentLanguage] || filter.name.ru;
+                if (filterName && filterName.toLowerCase() === catLower) {
+                    return filter.id;
+                }
+            }
+            
+            return null;
+        }
+
+        function getDisplayCategories(article) {
+            const categories = getArticleCategories(article);
+            if (categories.length === 0) return '';
+            
+            // Возвращаем первую категорию для отображения
+            return categories[0];
+        }
+
+        // ================================================
+        // СИСТЕМА ПЕРЕВОДОВ
+        // ================================================
+
+        function applyTranslation() {
+            // Заголовки
+            document.getElementById('game-title').textContent = translateText('pageTitle');
+            document.getElementById('game-subtitle').textContent = translateText('pageSubtitle');
+            
+            // Управление
+            document.getElementById('translate-text').textContent = translateText('translateBtn');
+            document.getElementById('music-text').textContent = isMusicPlaying ? translateText('musicOff') : translateText('musicOn');
+            document.getElementById('play-text').textContent = translateText('playText');
+            document.getElementById('telegram-text').textContent = translateText('telegramText');
+            
+            // Поиск и фильтры
+            document.getElementById('search-input').placeholder = translateText('searchPlaceholder');
+            document.getElementById('filters-title').textContent = translateText('filtersTitle');
+            
+            // Обновляем текст кнопок фильтров
+            document.querySelectorAll('.filter-btn:not(.clear-btn)').forEach(btn => {
+                const filterId = btn.dataset.filter;
+                if (filterId) {
+                    const filter = filtersData.find(f => f.id === filterId);
+                    if (filter) {
+                        btn.textContent = filter.name[currentLanguage] || filter.name.ru;
+                    }
+                }
+            });
+            
+            // Обновляем кнопку "Очистить фильтры"
+            const clearBtn = document.querySelector('.filter-btn.clear-btn');
+            if (clearBtn) {
+                clearBtn.innerHTML = `<i class="fas fa-times"></i> ${translateText('clearFilters')}`;
+            }
+            
+            // Обновляем сортировку
+            const sortSelect = document.getElementById('sort-select');
+            if (sortSelect) {
+                Array.from(sortSelect.options).forEach(option => {
+                    const value = option.value;
+                    if (value === 'date_desc') option.textContent = translateText('sortDateNew');
+                    else if (value === 'date_asc') option.textContent = translateText('sortDateOld');
+                    else if (value === 'title_asc') option.textContent = translateText('sortTitleAZ');
+                    else if (value === 'title_desc') option.textContent = translateText('sortTitleZA');
+                });
+            }
+            
+            // Кнопка игры
+            document.getElementById('play-big-text').textContent = translateText('playBigText');
+            
+            // Футер
+            document.getElementById('footer-text').textContent = translateText('footerText');
+            document.getElementById('footer-subtext').textContent = translateText('footerSubtext');
+        }
+
+        function toggleLanguage() {
+            const languages = ['ru', 'en', 'de'];
+            const currentIndex = languages.indexOf(currentLanguage);
+            const nextIndex = (currentIndex + 1) % languages.length;
+            currentLanguage = languages[nextIndex];
+            
+            applyTranslation();
+            loadFilters();
+            renderArticles();
+            
+            localStorage.setItem('moscow-game-language', currentLanguage);
+        }
+
+        // ================================================
+        // УПРАВЛЕНИЕ МУЗЫКОЙ
+        // ================================================
+
+        function initMusic() {
+            const backgroundMusic = document.getElementById('background-music');
+            const savedVolume = localStorage.getItem('moscow-game-volume');
+            const savedTrackIndex = localStorage.getItem('moscow-game-track-index');
+            
+            if (savedVolume) {
+                musicVolume = parseFloat(savedVolume);
+            }
+            
+            if (savedTrackIndex) {
+                currentTrackIndex = parseInt(savedTrackIndex);
+            }
+            
+            backgroundMusic.volume = musicVolume;
+            backgroundMusic.loop = true;
+            
+            // Загружаем выбранный трек
+            loadMusicTrack(currentTrackIndex);
+            
+            const volumeSlider = document.getElementById('volume-slider');
+            if (volumeSlider) {
+                volumeSlider.value = musicVolume;
+            }
+            
+            updateAudioIndicator();
+            
+            // Проверяем, была ли музыка включена при последнем посещении
+            const wasMusicPlaying = localStorage.getItem('moscow-game-music-playing') === 'true';
+            if (wasMusicPlaying) {
+                setTimeout(() => {
+                    toggleMusic();
+                }, 1000);
+            }
+        }
+
+        function loadMusicTrack(trackIndex) {
+            const backgroundMusic = document.getElementById('background-music');
+            const track = musicTracks[trackIndex];
+            
+            if (!track) return;
+            
+            // Очищаем предыдущие источники
+            while (backgroundMusic.firstChild) {
+                backgroundMusic.removeChild(backgroundMusic.firstChild);
+            }
+            
+            const source = document.createElement('source');
+            source.src = track.path;
+            source.type = 'audio/mpeg';
+            backgroundMusic.appendChild(source);
+            backgroundMusic.load();
+            
+            localStorage.setItem('moscow-game-track-index', trackIndex.toString());
+        }
+
+        function playMusicTrack(trackIndex) {
+            currentTrackIndex = trackIndex;
+            loadMusicTrack(trackIndex);
+            
+            if (isMusicPlaying) {
+                const playPromise = document.getElementById('background-music').play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Ошибка воспроизведения:', error);
+                    });
+                }
+            }
+        }
+
+        function toggleMusic() {
+            const backgroundMusic = document.getElementById('background-music');
+            const musicBtn = document.getElementById('music-btn');
+            const volumeControl = document.getElementById('volume-control');
+            
+            isMusicPlaying = !isMusicPlaying;
+            
+            if (isMusicPlaying) {
+                const playPromise = backgroundMusic.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log('Музыка воспроизводится');
+                    }).catch(error => {
+                        console.log('Ошибка воспроизведения музыки:', error);
+                        if (error.name === 'NotAllowedError') {
+                            console.log('Разрешите воспроизведение музыки в вашем браузере');
+                        }
+                    });
+                }
+                musicBtn.classList.add('active');
+                musicBtn.innerHTML = `<i class="fas fa-volume-up"></i> <span id="music-text">${translateText('musicOff')}</span>`;
+                volumeControl.style.display = 'flex';
+            } else {
+                backgroundMusic.pause();
+                musicBtn.classList.remove('active');
+                musicBtn.innerHTML = `<i class="fas fa-music"></i> <span id="music-text">${translateText('musicOn')}</span>`;
+                volumeControl.style.display = 'none';
+            }
+            
+            updateAudioIndicator();
+            localStorage.setItem('moscow-game-music-playing', isMusicPlaying.toString());
+        }
+
+        function setMusicVolume(volume) {
+            const backgroundMusic = document.getElementById('background-music');
+            musicVolume = volume;
+            backgroundMusic.volume = volume;
+            localStorage.setItem('moscow-game-volume', volume.toString());
+            updateAudioIndicator();
+        }
+
+        function updateAudioIndicator() {
+            const indicator = document.getElementById('audio-indicator');
+            if (!indicator) return;
+            
+            if (isMusicPlaying) {
+                indicator.classList.add('pulsing');
+                indicator.innerHTML = musicVolume > 0.7 ? '<i class="fas fa-volume-up"></i>' : 
+                                     musicVolume > 0.3 ? '<i class="fas fa-volume-down"></i>' : 
+                                     '<i class="fas fa-volume-off"></i>';
+            } else {
+                indicator.classList.remove('pulsing');
+                indicator.innerHTML = '<i class="fas fa-music"></i>';
+            }
+        }
+
+        // ================================================
+        // СИСТЕМА ПОИСКА И ФИЛЬТРОВ
+        // ================================================
+
+        function loadFilters() {
+            const filtersGrid = document.getElementById('filters-grid');
+            if (!filtersGrid) return;
+            
+            // Загружаем сохраненные фильтры
+            const savedFilters = localStorage.getItem('moscow-articles-filters');
+            if (savedFilters) {
+                try {
+                    activeFilters = new Set(JSON.parse(savedFilters));
+                } catch (e) {
+                    activeFilters = new Set(["all"]);
+                }
+            }
+            
+            // Очищаем текущие фильтры
+            filtersGrid.innerHTML = '';
+            
+            // Добавляем кнопку "Очистить фильтры"
+            const clearBtn = document.createElement('button');
+            clearBtn.className = 'filter-btn clear-btn';
+            clearBtn.innerHTML = `<i class="fas fa-times"></i> ${translateText('clearFilters')}`;
+            clearBtn.addEventListener('click', clearAllFilters);
+            filtersGrid.appendChild(clearBtn);
+            
+            // Добавляем обычные фильтры
+            filtersData.forEach(filter => {
+                const filterBtn = document.createElement('button');
+                filterBtn.className = `filter-btn ${activeFilters.has(filter.id) ? 'active' : ''}`;
+                filterBtn.dataset.filter = filter.id;
+                filterBtn.textContent = filter.name[currentLanguage] || filter.name.ru;
+                
+                filterBtn.addEventListener('click', function() {
+                    toggleFilter(filter.id);
+                });
+                
+                filtersGrid.appendChild(filterBtn);
+            });
+            
+            // Добавляем блок сортировки, если его еще нет
+            if (!document.getElementById('sort-select')) {
+                const sortContainer = document.getElementById('sort-container');
+                sortContainer.innerHTML = `
+                    <div class="sort-container">
+                        <span class="sort-label">${translateText('sortTitle')}</span>
+                        <select class="sort-select" id="sort-select">
+                            <option value="date_desc">${translateText('sortDateNew')}</option>
+                            <option value="date_asc">${translateText('sortDateOld')}</option>
+                            <option value="title_asc">${translateText('sortTitleAZ')}</option>
+                            <option value="title_desc">${translateText('sortTitleZA')}</option>
+                        </select>
+                    </div>
+                `;
+                
+                // Устанавливаем сохраненную сортировку
+                const savedSort = localStorage.getItem('moscow-articles-sort');
+                if (savedSort) {
+                    document.getElementById('sort-select').value = savedSort;
+                    sortBy = savedSort;
+                }
+                
+                document.getElementById('sort-select').addEventListener('change', function() {
+                    sortBy = this.value;
+                    localStorage.setItem('moscow-articles-sort', sortBy);
+                    renderArticles();
+                });
+            }
+        }
+
+        function toggleFilter(filterId) {
+            if (filterId === "all") {
+                activeFilters.clear();
+                activeFilters.add("all");
+            } else {
+                activeFilters.delete("all");
+                
+                if (activeFilters.has(filterId)) {
+                    activeFilters.delete(filterId);
+                    // Если удалили последний фильтр, включаем "all"
+                    if (activeFilters.size === 0) {
+                        activeFilters.add("all");
+                    }
+                } else {
+                    activeFilters.add(filterId);
+                }
+            }
+            
+            // Сохраняем фильтры
+            localStorage.setItem('moscow-articles-filters', JSON.stringify([...activeFilters]));
+            
+            loadFilters();
+            renderArticles();
+        }
+
+        function clearAllFilters() {
+            activeFilters.clear();
+            activeFilters.add("all");
+            localStorage.setItem('moscow-articles-filters', JSON.stringify([...activeFilters]));
+            loadFilters();
+            renderArticles();
+        }
+
+        function searchArticles() {
+            const searchInput = document.getElementById('search-input');
+            if (!searchInput) return;
+            
+            let searchTimeout;
+            
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                
+                searchTimeout = setTimeout(() => {
+                    currentSearchQuery = this.value.toLowerCase().trim();
+                    renderArticles();
+                }, 300);
+            });
+            
+            // Добавляем кнопку очистки поиска
+            const clearSearchBtn = document.getElementById('clear-search-btn');
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                currentSearchQuery = '';
+                clearSearchBtn.style.display = 'none';
+                renderArticles();
+            });
+            
+            searchInput.addEventListener('input', function() {
+                clearSearchBtn.style.display = this.value ? 'block' : 'none';
+            });
+        }
+
+        // ================================================
+        // РЕНДЕРИНГ СТАТЕЙ
+        // ================================================
+
+        function parseDate(dateString) {
+            if (!dateString) return new Date(0);
+            
+            const parts = dateString.split('.');
+            if (parts.length === 3) {
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+            
+            return new Date(dateString);
+        }
+
+        function sortArticles(articles) {
+            switch(sortBy) {
+                case 'date_desc':
+                    return articles.sort((a, b) => {
+                        const dateA = parseDate(a.date);
+                        const dateB = parseDate(b.date);
+                        return dateB - dateA;
+                    });
+                case 'date_asc':
+                    return articles.sort((a, b) => {
+                        const dateA = parseDate(a.date);
+                        const dateB = parseDate(b.date);
+                        return dateA - dateB;
+                    });
+                case 'title_asc':
+                    return articles.sort((a, b) => {
+                        const titleA = a.title[currentLanguage] || a.title.ru || '';
+                        const titleB = b.title[currentLanguage] || b.title.ru || '';
+                        return titleA.localeCompare(titleB, currentLanguage);
+                    });
+                case 'title_desc':
+                    return articles.sort((a, b) => {
+                        const titleA = a.title[currentLanguage] || a.title.ru || '';
+                        const titleB = b.title[currentLanguage] || b.title.ru || '';
+                        return titleB.localeCompare(titleA, currentLanguage);
+                    });
+                default:
+                    return articles;
+            }
+        }
+
+        function renderArticles() {
+            const articlesList = document.getElementById('articles-list');
+            const noArticles = document.getElementById('no-articles');
+            const resultsCount = document.getElementById('results-count');
+            const articlesCount = document.getElementById('articles-count');
+            
+            if (!articlesList || !noArticles || !resultsCount) return;
+            
+            // Показываем индикатор загрузки
+            articlesList.innerHTML = `
+                <div class="loading-articles">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>${translateText('loadingArticles')}</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                // Если статьи не определены в HTML, показываем сообщение
+                if (!window.articlesData || window.articlesData.length === 0) {
+                    articlesList.style.display = 'none';
+                    noArticles.style.display = 'block';
+                    resultsCount.style.display = 'none';
+                    document.getElementById('no-articles-text').textContent = translateText('noArticles');
+                    return;
+                }
+                
+                articlesData = window.articlesData;
+                
+                // Фильтрация статей
+                let filteredArticles = articlesData.filter(article => {
+                    // Проверяем, есть ли перевод для текущего языка
+                    if (!article.title || !article.title[currentLanguage]) {
+                        return false;
+                    }
+                    
+                    // Поиск по названию и описанию
+                    const searchMatch = !currentSearchQuery || 
+                        (article.title[currentLanguage] && article.title[currentLanguage].toLowerCase().includes(currentSearchQuery)) ||
+                        (article.description[currentLanguage] && article.description[currentLanguage].toLowerCase().includes(currentSearchQuery));
+                    
+                    // Фильтр по категории
+                    let filterMatch = false;
+                    
+                    if (activeFilters.has("all")) {
+                        filterMatch = true;
+                    } else {
+                        const categories = getArticleCategories(article);
+                        
+                        for (const category of categories) {
+                            const filterId = getFilterIdForCategory(category);
+                            if (filterId && activeFilters.has(filterId)) {
+                                filterMatch = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    return searchMatch && filterMatch;
+                });
+                
+                // Сортировка
+                filteredArticles = sortArticles(filteredArticles);
+                
+                // Обновление счетчика
+                const count = filteredArticles.length;
+                if (articlesCount) articlesCount.textContent = count;
+                resultsCount.innerHTML = `${translateText('articlesFound')} <span id="articles-count">${count}</span>`;
+                
+                if (count === 0) {
+                    articlesList.style.display = 'none';
+                    noArticles.style.display = 'block';
+                    resultsCount.style.display = 'none';
+                    document.getElementById('no-articles-text').textContent = translateText('noArticles');
+                    return;
+                }
+                
+                articlesList.style.display = 'flex';
+                noArticles.style.display = 'none';
+                resultsCount.style.display = 'block';
+                
+                // Очистка списка
+                articlesList.innerHTML = '';
+                
+                // Рендеринг статей
+                filteredArticles.forEach(article => {
+                    const articleItem = document.createElement('div');
+                    articleItem.className = 'article-item';
+                    
+                    // Получаем категории статьи
+                    const categories = getArticleCategories(article);
+                    const displayCategory = getDisplayCategories(article);
+                    const firstCategory = categories[0];
+                    const filterId = firstCategory ? getFilterIdForCategory(firstCategory) : null;
+                    
+                    articleItem.innerHTML = `
+                        <img src="${article.image || 'https://via.placeholder.com/600x400/2c3e50/ffffff?text=Moscow+History'}" 
+                             alt="${article.title[currentLanguage] || 'Статья'}" 
+                             class="article-image" 
+                             loading="lazy"
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/2c3e50/ffffff?text=Photo+Not+Found'">
+                        <div class="article-content">
+                            <div class="article-header">
+                                <h3 class="article-title">${article.title[currentLanguage] || 'Без названия'}</h3>
+                                ${displayCategory ? `
+                                    <div class="article-categories">
+                                        <span class="article-category" data-category="${filterId || 'default'}">${displayCategory}</span>
+                                        ${categories.length > 1 ? 
+                                            `<span class="article-category-more" title="Ещё ${categories.length - 1} категории">
+                                                +${categories.length - 1}
+                                            </span>` : ''}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <p class="article-description">${article.description[currentLanguage] || 'Описание отсутствует'}</p>
+                            
+                            <div class="article-footer">
+                                <div class="article-meta">
+                                    <div class="article-id">ID: <span>${article.id || '?'}</span></div>
+                                    <div class="article-date">${article.date || 'Дата не указана'}</div>
+                                </div>
+                                <a href="${article.link || '#'}" class="read-btn" target="_blank">
+                                    <i class="fas fa-book-open me-1"></i>
+                                    <span class="read-text">${translateText('readText')}</span>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    
+                    articlesList.appendChild(articleItem);
+                });
+                
+                // Обновляем текст кнопок "Читать"
+                document.querySelectorAll('.read-text').forEach(el => {
+                    el.textContent = translateText('readText');
+                });
+                
+            }, 300);
+        }
+
+        // ================================================
+        // ИНИЦИАЛИЗАЦИЯ СТРАНИЦЫ
+        // ================================================
+
+        function initArticlesPage() {
+            // Загружаем язык
+            const savedLanguage = localStorage.getItem('moscow-game-language');
+            if (savedLanguage && (savedLanguage === 'ru' || savedLanguage === 'en' || savedLanguage === 'de')) {
+                currentLanguage = savedLanguage;
+            } else {
+                currentLanguage = 'ru';
+                localStorage.setItem('moscow-game-language', 'ru');
+            }
+            
+            // Применяем переводы
+            applyTranslation();
+            
+            // Инициализируем музыку
+            initMusic();
+            
+            // Инициализируем фильтры
+            loadFilters();
+            
+            // Инициализируем поиск
+            searchArticles();
+            
+            // Рендерим статьи
+            renderArticles();
+            
+            // Навешиваем обработчики событий
+            document.getElementById('translate-btn-top').addEventListener('click', toggleLanguage);
+            document.getElementById('music-btn').addEventListener('click', toggleMusic);
+            document.getElementById('volume-slider').addEventListener('input', function() {
+                setMusicVolume(parseFloat(this.value));
+            });
+            document.getElementById('audio-indicator').addEventListener('click', toggleMusic);
+            
+            console.log(`📚 Страница статей инициализирована. Текущий язык: ${currentLanguage}`);
+        }
+
+        // ================================================
+        // ЗАПУСК ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+        // ================================================
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initArticlesPage);
+        } else {
+            initArticlesPage();
+        }
+    </script>
+    
+    <!-- ================================================ -->
+    <!-- ДАННЫЕ СТАТЕЙ - ДОБАВЛЯЙТЕ СТАТЬИ ТОЛЬКО ЗДЕСЬ -->
+    <!-- ================================================ -->
+    <script>
+        // ПРИМЕР СТАТЬИ С МНОЖЕСТВЕННЫМИ КАТЕГОРИЯМИ
+        // Теперь categories - это МАССИВ объектов с переводами!
+        window.articlesData = [
+            {
+                id: 1,
+                title: {
+                    ru: "Синий зуб. Стеклянный памятник 90-х.",
+                    en: "Blue Tooth. Glass monument of the 90s.",
+                    de: "Blauer Zahn. Glasdenkmal der 90er Jahre."
+                },
+                description: {
+                    ru: "Футуристический замысел: деловой центр для новой России, который стал самой большой заброшкой Москвы.",
+                    en: "Futuristic vision: a business center for the new Russia, which has become Moscow's largest abandoned building.",
+                    de: "Ein futuristisches Vorhaben: Ein Geschäftszentrum für das neue Russland, das zum größten Rückzugsort Moskaus wurde."
+                },
+                // ТЕПЕРЬ ЭТО МАССИВ КАТЕГОРИЙ!
+                categories: [
+                    {
+                        ru: "90-е",
+                        en: "90s", 
+                        de: "90er"
+                    },
+                    {
+                        ru: "Строения",
+                        en: "Buildings",
+                        de: "Gebäude"
+                    }
+                ],
+                date: "20.01.2026",
+                image: "photos.article/Skyscraper_bluetooth/0.jpg",
+                link: "article-skyscraper-bluetooth.html"
+            }
+            // ================================================
+            // ДОБАВЛЯЙТЕ НОВЫЕ СТАТЬИ ЗДЕСЬ
+            // ================================================
+            // ,
+            // {
+            //     id: 9, // Увеличивайте ID на 1 для каждой новой статьи
+            //     title: {
+            //         ru: "Название статьи на русском",
+            //         en: "Article title in English",
+            //         de: "Artikel-Titel auf Deutsch"
+            //     },
+            //     description: {
+            //         ru: "Описание статьи на русском языке",
+            //         en: "Article description in English",
+            //         de: "Artikelbeschreibung auf Deutsch"
+            //     },
+            //     categories: [
+            //         {
+            //             ru: "Категория 1 на русском",
+            //             en: "Category 1 in English",
+            //             de: "Kategorie 1 auf Deutsch"
+            //         },
+            //         {
+            //             ru: "Категория 2 на русском",
+            //             en: "Category 2 in English",
+            //             de: "Kategorie 2 auf Deutsch"
+            //         }
+            //     ],
+            //     date: "01.01.2024", // Дата в формате ДД.ММ.ГГГГ
+            //     image: "photo/articles/ваше-фото.jpg", // Путь к изображению
+            //     link: "article-имя.html" // Ссылка на полную статью
+            // }
+        ];
+        
+        console.log(`Загружено ${window.articlesData.length} статей`);
+    </script>
+</body>
+</html>
