@@ -6,7 +6,6 @@
 let currentLanguage = 'ru';
 let isMusicPlaying = false;
 let musicVolume = 0.5;
-let viewCount = 0; // Для хранения количества просмотров
 
 // Определяем язык из URL параметров
 function getLanguageFromURL() {
@@ -42,7 +41,7 @@ const interfaceTranslations = {
         playGame: "Играть в игру",
         footerText: "Проект создан с ❤️ для любителей истории Москвы",
         footerSubtext: "Архивные фотографии и исторические материалы",
-        viewsText: "просмотров", // НОВЫЙ ПЕРЕВОД
+        viewsText: "просмотров",
         photo1Caption: "Общий вид, после реконструкции",
         photo2Caption: "Академик Абел Аганбегян",
         photo3Caption: "«Город из стеклянных кристаллов» итальянского архитектора Лучано Перини",
@@ -74,7 +73,7 @@ const interfaceTranslations = {
         playGame: "Play the game",
         footerText: "Project created with ❤️ for Moscow history lovers",
         footerSubtext: "Archive photos and historical materials",
-        viewsText: "views", // НОВЫЙ ПЕРЕВОД
+        viewsText: "views",
         photo1Caption: "General view, after reconstruction",
         photo2Caption: "Academician Abel Aganbegyan",
         photo3Caption: "«City of glass crystals» by Italian architect Luciano Perini",
@@ -106,11 +105,11 @@ const interfaceTranslations = {
         playGame: "Spiel spielen",
         footerText: "Projekt mit ❤️ für Moskau-Geschichtsenthusiasten erstellt",
         footerSubtext: "Archivfotos und historische Materialien",
-        viewsText: "Aufrufe", // НОВЫЙ ПЕРЕВОД
+        viewsText: "Aufrufe",
         photo1Caption: "Allgemeine Ansicht nach der Rekonstruktion",
         photo2Caption: "Akademiker Abel Aganbegyan",
         photo3Caption: "«Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini",
-        photo4Caption: "Dies ist eine der Varianten des Internationalen Handelszentrums auf der Krasnaya Presnya von Luciano Perini. Das ursprüngliche «Zahn»-Projekt war ähnlich - der Turм war sehr hoch",
+        photo4Caption: "Dies ist eine der Varianten des Internationalen Handelszentrums auf der Krasnaya Presnya von Luciano Perini. Das ursprüngliche «Zahn»-Projekt war ähnlich - der Turm war sehr hoch",
         photo5Caption: "3D-Visualisierung des Gebäudes, oder eher des Gebäudekomplexes",
         photo6Caption: "Bau von «Bluetooth». Das Gebäude wurde aufgrund der Glasfarbe fast sofort blauer Zahn genannt",
         photo7Caption: "Eingefrorene, aber wie sich herausstellte, nicht für immer Panoramaaufzüge",
@@ -124,7 +123,7 @@ const interfaceTranslations = {
     }
 };
 
-// Переводы содержания статьи (остаются без изменений, как у вас)
+// Переводы содержания статьи
 const articleTranslations = {
     ru: {
         articleTitle: "Синий зуб. Стеклянный памятник 90-х",
@@ -201,7 +200,7 @@ const articleTranslations = {
     de: {
         articleTitle: "Blauer Zahn. Glasdenkmal der 90er Jahre",
         articleSubtitle: "Heute bemerken viele Menschen, die entlang dem Vernadski-Prospekt fahren, (aus heutiger Sicht) ein gewöhnliches Büroglashaus. Aber wenige wissen, dass das Gebäude fast 40 Jahre alt ist und seine wahre Größe nicht erkennen! Lassen Sie uns die Geschichte dieses Symbols der 90er Jahre, Stalker, Digger und anderer Moskauer Forscher verstehen und was jetzt damit geschieht.",
-        paragraph1: "Futuristische Idee: ein Geschäftszentrum für das neue Russland. Die Bauidee entstand 1989, als der Rektor der Akademie der Volkswirtschaft, Akademiker Abel Aganbegyan, in Bologna das Projekt einer «Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini sah.",
+        paragraph1: "Futuristische Ideе: ein Geschäftszentrum für das neue Russland. Die Bauidee entstand 1989, als der Rektor der Akademie der Volkswirtschaft, Akademiker Abel Aganbegyan, in Bologna das Projekt einer «Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini sah.",
         paragraph2: "Aganbegyan, einer der Hauptideologen der wirtschaftlichen Perestroika, war inspiriert, ein solches Symbol in Moskau zu verkörpern. Er sah darin die Verkörperung eines neuen, der Welt offenen, marktwirtschaftlichen Russlands.",
         paragraph3: "Das Gebäude, das den offiziellen Namen «Internationales Bildungs- und Geschäftszentrum \"Zenith\"» erhielt, war als grandioser Komplex an der Akademie konzipiert. Das Projekt wurde der Werkstatt «Mosproekt-1» anvertraut, und Perinis Konzept wurde von den Architekten Jakow Belopolski (übrigens ein bedeutender Moskauer Modernist, Autor des Zirkus auf demselben Vernadski-Prospekt) und Nikolai Ljutomski überarbeitet, wodurch ihm Züge des Suprematismus verliehen wurden - das Gebäude sollte wie «gebrochene und zerknitterte Kristalle» aussehen.",
         paragraph4: "Später wurde beschlossen, die «Füllung» des Gebäudes zu ändern, hier ist, was dort hätte sein sollen. Ambitionierte Pläne verteilten 100.000 Quadratmeter Fläche wie folgt:",
@@ -245,64 +244,15 @@ function translateArticle(key) {
     return articleTranslations[currentLanguage][key] || articleTranslations['ru'][key] || key;
 }
 
-// ФУНКЦИЯ ДЛЯ ЗАГРУЗКИ И ОТОБРАЖЕНИЯ СЧЕТЧИКА GOATCOUNTER
+// УПРОЩЕННАЯ ФУНКЦИЯ ДЛЯ ОТОБРАЖЕНИЯ СЧЕТЧИКА GOATCOUNTER
 function loadGoatCounterViews() {
-    // Проверяем, загружен ли скрипт GoatCounter [citation:1][citation:4]
-    const checkInterval = setInterval(function() {
-        if (!window.goatcounter || !window.goatcounter.visit_count) {
-            return; // Скрипт еще не загружен, продолжаем ждать
-        }
-        
-        clearInterval(checkInterval); // Скрипт загружен, останавливаем проверку
-        
-        // Вызываем функцию для получения количества просмотров
-        // Мы используем метод visit_count с настройками для отображения на странице [citation:4]
-        window.goatcounter.visit_count({
-            append: '#goatcounter-views-container', // Куда вставляем счетчик
-            type: 'html', // Используем HTML-версию для лучшей стилизации
-            no_branding: true, // Убираем "by GoatCounter"
-            style: `
-                #gcvc-for { display: none !important; }
-                #gcvc-by { display: none !important; }
-                #gcvc-views { 
-                    font-weight: bold; 
-                    color: inherit;
-                    font-size: inherit;
-                }
-            `,
-            attr: {
-                'id': 'goatcounter-stats',
-                'class': 'view-count-number'
-            }
-        });
-        
-        // После загрузки счетчика обновляем текст
-        setTimeout(() => {
-            const viewElement = document.getElementById('views-text');
-            if (viewElement) {
-                // Ищем элемент с числом просмотров, который создал GoatCounter
-                const countElement = document.querySelector('#goatcounter-stats .view-count-number') || 
-                                    document.querySelector('#gcvc-views');
-                if (countElement) {
-                    const count = countElement.textContent.trim();
-                    viewCount = parseInt(count.replace(/\D/g, '')) || 0;
-                    updateViewsText();
-                }
-            }
-        }, 500);
-        
-    }, 100); // Проверяем каждые 100 мс
-}
-
-// Обновление текста счетчика с учетом языка
-function updateViewsText() {
     const viewElement = document.getElementById('views-text');
-    if (viewElement && viewCount > 0) {
-        // Форматируем число с разделителями тысяч
-        const formattedCount = viewCount.toLocaleString(currentLanguage === 'ru' ? 'ru-RU' : 
-                                                       currentLanguage === 'de' ? 'de-DE' : 'en-US');
-        viewElement.textContent = `${formattedCount} ${translateInterface('viewsText')}`;
-    }
+    if (!viewElement) return;
+    
+    // Показываем просто текст "просмотров" без цифр
+    // GoatCounter не предоставляет простого API для получения количества просмотров
+    // без использования виджета или серверного API с ключом
+    viewElement.textContent = translateInterface('viewsText');
 }
 
 function applyTranslation() {
@@ -324,8 +274,8 @@ function applyTranslation() {
     document.getElementById('article-category').textContent = translateInterface('articleCategory');
     document.getElementById('reading-time-text').textContent = translateInterface('readingTime');
     
-    // Счетчик просмотров (обновляем только текст, число остается прежним)
-    updateViewsText();
+    // Счетчик просмотров
+    loadGoatCounterViews();
     
     // Футер
     document.getElementById('footer-text').textContent = translateInterface('footerText');
@@ -530,9 +480,6 @@ function initArticlePage() {
     
     // Инициализируем музыку
     initMusic();
-    
-    // Загружаем счетчик просмотров
-    loadGoatCounterViews();
     
     // Обработка ошибок изображений
     handleImageErrors();
