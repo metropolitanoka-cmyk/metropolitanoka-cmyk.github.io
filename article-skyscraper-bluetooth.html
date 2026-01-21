@@ -15,10 +15,6 @@
     </script>
     <!-- Конец Google Analytics 4 -->
     
-    <!-- GoatCounter Analytics Tracking -->
-    <script data-goatcounter="https://moscow-time-machine.goatcounter.com/count" 
-            async src="//gc.zgo.at/count.js"></script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
@@ -403,7 +399,7 @@
             flex-wrap: wrap;
         }
         
-        .article-date, .article-category, .article-reading-time, .article-views {
+        .article-date, .article-category, .article-reading-time {
             background: rgba(255, 255, 255, 0.2);
             padding: 0.5rem 1.2rem;
             border-radius: 20px;
@@ -976,11 +972,6 @@
                         <i class="far fa-clock me-1"></i>
                         <span id="reading-time-text">7 мин чтения</span>
                     </div>
-                    <!-- НОВЫЙ БЛОК ДЛЯ СЧЕТЧИКА ПРОСМОТРОВ -->
-                    <div class="article-views" id="goatcounter-views-container">
-                        <i class="fas fa-eye me-1"></i>
-                        <span id="views-text">Загрузка...</span>
-                    </div>
                 </div>
             </header>
             
@@ -1248,8 +1239,6 @@
         let currentLanguage = 'ru';
         let isMusicPlaying = false;
         let musicVolume = 0.5;
-        let viewCount = 0; // Для хранения количества просмотров
-        const viewCountCache = {}; // Кэш для количества просмотров
 
         // Определяем язык из URL параметров
         function getLanguageFromURL() {
@@ -1267,7 +1256,7 @@
             localStorage.setItem('moscow-game-language', urlLang);
         }
 
-        // Система переводов для интерфейса (ДОБАВЛЕН ПЕРЕВОД ДЛЯ СЧЕТЧИКА)
+        // Система переводов для интерфейса
         const interfaceTranslations = {
             ru: {
                 pageTitle: "Синий зуб. Стеклянный памятник 90-х",
@@ -1285,7 +1274,6 @@
                 playGame: "Играть в игру",
                 footerText: "Проект создан с ❤️ для любителей истории Москвы",
                 footerSubtext: "Архивные фотографии и исторические материалы",
-                viewsText: "просмотров", // НОВЫЙ ПЕРЕВОД
                 photo1Caption: "Общий вид, после реконструкции",
                 photo2Caption: "Академик Абел Аганбегян",
                 photo3Caption: "«Город из стеклянных кристаллов» итальянского архитектора Лучано Перини",
@@ -1317,7 +1305,6 @@
                 playGame: "Play the game",
                 footerText: "Project created with ❤️ for Moscow history lovers",
                 footerSubtext: "Archive photos and historical materials",
-                viewsText: "views", // НОВЫЙ ПЕРЕВОД
                 photo1Caption: "General view, after reconstruction",
                 photo2Caption: "Academician Abel Aganbegyan",
                 photo3Caption: "«City of glass crystals» by Italian architect Luciano Perini",
@@ -1349,11 +1336,10 @@
                 playGame: "Spiel spielen",
                 footerText: "Projekt mit ❤️ für Moskau-Geschichtsenthusiasten erstellt",
                 footerSubtext: "Archivfotos und historische Materialien",
-                viewsText: "Aufrufe", // НОВЫЙ ПЕРЕВОД
                 photo1Caption: "Allgemeine Ansicht nach der Rekonstruktion",
                 photo2Caption: "Akademiker Abel Aganbegyan",
                 photo3Caption: "«Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini",
-                photo4Caption: "Dies ist eine der Varianten des Internationalen Handelszentrums auf der Krasnaya Presnya von Luciano Perini. Das ursprüngliche «Zahn»-Projekt war ähnlich - der Turм war sehr hoch",
+                photo4Caption: "Dies ist eine der Varianten des Internationalen Handelszentrums auf der Krasnaya Presnya von Luciano Perini. Das ursprüngliche «Zahn»-Projekt war ähnlich - der Turm war sehr hoch",
                 photo5Caption: "3D-Visualisierung des Gebäudes, oder eher des Gebäudekomplexes",
                 photo6Caption: "Bau von «Bluetooth». Das Gebäude wurde aufgrund der Glasfarbe fast sofort blauer Zahn genannt",
                 photo7Caption: "Eingefrorene, aber wie sich herausstellte, nicht für immer Panoramaaufzüge",
@@ -1471,9 +1457,9 @@
                 section3Title: "Legenden, Mythen, Sprüche",
                 paragraph8: "Über die Jahre der Verlassenheit haben sich viele Legenden um den «Blauen Zahn» entwickelt. Eine der dunkelsten besagte, dass Wachen regelmäßig Leichen von Menschen im Inneren fanden - von Selbstmördern bis zu Unfallopfern. Es gab Gerüchte über Fälle, in denen Jungen Mädchen ins Gebäude schleppten und drohten, sie aus den Fenstern zu werfen.",
                 paragraph9: "Es gab auch eine Geschichte über einen Generalmajor, der illegal Land des Verteidigungsministeriums an italienische Bauunternehmer verpachtete und das erhaltene Geld für eine Reise nach Japan ausgab. Aber die berühmteste Legende hängt mit den Gründen für den Baustopp zusammen - die sizilianische Mafia, die den Bau stoppte.",
-                section4Title: "Что сейчас, что будет?",
-                paragraph10: "Ein neues Leben begann 2018-2019, als beschlossen wurde, den Bau für die Bedürfnisse der RANEPA (Nachfolger der ANKh) abzuschließen. Auftragnehmer war das Unternehmen «Tekhinzhstroy». Nach Bewertung und Verstärkung des Rahmens begann eine groß angelegte Rekonstruktion.",
-                paragraph11: "Nach neuesten Daten (Dezember 2025) sind die Außenarbeiten fast abgeschlossen: Die Verkleidung ist fertig, die Geländegestaltung ist im Gange. Das Gebäude, dessen Gesamtfläche nach der Rekonstruktion 162.000 m² betragen wird, wird Lehrgebäude, ein Hotel, einen Sportkomplex, Cafés und Konferenzsäle beherbergen.",
+                section4Title: "Was jetzt, was wird sein?",
+                paragraph10: "Ein neues Leben begann 2018-2019, als beschlossen wurde, den Bau für die Bedürfnisse der RANEPA (Nachfolger der ANCh) abzuschließen. Der Auftragnehmer war das Unternehmen «Technischstroi». Nach der Bewertung und Verstärkung des Rahmens begann eine groß angelegte Rekonstruktion.",
+                paragraph11: "Nach den neuesten Daten (Dezember 2025) sind die Außenarbeiten fast abgeschlossen: die Verkleidung ist fertig, die Geländegestaltung läuft. In dem Gebäude, dessen Gesamtfläche nach der Rekonstruktion 162 Tausend m² betragen wird, werden Lehrgebäude, ein Hotel, ein Sportkomplex, Cafés und Konferenzsäle untergebracht.",
                 infoBoxTitle: "Fortsetzung der Geschichte",
                 infoBoxText: "Wenn Sie an der Geschichte der Moskauer Straßen, Gebäude und ihrer Geister interessiert sind, gehen Sie auf ein virtuelles Zeitreisespiel auf der Website «Zeitmaschine für Moskau» - https://moscow-time-machine.online/."
             }
@@ -1486,62 +1472,6 @@
 
         function translateArticle(key) {
             return articleTranslations[currentLanguage][key] || articleTranslations['ru'][key] || key;
-        }
-
-        // ФУНКЦИЯ ДЛЯ ЗАГРУЗКИ И ОТОБРАЖЕНИЯ СЧЕТЧИКА GOATCOUNTER
-        function loadGoatCounterViews() {
-            const path = window.location.pathname + window.location.search;
-            const encodedPath = encodeURIComponent(path);
-            
-            // Если уже есть в кэше, используем кэш
-            if (viewCountCache[path]) {
-                viewCount = viewCountCache[path];
-                updateViewsText();
-                return;
-            }
-            
-            // Иначе загружаем через JSONP API GoatCounter
-            const callbackName = 'goatcounter_callback_' + Date.now();
-            window[callbackName] = function(data) {
-                viewCountCache[path] = data.count;
-                viewCount = data.count;
-                updateViewsText();
-                // Удаляем callback после использования
-                delete window[callbackName];
-            };
-            
-            const script = document.createElement('script');
-            script.src = `https://moscow-time-machine.goatcounter.com/counter/${encodedPath}.json?callback=${callbackName}`;
-            script.onerror = function() {
-                console.log('Ошибка загрузки счетчика GoatCounter');
-                document.getElementById('views-text').textContent = translateInterface('viewsText');
-                delete window[callbackName];
-            };
-            document.head.appendChild(script);
-            
-            // Устанавливаем таймаут на случай, если запрос завис
-            setTimeout(function() {
-                if (window[callbackName]) {
-                    console.log('Таймаут загрузки счетчика');
-                    document.getElementById('views-text').textContent = translateInterface('viewsText');
-                    delete window[callbackName];
-                }
-            }, 5000);
-        }
-
-        // Обновление текста счетчика с учетом языка
-        function updateViewsText() {
-            const viewElement = document.getElementById('views-text');
-            if (viewElement) {
-                if (viewCount > 0) {
-                    // Форматируем число с разделителями тысяч
-                    const formattedCount = viewCount.toLocaleString(currentLanguage === 'ru' ? 'ru-RU' : 
-                                                                   currentLanguage === 'de' ? 'de-DE' : 'en-US');
-                    viewElement.textContent = `${formattedCount} ${translateInterface('viewsText')}`;
-                } else {
-                    viewElement.textContent = 'Загрузка...';
-                }
-            }
         }
 
         function applyTranslation() {
@@ -1562,9 +1492,6 @@
             document.getElementById('article-date').textContent = translateInterface('articleDate');
             document.getElementById('article-category').textContent = translateInterface('articleCategory');
             document.getElementById('reading-time-text').textContent = translateInterface('readingTime');
-            
-            // Счетчик просмотров (обновляем только текст, число остается прежним)
-            updateViewsText();
             
             // Футер
             document.getElementById('footer-text').textContent = translateInterface('footerText');
@@ -1654,9 +1581,6 @@
             const url = new URL(window.location);
             url.searchParams.set('lang', currentLanguage);
             window.history.replaceState({}, '', url);
-            
-            // Перезагружаем счетчик для нового языка
-            loadGoatCounterViews();
         }
 
         // Управление музыкой
@@ -1735,8 +1659,8 @@
             if (isMusicPlaying) {
                 indicator.classList.add('pulsing');
                 indicator.innerHTML = musicVolume > 0.7 ? '<i class="fas fa-volume-up"></i>' : 
-                                     musicVolume > 0.3 ? '<i class="fas fa-volume-down"></i>' : 
-                                     '<i class="fas fa-volume-off"></i>';
+                                 musicVolume > 0.3 ? '<i class="fas fa-volume-down"></i>' : 
+                                 '<i class="fas fa-volume-off"></i>';
             } else {
                 indicator.classList.remove('pulsing');
                 indicator.innerHTML = '<i class="fas fa-music"></i>';
@@ -1772,9 +1696,6 @@
             
             // Инициализируем музыку
             initMusic();
-            
-            // Загружаем счетчик просмотров
-            loadGoatCounterViews();
             
             // Обработка ошибок изображений
             handleImageErrors();
