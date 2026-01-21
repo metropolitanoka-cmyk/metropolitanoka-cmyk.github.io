@@ -7,23 +7,7 @@ let currentLanguage = 'ru';
 let isMusicPlaying = false;
 let musicVolume = 0.5;
 
-// Определяем язык из URL параметров
-function getLanguageFromURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get('lang');
-    if (langParam && (langParam === 'en' || langParam === 'de')) {
-        return langParam;
-    }
-    return null;
-}
-
-// Проверяем и сохраняем язык из URL
-const urlLang = getLanguageFromURL();
-if (urlLang) {
-    localStorage.setItem('moscow-game-language', urlLang);
-}
-
-// Система переводов для интерфейса (ДОБАВЛЕН ПЕРЕВОД ДЛЯ СЧЕТЧИКА)
+// Система переводов для интерфейса
 const interfaceTranslations = {
     ru: {
         pageTitle: "Синий зуб. Стеклянный памятник 90-х",
@@ -36,12 +20,10 @@ const interfaceTranslations = {
         telegramText: "Telegram",
         articleDate: "20.01.2026",
         articleCategory: "90-е и строения",
-        readingTime: "7 мин чтения",
         backToArticles: "Назад к статьям",
         playGame: "Играть в игру",
         footerText: "Проект создан с ❤️ для любителей истории Москвы",
         footerSubtext: "Архивные фотографии и исторические материалы",
-        viewsText: "просмотров",
         photo1Caption: "Общий вид, после реконструкции",
         photo2Caption: "Академик Абел Аганбегян",
         photo3Caption: "«Город из стеклянных кристаллов» итальянского архитектора Лучано Перини",
@@ -68,12 +50,10 @@ const interfaceTranslations = {
         telegramText: "Telegram",
         articleDate: "20.01.2026",
         articleCategory: "90s and buildings",
-        readingTime: "7 min read",
         backToArticles: "Back to articles",
         playGame: "Play the game",
         footerText: "Project created with ❤️ for Moscow history lovers",
         footerSubtext: "Archive photos and historical materials",
-        viewsText: "views",
         photo1Caption: "General view, after reconstruction",
         photo2Caption: "Academician Abel Aganbegyan",
         photo3Caption: "«City of glass crystals» by Italian architect Luciano Perini",
@@ -100,12 +80,10 @@ const interfaceTranslations = {
         telegramText: "Telegram",
         articleDate: "20.01.2026",
         articleCategory: "90er und Gebäude",
-        readingTime: "7 Min. Lesezeit",
         backToArticles: "Zurück zu Artikeln",
         playGame: "Spiel spielen",
         footerText: "Projekt mit ❤️ für Moskau-Geschichtsenthusiasten erstellt",
         footerSubtext: "Archivfotos und historische Materialien",
-        viewsText: "Aufrufe",
         photo1Caption: "Allgemeine Ansicht nach der Rekonstruktion",
         photo2Caption: "Akademiker Abel Aganbegyan",
         photo3Caption: "«Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini",
@@ -200,7 +178,7 @@ const articleTranslations = {
     de: {
         articleTitle: "Blauer Zahn. Glasdenkmal der 90er Jahre",
         articleSubtitle: "Heute bemerken viele Menschen, die entlang dem Vernadski-Prospekt fahren, (aus heutiger Sicht) ein gewöhnliches Büroglashaus. Aber wenige wissen, dass das Gebäude fast 40 Jahre alt ist und seine wahre Größe nicht erkennen! Lassen Sie uns die Geschichte dieses Symbols der 90er Jahre, Stalker, Digger und anderer Moskauer Forscher verstehen und was jetzt damit geschieht.",
-        paragraph1: "Futuristische Ideе: ein Geschäftszentrum für das neue Russland. Die Bauidee entstand 1989, als der Rektor der Akademie der Volkswirtschaft, Akademiker Abel Aganbegyan, in Bologna das Projekt einer «Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini sah.",
+        paragraph1: "Futuristische Idee: ein Geschäftszentrum für das neue Russland. Die Bauidee entstand 1989, als der Rektor der Akademie der Volkswirtschaft, Akademiker Abel Aganbegyan, in Bologna das Projekt einer «Stadt aus Glaskristallen» des italienischen Architekten Luciano Perini sah.",
         paragraph2: "Aganbegyan, einer der Hauptideologen der wirtschaftlichen Perestroika, war inspiriert, ein solches Symbol in Moskau zu verkörpern. Er sah darin die Verkörperung eines neuen, der Welt offenen, marktwirtschaftlichen Russlands.",
         paragraph3: "Das Gebäude, das den offiziellen Namen «Internationales Bildungs- und Geschäftszentrum \"Zenith\"» erhielt, war als grandioser Komplex an der Akademie konzipiert. Das Projekt wurde der Werkstatt «Mosproekt-1» anvertraut, und Perinis Konzept wurde von den Architekten Jakow Belopolski (übrigens ein bedeutender Moskauer Modernist, Autor des Zirkus auf demselben Vernadski-Prospekt) und Nikolai Ljutomski überarbeitet, wodurch ihm Züge des Suprematismus verliehen wurden - das Gebäude sollte wie «gebrochene und zerknitterte Kristalle» aussehen.",
         paragraph4: "Später wurde beschlossen, die «Füllung» des Gebäudes zu ändern, hier ist, was dort hätte sein sollen. Ambitionierte Pläne verteilten 100.000 Quadratmeter Fläche wie folgt:",
@@ -227,7 +205,7 @@ const articleTranslations = {
         section3Title: "Legenden, Mythen, Sprüche",
         paragraph8: "Über die Jahre der Verlassenheit haben sich viele Legenden um den «Blauen Zahn» entwickelt. Eine der dunkelsten besagte, dass Wachen regelmäßig Leichen von Menschen im Inneren fanden - von Selbstmördern bis zu Unfallopfern. Es gab Gerüchte über Fälle, in denen Jungen Mädchen ins Gebäude schleppten und drohten, sie aus den Fenstern zu werfen.",
         paragraph9: "Es gab auch eine Geschichte über einen Generalmajor, der illegal Land des Verteidigungsministeriums an italienische Bauunternehmer verpachtete und das erhaltene Geld für eine Reise nach Japan ausgab. Aber die berühmteste Legende hängt mit den Gründen für den Baustopp zusammen - die sizilianische Mafia, die den Bau stoppte.",
-        section4Title: "Что сейчас, что будет?",
+        section4Title: "Was jetzt, was wird sein?",
         paragraph10: "Ein neues Leben begann 2018-2019, als beschlossen wurde, den Bau für die Bedürfnisse der RANEPA (Nachfolger der ANKh) abzuschließen. Auftragnehmer war das Unternehmen «Tekhinzhstroy». Nach Bewertung und Verstärkung des Rahmens begann eine groß angelegte Rekonstruktion.",
         paragraph11: "Nach neuesten Daten (Dezember 2025) sind die Außenarbeiten fast abgeschlossen: Die Verkleidung ist fertig, die Geländegestaltung ist im Gange. Das Gebäude, dessen Gesamtfläche nach der Rekonstruktion 162.000 m² betragen wird, wird Lehrgebäude, ein Hotel, einen Sportkomplex, Cafés und Konferenzsäle beherbergen.",
         infoBoxTitle: "Fortsetzung der Geschichte",
@@ -242,17 +220,6 @@ function translateInterface(key) {
 
 function translateArticle(key) {
     return articleTranslations[currentLanguage][key] || articleTranslations['ru'][key] || key;
-}
-
-// УПРОЩЕННАЯ ФУНКЦИЯ ДЛЯ ОТОБРАЖЕНИЯ СЧЕТЧИКА GOATCOUNTER
-function loadGoatCounterViews() {
-    const viewElement = document.getElementById('views-text');
-    if (!viewElement) return;
-    
-    // Показываем просто текст "просмотров" без цифр
-    // GoatCounter не предоставляет простого API для получения количества просмотров
-    // без использования виджета или серверного API с ключом
-    viewElement.textContent = translateInterface('viewsText');
 }
 
 function applyTranslation() {
@@ -272,10 +239,6 @@ function applyTranslation() {
     // Метаданные статьи
     document.getElementById('article-date').textContent = translateInterface('articleDate');
     document.getElementById('article-category').textContent = translateInterface('articleCategory');
-    document.getElementById('reading-time-text').textContent = translateInterface('readingTime');
-    
-    // Счетчик просмотров
-    loadGoatCounterViews();
     
     // Футер
     document.getElementById('footer-text').textContent = translateInterface('footerText');
@@ -284,12 +247,8 @@ function applyTranslation() {
     // Подписи к фотографиям
     for (let i = 1; i <= 14; i++) {
         const captionId = `photo${i}-caption`;
-        const captionElement = document.getElementById(captionId);
-        if (captionElement) {
-            const captionTextElement = captionElement.querySelector('.caption-text');
-            if (captionTextElement) {
-                captionTextElement.textContent = translateInterface(`photo${i}Caption`);
-            }
+        if (document.getElementById(captionId)) {
+            document.getElementById(captionId).textContent = translateInterface(`photo${i}Caption`);
         }
     }
     
@@ -306,31 +265,22 @@ function applyTranslation() {
     }
     
     // Заголовки разделов
-    const sectionTitles = ['section1-title', 'section2-title', 'section3-title', 'section4-title'];
-    sectionTitles.forEach(sectionId => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const key = sectionId.replace('-title', 'Title').replace('section', 'section');
-            element.textContent = translateArticle(key);
+    for (let i = 1; i <= 4; i++) {
+        const sectionId = `section${i}-title`;
+        if (document.getElementById(sectionId)) {
+            document.getElementById(sectionId).textContent = translateArticle(sectionId);
         }
-    });
+    }
     
     // Список площадей
     for (let i = 1; i <= 6; i++) {
         const areaNameId = `area${i}-name`;
         const areaValueId = `area${i}-value`;
-        
-        const areaNameElement = document.getElementById(areaNameId);
-        const areaValueElement = document.getElementById(areaValueId);
-        
-        if (areaNameElement) {
-            const key = `area${i}Name`;
-            areaNameElement.textContent = translateArticle(key);
+        if (document.getElementById(areaNameId)) {
+            document.getElementById(areaNameId).textContent = translateArticle(areaNameId);
         }
-        
-        if (areaValueElement) {
-            const key = `area${i}Value`;
-            areaValueElement.textContent = translateArticle(key);
+        if (document.getElementById(areaValueId)) {
+            document.getElementById(areaValueId).textContent = translateArticle(areaValueId);
         }
     }
     
@@ -341,11 +291,7 @@ function applyTranslation() {
     // Реклама и инфобокс
     const adElement = document.getElementById('advertisement');
     if (adElement) {
-        const adText = translateArticle('advertisement');
-        const parts = adText.split('https://moscow-time-machine.online/');
-        if (parts.length > 1) {
-            adElement.innerHTML = `<p><i class="fas fa-gamepad me-2"></i> <strong>${parts[0]}</strong><a href="https://moscow-time-machine.online/" target="_blank">https://moscow-time-machine.online/</a>${parts[1] ? ', ' + parts[1] : ''}</p>`;
-        }
+        adElement.innerHTML = `<p><i class="fas fa-gamepad me-2"></i> <strong>${translateArticle('advertisement').split('https://')[0]}</strong><a href="https://moscow-time-machine.online/" target="_blank">https://moscow-time-machine.online/</a>, ${translateArticle('advertisement').split(', ')[1]}</p>`;
     }
     
     document.getElementById('info-box-title').textContent = translateArticle('infoBoxTitle');
@@ -360,11 +306,6 @@ function toggleLanguage() {
     
     applyTranslation();
     localStorage.setItem('moscow-game-language', currentLanguage);
-    
-    // Обновляем URL с параметром языка для SEO
-    const url = new URL(window.location);
-    url.searchParams.set('lang', currentLanguage);
-    window.history.replaceState({}, '', url);
 }
 
 // Управление музыкой
@@ -457,8 +398,7 @@ function handleImageErrors() {
     images.forEach(img => {
         img.addEventListener('error', function() {
             console.log(`Ошибка загрузки изображения: ${this.src}`);
-            // Заменяем на SVG placeholder
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzJjM2U1MCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmZmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5QaG90byBub3QgZm91bmQ8L3RleHQ+PC9zdmc+';
+            this.src = 'https://via.placeholder.com/800x600/2c3e50/ffffff?text=Photo+Loading+Error';
             this.alt = 'Изображение не загружено';
         });
     });
@@ -517,4 +457,5 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.boxShadow = '0 4px 12px var(--shadow-color)';
         });
     });
+
 });
