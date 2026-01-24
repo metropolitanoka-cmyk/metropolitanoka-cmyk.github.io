@@ -1789,8 +1789,6 @@
     <!-- ДАННЫЕ СТАТЕЙ - ДОБАВЛЯЙТЕ СТАТЬИ ТОЛЬКО ЗДЕСЬ -->
     <!-- ================================================ -->
     <script>
-        // ПРИМЕР СТАТЬИ С МНОЖЕСТВЕННЫМИ КАТЕГОРИЯМИ
-        // Теперь categories - это МАССИВ объектов с переводами!
         window.articlesData = [
             {
                 id: 1,
@@ -1804,7 +1802,6 @@
                     en: "Futuristic vision: a business center for the new Russia, which has become Moscow's largest abandoned building.",
                     de: "Ein futuristisches Vorhaben: Ein Geschäftszentrum für das neue Russland, das zum größten Rückzugsort Moskaus wurde."
                 },
-                // ТЕПЕРЬ ЭТО МАССИВ КАТЕГОРИЙ!
                 categories: [
                     {
                         ru: "90-е",
@@ -1818,15 +1815,43 @@
                     }
                 ],
                 date: "20.01.2026",
-                image: "photos.article/Skyscraper_bluetooth/0.jpg",
+                image: "photos.article/Skyscraper_bluetooth/1.jpg",
                 link: "article-skyscraper-bluetooth.html"
+            },
+            {
+                id: 2,
+                title: {
+                    ru: "Аквадром: гигант, который не смог.",
+                    en: "Aquadrome: The giant that couldn't.",
+                    de: "Aquadrom: Der Riese, der es nicht schaffte."
+                },
+                description: {
+                    ru: "Самый большой аквапарк Европы, который так и не открылся. 13 лет заброшенности и культовое место для сталкеров.",
+                    en: "The largest aquapark in Europe that never opened. 13 years of abandonment and a cult place for stalkers.",
+                    de: "Das größte Aquapark Europas, das nie eröffnet wurde. 13 Jahre Verlassenheit und ein Kultort für Stalker."
+                },
+                categories: [
+                    {
+                        ru: "90-е",
+                        en: "90s", 
+                        de: "90er"
+                    },
+                    {
+                        ru: "Строения",
+                        en: "Buildings",
+                        de: "Gebäude"
+                    }
+                ],
+                date: "24.01.2026",
+                image: "photos.article/aquadrome/1.jpg",
+                link: "aquadrome.html"
             }
             // ================================================
             // ДОБАВЛЯЙТЕ НОВЫЕ СТАТЬИ ЗДЕСЬ
             // ================================================
             // ,
             // {
-            //     id: 9, // Увеличивайте ID на 1 для каждой новой статьи
+            //     id: 3,
             //     title: {
             //         ru: "Название статьи на русском",
             //         en: "Article title in English",
@@ -1849,9 +1874,9 @@
             //             de: "Kategorie 2 auf Deutsch"
             //         }
             //     ],
-            //     date: "01.01.2024", // Дата в формате ДД.ММ.ГГГГ
-            //     image: "photo/articles/ваше-фото.jpg", // Путь к изображению
-            //     link: "article-имя.html" // Ссылка на полную статью
+            //     date: "01.01.2024",
+            //     image: "photo/articles/ваше-фото.jpg",
+            //     link: "article-имя.html"
             // }
         ];
         
