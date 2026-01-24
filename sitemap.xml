@@ -1,31 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Главная страница -->
-  <url>
-    <loc>https://moscow-time-machine.online/</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <!-- Страница с правилами -->
-  <url>
-    <loc>https://moscow-time-machine.online/rules.html</loc>
-    <lastmod>2026-01-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- Страница со статьями -->
-  <url>
-    <loc>https://moscow-time-machine.online/articles.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- Страница статьи о небоскребе Bluetooth -->
-  <url>
-    <loc>https://moscow-time-machine.online/article-skyscraper-bluetooth.html</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
+<!--  Главная страница  -->
+<url>
+<loc>https://moscow-time-machine.online/</loc>
+<lastmod>2026-01-03</lastmod>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
+</url>
+<!--  Страница с правилами  -->
+<url>
+<loc>https://moscow-time-machine.online/rules.html</loc>
+<lastmod>2026-01-03</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  Страница со статьями  -->
+<url>
+<loc>https://moscow-time-machine.online/articles.html</loc>
+<lastmod>2026-01-20</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+<!--  Страница статьи о небоскребе Bluetooth  -->
+<url>
+<loc>https://moscow-time-machine.online/article-skyscraper-bluetooth.html</loc>
+<lastmod>2026-01-20</lastmod>
+<changefreq>yearly</changefreq>
+<priority>0.7</priority>
+</url>
+<!--  Страница аквадрома  -->
+<url>
+<loc>https://moscow-time-machine.online/aquadrome.html</loc>
+<lastmod>2026-01-24</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
 </urlset>
